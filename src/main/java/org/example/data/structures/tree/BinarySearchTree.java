@@ -1,5 +1,7 @@
 package org.example.data.structures.tree;
 
+import org.example.data.structures.stack.DynamicArrayStack;
+
 import java.util.function.Consumer;
 
 /**
@@ -13,22 +15,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public void insert(T data) {
-        var currentNode = root;
-        if (currentNode == null) {
+        var node = root;   // current node
+        if (node == null) {
             root = new Node<>(data);
         } else {
-            while (currentNode != null) {
-                if (data.compareTo(currentNode.data) <= 0) {
-                    if (currentNode.left == null) {
-                        currentNode.left = new Node<>(data);
+            while (node != null) {
+                if (data.compareTo(node.data) <= 0) {
+                    if (node.left == null) {
+                        node.left = new Node<>(data);
                         break;
                     } else {
-                        currentNode = currentNode.left;
+                        node = node.left;
                     }
-                } else if (currentNode.right == null) {
-                    currentNode.right = new Node<>(data);
+                } else if (node.right == null) {
+                    node.right = new Node<>(data);
                 } else {
-                    currentNode = currentNode.right;
+                    node = node.right;
                 }
             }
         }
@@ -38,16 +40,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * Обход двоичного дерева и выполнение операции с каждым элементом
      */
     public void traverse(Consumer<T> consumer) {
-
+        Node<T> node = root;   // current node
+        DynamicArrayStack stack = new DynamicArrayStack(15);
+        while (node != null || !stack.isEmpty()) {
+            if (node == null) {
+                // todo: implement
+            }
+        }
     }
 
     public void delete(T data) {
-
+        //todo: implement
     }
 
     private NodeSearchResult<T> searchNode(T data) {
         Node<T> parentNode = null;
-        Node<T> node = root;
+        Node<T> node = root;   // current node
         while (node != null) {
             if (data.equals(node.data)) {
                 return new NodeSearchResult<>(parentNode, node);
