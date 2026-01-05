@@ -34,6 +34,12 @@ public class UnsortedArray<T> {
         return elementData[index];
     }
 
+    /**
+     * Находит элемент в массиве<br/>
+     * В случае дубликатов вернет индекс первого элемента.
+     *
+     * @return index
+     */
     public int findElement(T element) {
         for (int index = 0; index < elementData.length; index++) {
             var arrayElement = elementData[index];
