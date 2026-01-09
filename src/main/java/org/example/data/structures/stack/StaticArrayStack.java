@@ -1,26 +1,27 @@
 package org.example.data.structures.stack;
 
-import org.example.data.structures.stack.exception.EmptyStackException;
 import org.example.data.structures.stack.exception.FullStackException;
 
 /**
  * Стек на основе статического массива
  */
-public class StaticArrayStack {
+public class StaticArrayStack<T> implements Stack<T> {
 
-    private final int[] stack;
-    private int pushIndex;
+    private final T[] stack;
+    private int pushIndex = 0;
+    private int numberOfElements = 0;
 
     public StaticArrayStack(int size) {
-        this.stack = new int[size];
+        this.stack = (T[]) new Object[size];
     }
 
-    public void push(int item) {
+    public void push(T item) {
         if (stack.length == pushIndex) {
             throw new FullStackException();
         }
         stack[pushIndex] = item;
         pushIndex++;
+        numberOfElements++;
     }
 
     /**
@@ -28,12 +29,16 @@ public class StaticArrayStack {
      *
      * @return element
      */
-    public int pop() {
-        if (isEmpty()) {
-            throw new EmptyStackException();
+    public T pop() {
+        if (numberOfElements == 0) {
+            return null;
         }
-        int lastElementIndex = --pushIndex;
-        return stack[lastElementIndex];
+        int lastElementIndex = pushIndex - 1;
+        T element = stack[lastElementIndex];
+        stack[lastElementIndex] = null;
+        pushIndex--;
+        numberOfElements--;
+        return element;
     }
 
     /**
@@ -41,11 +46,19 @@ public class StaticArrayStack {
      *
      * @return element
      */
-    public int peek() {
-        return 0; // todo: fix
+    public T peek() {
+        if (numberOfElements == 0) {
+            return null;
+        }
+        int lastElementIndex = --pushIndex;
+        return stack[lastElementIndex];
     }
 
-    public boolean isEmpty() {
-        return pushIndex == 0;
+    public int getSize() {
+        return stack.length;
+    }
+
+    public int getNumberOfElements() {
+        return numberOfElements;
     }
 }
