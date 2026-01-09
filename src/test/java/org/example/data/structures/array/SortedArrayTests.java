@@ -11,19 +11,19 @@ public class SortedArrayTests {
 
     @Test
     void createArray() {
-        var array = new SortedArray<String>(5);
+        var array = new SortedArrayImpl<String>(5);
         assertEquals(5, array.getSize());
         assertEquals(0, array.getNumberOfElements());
     }
 
     @Test
     void createArrayWithNegativeSize() {
-        assertThrows(IllegalArgumentException.class, () -> new SortedArray<String>(-1));
+        assertThrows(IllegalArgumentException.class, () -> new SortedArrayImpl<String>(-1));
     }
 
     @Test
     void getElement() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         var element = "Anna";
         array.addElement(element);
         assertEquals(element, array.getElement(0));
@@ -31,48 +31,50 @@ public class SortedArrayTests {
 
     @Test
     void getNullElement() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         assertNull(array.getElement(0));
     }
 
     @Test
     void getElementByNegativeIndex() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> array.getElement(-1));
     }
 
     @Test
     void getElementOutOfBounds() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> array.getElement(1));
     }
 
     @Test
     void findElement() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         var element = "Anna";
         array.addElement(element);
         assertEquals(0, array.findElement(element));
     }
 
+    //todo: fix
     @Disabled
     @Test
     void findNullElement() {
-        var array = new SortedArray<String>(2);
+        var array = new SortedArrayImpl<String>(2);
         array.addElement("Anna");
         assertEquals(1, array.findElement(null));
     }
 
+    //todo: fix
     @Disabled
     @Test
     void findNonExistingElement() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         assertEquals(-1, array.findElement("Anna"));
     }
 
     @Test
     void addElement() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         array.addElement("Anna");
         assertEquals(1, array.getSize());
         assertEquals(1, array.getNumberOfElements());
@@ -80,14 +82,14 @@ public class SortedArrayTests {
 
     @Test
     void addElementToFullArray() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         array.addElement("Anna");
         assertThrows(FullArrayException.class, () -> array.addElement("Maria"));
     }
 
     @Test
     void deleteElement() {
-        var array = new SortedArray<String>(1);
+        var array = new SortedArrayImpl<String>(1);
         var element = "Anna";
         array.addElement(element);
         assertEquals(1, array.getSize());
@@ -100,7 +102,7 @@ public class SortedArrayTests {
 
     @Test
     void deleteElementFromEmptyArray() {
-        var array = new SortedArray<String>(5);
+        var array = new SortedArrayImpl<String>(5);
         assertThrows(EmptyArrayException.class, () -> array.deleteElement("Anna"));
     }
 }
