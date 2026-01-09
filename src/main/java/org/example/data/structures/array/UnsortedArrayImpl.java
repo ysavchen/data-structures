@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 /**
  * Несортированный статический массив
  */
-public class UnsortedArrayImpl<T> {
+public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
 
     private final T[] elementData;
 

@@ -12,7 +12,7 @@ public interface UnsortedArray<T> {
 
     int addElement(T element);
 
-    void deleteByIndex(T element);
+    void deleteByIndex(int index);
 
     int getSize();
 
