@@ -2,7 +2,6 @@ package org.example.data.structures.array;
 
 import org.example.data.structures.array.exception.EmptyArrayException;
 import org.example.data.structures.array.exception.FullArrayException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +16,11 @@ public class SortedArrayTests {
     }
 
     @Test
+    void createArrayWithZeroSize() {
+        assertThrows(IllegalArgumentException.class, () -> new SortedArrayImpl<String>(0));
+    }
+
+    @Test
     void createArrayWithNegativeSize() {
         assertThrows(IllegalArgumentException.class, () -> new SortedArrayImpl<String>(-1));
     }
@@ -25,8 +29,8 @@ public class SortedArrayTests {
     void getElement() {
         var array = new SortedArrayImpl<String>(1);
         var element = "Anna";
-        array.addElement(element);
-        assertEquals(element, array.getElement(0));
+        int index = array.addElement(element);
+        assertEquals(element, array.getElement(index));
     }
 
     @Test
@@ -51,31 +55,29 @@ public class SortedArrayTests {
     void findElement() {
         var array = new SortedArrayImpl<String>(1);
         var element = "Anna";
-        array.addElement(element);
-        assertEquals(0, array.findElement(element));
+        int index = array.addElement(element);
+        assertEquals(index, array.findElement(element));
     }
 
-    //todo: fix
-    @Disabled
     @Test
     void findNullElement() {
         var array = new SortedArrayImpl<String>(2);
         array.addElement("Anna");
-        assertEquals(1, array.findElement(null));
+        assertThrows(NullPointerException.class, () -> array.findElement(null));
     }
 
-    //todo: fix
-    @Disabled
     @Test
     void findNonExistingElement() {
         var array = new SortedArrayImpl<String>(1);
-        assertEquals(-1, array.findElement("Anna"));
+        array.addElement("Anna");
+        assertEquals(-1, array.findElement("Elena"));
     }
 
     @Test
     void addElement() {
         var array = new SortedArrayImpl<String>(1);
-        array.addElement("Anna");
+        int index = array.addElement("Anna");
+        assertEquals(0, index);
         assertEquals(1, array.getSize());
         assertEquals(1, array.getNumberOfElements());
     }
@@ -84,7 +86,7 @@ public class SortedArrayTests {
     void addElementToFullArray() {
         var array = new SortedArrayImpl<String>(1);
         array.addElement("Anna");
-        assertThrows(FullArrayException.class, () -> array.addElement("Maria"));
+        assertThrows(FullArrayException.class, () -> array.addElement("Elena"));
     }
 
     @Test

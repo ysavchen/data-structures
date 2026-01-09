@@ -16,6 +16,11 @@ public class UnsortedArrayTests {
     }
 
     @Test
+    void createArrayWithZeroSize() {
+        assertThrows(IllegalArgumentException.class, () -> new SortedArrayImpl<String>(0));
+    }
+
+    @Test
     void createArrayWithNegativeSize() {
         assertThrows(IllegalArgumentException.class, () -> new UnsortedArrayImpl<String>(-1));
     }
@@ -24,8 +29,8 @@ public class UnsortedArrayTests {
     void getElement() {
         var array = new UnsortedArrayImpl<String>(1);
         var element = "Anna";
-        array.addElement(element);
-        assertEquals(element, array.getElement(0));
+        int index = array.addElement(element);
+        assertEquals(element, array.getElement(index));
     }
 
     @Test
@@ -50,8 +55,8 @@ public class UnsortedArrayTests {
     void findElement() {
         var array = new UnsortedArrayImpl<String>(1);
         var element = "Anna";
-        array.addElement(element);
-        assertEquals(0, array.findElement(element));
+        int index = array.addElement(element);
+        assertEquals(index, array.findElement(element));
     }
 
     @Test
@@ -64,7 +69,8 @@ public class UnsortedArrayTests {
     @Test
     void findNonExistingElement() {
         var array = new UnsortedArrayImpl<String>(1);
-        assertEquals(-1, array.findElement("Anna"));
+        array.addElement("Anna");
+        assertEquals(-1, array.findElement("Elena"));
     }
 
     @Test
@@ -80,7 +86,7 @@ public class UnsortedArrayTests {
     void addElementToFullArray() {
         var array = new UnsortedArrayImpl<String>(1);
         array.addElement("Anna");
-        assertThrows(FullArrayException.class, () -> array.addElement("Maria"));
+        assertThrows(FullArrayException.class, () -> array.addElement("Elena"));
     }
 
     @Test

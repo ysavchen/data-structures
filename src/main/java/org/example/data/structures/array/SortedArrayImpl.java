@@ -4,6 +4,7 @@ import org.example.data.structures.array.exception.EmptyArrayException;
 import org.example.data.structures.array.exception.FullArrayException;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Отсортированный статический массив
@@ -36,6 +37,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
      * Так как массив отсортирован, можем использовать бинарный поиск.
      */
     public int findElement(T element) {
+        Objects.requireNonNull(element);
         if (elementData.length == 0) {
             return ELEMENT_NOT_FOUND;
         }
