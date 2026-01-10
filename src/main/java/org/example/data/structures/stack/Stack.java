@@ -8,8 +8,4 @@ public interface Stack<T> {
 
     T peek();
 
-    int getSize();
-
-    int getNumberOfElements();
-
 }

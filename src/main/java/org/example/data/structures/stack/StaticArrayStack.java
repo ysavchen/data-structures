@@ -50,7 +50,7 @@ public class StaticArrayStack<T> implements Stack<T> {
         if (numberOfElements == 0) {
             return null;
         }
-        int lastElementIndex = --pushIndex;
+        int lastElementIndex = pushIndex - 1;
         return stack[lastElementIndex];
     }
 
