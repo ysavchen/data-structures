@@ -10,8 +10,8 @@ public class SortedArrayTests {
 
     @Test
     void createArray() {
-        var array = new SortedArrayImpl<String>(5);
-        assertEquals(5, array.getSize());
+        var array = new SortedArrayImpl<String>(1);
+        assertEquals(1, array.getSize());
         assertEquals(0, array.getNumberOfElements());
     }
 
@@ -104,7 +104,7 @@ public class SortedArrayTests {
 
     @Test
     void deleteElementFromEmptyArray() {
-        var array = new SortedArrayImpl<String>(5);
+        var array = new SortedArrayImpl<String>(1);
         assertThrows(EmptyArrayException.class, () -> array.deleteElement("Anna"));
     }
 }

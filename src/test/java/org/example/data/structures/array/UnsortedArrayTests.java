@@ -10,8 +10,8 @@ public class UnsortedArrayTests {
 
     @Test
     void createArray() {
-        var array = new UnsortedArrayImpl<String>(5);
-        assertEquals(5, array.getSize());
+        var array = new UnsortedArrayImpl<String>(1);
+        assertEquals(1, array.getSize());
         assertEquals(0, array.getNumberOfElements());
     }
 
@@ -103,7 +103,7 @@ public class UnsortedArrayTests {
 
     @Test
     void deleteElementFromEmptyArray() {
-        var array = new UnsortedArrayImpl<String>(5);
+        var array = new UnsortedArrayImpl<String>(1);
         assertThrows(EmptyArrayException.class, () -> array.deleteByIndex(0));
     }
 }
