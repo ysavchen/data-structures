@@ -1,41 +1,15 @@
 package org.example.data.structures.array;
 
-import java.util.Arrays;
+public interface DynamicArray<T> {
 
-/**
- * Несортированный динамический массив
- */
-public class DynamicArray<T> {
+    T getElement(int index);
 
-    private final T[] elementData;
+    int addElement(T element);
 
-    private int initialCapacity = 10;
+    void deleteByIndex(int index);
 
-    private int newElementIndex = 0;
+    int getSize();
 
-    private int numberOfElements = 0;
+    int getNumberOfElements();
 
-    public DynamicArray() {
-        this.elementData = (T[]) new Comparable[initialCapacity];
-    }
-
-    public DynamicArray(int initialCapacity) {
-        if (initialCapacity <= 0) {
-            throw new IllegalArgumentException("Initial capacity must be greater than 0");
-        }
-        this.elementData = (T[]) new Comparable[initialCapacity];
-    }
-
-    public int getSize() {
-        return elementData.length;
-    }
-
-    public int getNumberOfElements() {
-        return numberOfElements;
-    }
-
-    @Override
-    public String toString() {
-        return Arrays.toString(elementData);
-    }
 }

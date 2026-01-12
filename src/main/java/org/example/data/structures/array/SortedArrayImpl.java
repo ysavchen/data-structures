@@ -11,9 +11,9 @@ import java.util.Objects;
  */
 public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> {
 
-    private final T[] elementData;
-
     private static final int ELEMENT_NOT_FOUND = -1;
+
+    private final T[] elementData;
 
     private int emptyCellIndex = 0;
 
