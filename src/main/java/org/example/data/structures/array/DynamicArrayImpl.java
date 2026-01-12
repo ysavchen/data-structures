@@ -1,5 +1,7 @@
 package org.example.data.structures.array;
 
+import org.example.data.structures.array.exception.EmptyArrayException;
+
 import java.util.Arrays;
 
 /**
@@ -36,15 +38,35 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
     @Override
     public int addElement(T element) {
-        if (elementData.length == numberOfElements) {
+        if (numberOfElements >= elementData.length) {
             doubleSize();
         }
-        return 0;
+        elementData[newElementIndex] = element;
+        newElementIndex++;
+        numberOfElements++;
+        return newElementIndex - 1;
     }
 
     @Override
     public void deleteByIndex(int index) {
-
+        if (numberOfElements == 0) {
+            throw new EmptyArrayException();
+        } else if (index < 0 || index >= newElementIndex) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            int lastElementIndex = newElementIndex - 1;
+            if (index == lastElementIndex) {
+                elementData[index] = null;
+            } else {
+                elementData[index] = elementData[lastElementIndex];
+                elementData[lastElementIndex] = null;
+            }
+            newElementIndex--;
+            numberOfElements--;
+        }
+        if (numberOfElements <= (elementData.length / 4)) {
+            halveSize();
+        }
     }
 
     private void doubleSize() {
@@ -56,7 +78,16 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
     }
 
     private void halveSize() {
-
+        T[] newArray = (T[]) new Comparable[elementData.length / 2];
+        for (int i = 0; i < elementData.length; i++) {
+            T element = elementData[i];
+            if (element != null) {
+                newArray[i] = elementData[i];
+            } else {
+                break;
+            }
+        }
+        elementData = newArray;
     }
 
     @Override
