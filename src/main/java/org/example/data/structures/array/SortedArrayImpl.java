@@ -26,6 +26,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
         this.elementData = (T[]) new Comparable[size];
     }
 
+    @Override
     public T getElement(int index) {
         if (index < 0 || index >= elementData.length) {
             throw new ArrayIndexOutOfBoundsException();
@@ -36,6 +37,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
     /**
      * Так как массив отсортирован, можем использовать бинарный поиск.
      */
+    @Override
     public int findElement(T element) {
         Objects.requireNonNull(element);
         if (elementData.length == 0) {
@@ -63,6 +65,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
     /**
      * При добавлении нового элемента в массив, находим правильную позицию для вставки, чтобы не нарушался порядок сортировки.
      */
+    @Override
     public int addElement(T element) {
         if (elementData.length == numberOfElements) {
             throw new FullArrayException();
@@ -97,6 +100,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
      * В отсортированных массивах элементы часто сдвигаются для поддержания порядка сортировки,
      * поэтому при удалении элемента мы ищем элемент не по индексу, а по значению.
      */
+    @Override
     public void deleteElement(T element) {
         if (numberOfElements == 0) {
             throw new EmptyArrayException();
@@ -121,10 +125,12 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
         numberOfElements--;
     }
 
+    @Override
     public int getSize() {
         return elementData.length;
     }
 
+    @Override
     public int getNumberOfElements() {
         return numberOfElements;
     }

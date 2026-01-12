@@ -27,6 +27,7 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
         this.elementData = (T[]) new Object[size];
     }
 
+    @Override
     public T getElement(int index) {
         if (index < 0 || index >= elementData.length) {
             throw new ArrayIndexOutOfBoundsException();
@@ -40,6 +41,7 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
      *
      * @return index
      */
+    @Override
     public int findElement(T element) {
         for (int index = 0; index < elementData.length; index++) {
             var arrayElement = elementData[index];
@@ -53,12 +55,14 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
     /**
      * Обход массива и выполнение операции с каждым элементом
      */
+    @Override
     public void traverse(Consumer<T> consumer) {
         for (T element : elementData) {
             consumer.accept(element);
         }
     }
 
+    @Override
     public int addElement(T element) {
         if (elementData.length == numberOfElements) {
             throw new FullArrayException();
@@ -76,6 +80,7 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
      * Т.к. массив не отсортирован, то можно поменять местами последний элемент с удаляемым.<br/>
      * И затем удалить последний элемент.
      */
+    @Override
     public void deleteByIndex(int index) {
         if (numberOfElements == 0) {
             throw new EmptyArrayException();
@@ -94,10 +99,12 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
         }
     }
 
+    @Override
     public int getSize() {
         return elementData.length;
     }
 
+    @Override
     public int getNumberOfElements() {
         return numberOfElements;
     }

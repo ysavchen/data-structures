@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Несортированный динамический массив
  */
-public class DynamicArrayImpl<T> {
+public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
     private static final int INITIAL_CAPACITY = 10;
 
@@ -26,6 +26,7 @@ public class DynamicArrayImpl<T> {
         this.elementData = (T[]) new Comparable[initialCapacity];
     }
 
+    @Override
     public T getElement(int index) {
         if (index < 0 || index >= elementData.length) {
             throw new ArrayIndexOutOfBoundsException();
@@ -33,6 +34,7 @@ public class DynamicArrayImpl<T> {
         return elementData[index];
     }
 
+    @Override
     public int addElement(T element) {
         if (elementData.length == numberOfElements) {
             doubleSize();
@@ -40,6 +42,7 @@ public class DynamicArrayImpl<T> {
         return 0;
     }
 
+    @Override
     public void deleteByIndex(int index) {
 
     }
@@ -56,10 +59,17 @@ public class DynamicArrayImpl<T> {
 
     }
 
+    @Override
+    public boolean isEmpty() {
+        return numberOfElements == 0;
+    }
+
+    @Override
     public int getSize() {
         return elementData.length;
     }
 
+    @Override
     public int getNumberOfElements() {
         return numberOfElements;
     }

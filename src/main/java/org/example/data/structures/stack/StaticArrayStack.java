@@ -15,6 +15,7 @@ public class StaticArrayStack<T> implements Stack<T> {
         this.stack = (T[]) new Object[size];
     }
 
+    @Override
     public void push(T item) {
         if (stack.length == pushIndex) {
             throw new FullStackException();
@@ -29,6 +30,7 @@ public class StaticArrayStack<T> implements Stack<T> {
      *
      * @return element
      */
+    @Override
     public T pop() {
         if (numberOfElements == 0) {
             return null;
@@ -46,6 +48,7 @@ public class StaticArrayStack<T> implements Stack<T> {
      *
      * @return element
      */
+    @Override
     public T peek() {
         if (numberOfElements == 0) {
             return null;

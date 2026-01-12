@@ -8,6 +8,8 @@ public interface DynamicArray<T> {
 
     void deleteByIndex(int index);
 
+    boolean isEmpty();
+
     int getSize();
 
     int getNumberOfElements();
