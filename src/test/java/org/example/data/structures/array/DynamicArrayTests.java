@@ -89,7 +89,7 @@ public class DynamicArrayTests {
         assertEquals(1, array.getNumberOfElements());
 
         array.deleteByIndex(index);
-        assertEquals(1, array.getSize());
+        assertEquals(0, array.getSize());
         assertEquals(0, array.getNumberOfElements());
         assertTrue(array.isEmpty());
     }

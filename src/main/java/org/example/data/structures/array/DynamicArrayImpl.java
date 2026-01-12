@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
-    private final int initialCapacity;
+    private static final int INITIAL_CAPACITY = 10;
 
     private T[] elementData;
 
@@ -19,15 +19,13 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
     private int numberOfElements = 0;
 
     public DynamicArrayImpl() {
-        this.initialCapacity = 10;
-        this.elementData = (T[]) new Comparable[initialCapacity];
+        this.elementData = (T[]) new Comparable[INITIAL_CAPACITY];
     }
 
     public DynamicArrayImpl(int initialCapacity) {
         if (initialCapacity <= 0) {
             throw new IllegalArgumentException("Initial capacity must be greater than 0");
         }
-        this.initialCapacity = initialCapacity;
         this.elementData = (T[]) new Comparable[initialCapacity];
     }
 
@@ -87,8 +85,7 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
     private void halveSize() {
         int halveSize = elementData.length / 2;
-        int newSize = halveSize < initialCapacity ? initialCapacity : halveSize;
-        T[] newArray = (T[]) new Comparable[newSize];
+        T[] newArray = (T[]) new Comparable[halveSize];
         for (int i = 0; i < elementData.length; i++) {
             T element = elementData[i];
             if (element != null) {
