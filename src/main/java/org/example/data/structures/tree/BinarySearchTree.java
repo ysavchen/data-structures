@@ -41,10 +41,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
      */
     public void traverse(Consumer<T> consumer) {
         Node<T> node = root;   // current node
-        //DynamicArrayStack stack = new DynamicArrayStack(15);
+        DynamicArrayStack<Node<T>> stack = new DynamicArrayStack<>();
         //while (node != null || !stack.isEmpty()) {
         //    if (node == null) {
-                // todo: implement
+        //        todo: implement
         //    }
         //}
     }
