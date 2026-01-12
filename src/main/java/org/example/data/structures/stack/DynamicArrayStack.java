@@ -39,4 +39,9 @@ public class DynamicArrayStack<T> implements Stack<T> {
         }
         return stack.getElement(lastElementIndex);
     }
+
+    @Override
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
 }

@@ -1,6 +1,7 @@
 package org.example.data.structures.tree;
 
 import org.example.data.structures.stack.DynamicArrayStack;
+import org.example.data.structures.stack.Stack;
 
 import java.util.function.Consumer;
 
@@ -15,22 +16,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public void insert(T data) {
-        var node = root;   // current node
-        if (node == null) {
+        var currentNode = root;
+        if (currentNode == null) {
             root = new Node<>(data);
         } else {
-            while (node != null) {
-                if (data.compareTo(node.data) <= 0) {
-                    if (node.left == null) {
-                        node.left = new Node<>(data);
+            while (currentNode != null) {
+                if (data.compareTo(currentNode.data) <= 0) {
+                    if (currentNode.left == null) {
+                        currentNode.left = new Node<>(data);
                         break;
                     } else {
-                        node = node.left;
+                        currentNode = currentNode.left;
                     }
-                } else if (node.right == null) {
-                    node.right = new Node<>(data);
+                } else if (currentNode.right == null) {
+                    currentNode.right = new Node<>(data);
                 } else {
-                    node = node.right;
+                    currentNode = currentNode.right;
                 }
             }
         }
@@ -40,13 +41,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * Обход двоичного дерева и выполнение операции с каждым элементом
      */
     public void traverse(Consumer<T> consumer) {
-        Node<T> node = root;   // current node
-        DynamicArrayStack<Node<T>> stack = new DynamicArrayStack<>();
-        //while (node != null || !stack.isEmpty()) {
-        //    if (node == null) {
-        //        todo: implement
-        //    }
-        //}
+        Node<T> currentNode = root;
+        Stack<Node<T>> stack = new DynamicArrayStack<>();
+        while (currentNode != null || !stack.isEmpty()) {
+            if (currentNode == null) {
+                //todo: implement
+            }
+        }
     }
 
     public void delete(T data) {
@@ -55,16 +56,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     private NodeSearchResult<T> searchNode(T data) {
         Node<T> parentNode = null;
-        Node<T> node = root;   // current node
-        while (node != null) {
-            if (data.equals(node.data)) {
-                return new NodeSearchResult<>(parentNode, node);
-            } else if (data.compareTo(node.data) < 0) {
-                parentNode = node;
-                node = node.left;
+        Node<T> currentNode = root;
+        while (currentNode != null) {
+            if (data.equals(currentNode.data)) {
+                return new NodeSearchResult<>(parentNode, currentNode);
+            } else if (data.compareTo(currentNode.data) < 0) {
+                parentNode = currentNode;
+                currentNode = currentNode.left;
             } else {
-                parentNode = node;
-                node = node.right;
+                parentNode = currentNode;
+                currentNode = currentNode.right;
             }
         }
         return null;

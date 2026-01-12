@@ -57,6 +57,11 @@ public class StaticArrayStack<T> implements Stack<T> {
         return stack[lastElementIndex];
     }
 
+    @Override
+    public boolean isEmpty() {
+        return stack.length == 0;
+    }
+
     public int getSize() {
         return stack.length;
     }
