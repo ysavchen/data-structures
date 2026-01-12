@@ -90,15 +90,20 @@ public class UnsortedArrayTests {
     }
 
     @Test
-    void deleteElement() {
+    void deleteElementByIndex() {
         var array = new UnsortedArrayImpl<String>(1);
-        array.addElement("Anna");
+        int index = array.addElement("Anna");
         assertEquals(1, array.getSize());
         assertEquals(1, array.getNumberOfElements());
 
-        array.deleteByIndex(0);
+        array.deleteByIndex(index);
         assertEquals(1, array.getSize());
         assertEquals(0, array.getNumberOfElements());
+    }
+
+    @Test
+    void deleteElementFromMiddleOfArray() {
+
     }
 
     @Test

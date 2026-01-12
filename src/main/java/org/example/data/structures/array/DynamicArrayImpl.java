@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
-    private static final int INITIAL_CAPACITY = 10;
+    private final int initialCapacity;
 
     private T[] elementData;
 
@@ -19,13 +19,15 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
     private int numberOfElements = 0;
 
     public DynamicArrayImpl() {
-        this.elementData = (T[]) new Comparable[INITIAL_CAPACITY];
+        this.initialCapacity = 10;
+        this.elementData = (T[]) new Comparable[initialCapacity];
     }
 
     public DynamicArrayImpl(int initialCapacity) {
         if (initialCapacity <= 0) {
             throw new IllegalArgumentException("Initial capacity must be greater than 0");
         }
+        this.initialCapacity = initialCapacity;
         this.elementData = (T[]) new Comparable[initialCapacity];
     }
 
@@ -69,7 +71,8 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
             newElementIndex--;
             numberOfElements--;
         }
-        if (numberOfElements <= (elementData.length / 4)) {
+        // Уменьшаем размер массива вдвое, если элементы занимают только четверть массива
+        if (numberOfElements <= elementData.length / 4) {
             halveSize();
         }
     }
@@ -83,11 +86,13 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
     }
 
     private void halveSize() {
-        T[] newArray = (T[]) new Comparable[elementData.length / 2];
+        int halveSize = elementData.length / 2;
+        int newSize = halveSize < initialCapacity ? initialCapacity : halveSize;
+        T[] newArray = (T[]) new Comparable[newSize];
         for (int i = 0; i < elementData.length; i++) {
             T element = elementData[i];
             if (element != null) {
-                newArray[i] = elementData[i];
+                newArray[i] = element;
             } else {
                 break;
             }
