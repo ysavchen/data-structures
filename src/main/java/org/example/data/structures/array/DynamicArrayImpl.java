@@ -5,7 +5,8 @@ import org.example.data.structures.array.exception.EmptyArrayException;
 import java.util.Arrays;
 
 /**
- * Несортированный динамический массив
+ * Упорядоченный динамический массив<br/>
+ * Массив поддерживает порядок вставки элементов.
  */
 public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
@@ -47,6 +48,9 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
         return newElementIndex - 1;
     }
 
+    /**
+     * Так как массив поддерживает порядок вставки элементов, то при удалении элемента из середины, мы сдвигаем влево все элементы, стоящие за удаленным.
+     */
     @Override
     public void deleteByIndex(int index) {
         if (numberOfElements == 0) {
@@ -54,11 +58,12 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
         } else if (index < 0 || index >= newElementIndex) {
             throw new IndexOutOfBoundsException();
         } else {
+            elementData[index] = null;
             int lastElementIndex = newElementIndex - 1;
-            if (index == lastElementIndex) {
-                elementData[index] = null;
-            } else {
-                elementData[index] = elementData[lastElementIndex];
+            if (index != lastElementIndex) {
+                for (int i = index; i < lastElementIndex; i++) {
+                    elementData[i] = elementData[i + 1];
+                }
                 elementData[lastElementIndex] = null;
             }
             newElementIndex--;
