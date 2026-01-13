@@ -45,7 +45,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
         Stack<Node<T>> stack = new DynamicArrayStack<>();
         while (currentNode != null || !stack.isEmpty()) {
             if (currentNode == null) {
-                //todo: implement
+                currentNode = stack.pop();
+
+                currentNode = currentNode.right;
+            } else {
+                while (currentNode.left != null) {
+                    stack.push(currentNode);
+                    currentNode = currentNode.left;
+
+                    currentNode = currentNode.right;
+                }
             }
         }
     }
