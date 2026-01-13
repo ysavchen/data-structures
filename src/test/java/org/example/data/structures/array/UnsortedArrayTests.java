@@ -103,7 +103,21 @@ public class UnsortedArrayTests {
 
     @Test
     void deleteElementFromMiddleOfArray() {
+        var array = new UnsortedArrayImpl<String>(3);
+        int annaIndex = array.addElement("Anna");
+        int elenaIndex = array.addElement("Elena");
+        int mariaIndex = array.addElement("Maria");
+        assertEquals(0, annaIndex);
+        assertEquals(1, elenaIndex);
+        assertEquals(2, mariaIndex);
 
+        array.deleteByIndex(elenaIndex);
+        annaIndex = array.findElement("Anna");
+        elenaIndex = array.findElement("Elena");
+        mariaIndex = array.findElement("Maria");
+        assertEquals(0, annaIndex);
+        assertEquals(-1, elenaIndex);
+        assertEquals(1, mariaIndex);
     }
 
     @Test
