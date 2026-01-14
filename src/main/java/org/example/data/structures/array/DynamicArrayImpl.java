@@ -3,12 +3,15 @@ package org.example.data.structures.array;
 import org.example.data.structures.array.exception.EmptyArrayException;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Упорядоченный динамический массив<br/>
  * Массив поддерживает порядок вставки элементов.
  */
 public class DynamicArrayImpl<T> implements DynamicArray<T> {
+
+    private static final int ELEMENT_NOT_FOUND = -1;
 
     private static final int INITIAL_CAPACITY = 10;
 
@@ -35,6 +38,17 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
             throw new ArrayIndexOutOfBoundsException();
         }
         return elementData[index];
+    }
+
+    @Override
+    public int findElement(T element) {
+        for (int index = 0; index < elementData.length; index++) {
+            var arrayElement = elementData[index];
+            if (Objects.equals(arrayElement, element)) {
+                return index;
+            }
+        }
+        return ELEMENT_NOT_FOUND;
     }
 
     @Override

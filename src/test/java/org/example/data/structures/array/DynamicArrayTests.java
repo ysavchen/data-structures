@@ -83,8 +83,7 @@ public class DynamicArrayTests {
     @Test
     void deleteElementByIndex() {
         var array = new DynamicArrayImpl<String>(1);
-        var element = "Anna";
-        int index = array.addElement(element);
+        int index = array.addElement("Anna");
         assertEquals(1, array.getSize());
         assertEquals(1, array.getNumberOfElements());
 
@@ -96,12 +95,35 @@ public class DynamicArrayTests {
 
     @Test
     void deleteElementFromMiddleOfArray() {
+        var array = new DynamicArrayImpl<String>(3);
+        int annaIndex = array.addElement("Anna");
+        int elenaIndex = array.addElement("Elena");
+        int mariaIndex = array.addElement("Maria");
+        assertEquals(0, annaIndex);
+        assertEquals(1, elenaIndex);
+        assertEquals(2, mariaIndex);
 
+        array.deleteByIndex(elenaIndex);
+        annaIndex = array.findElement("Anna");
+        elenaIndex = array.findElement("Elena");
+        mariaIndex = array.findElement("Maria");
+        assertEquals(0, annaIndex);
+        assertEquals(-1, elenaIndex);
+        assertEquals(1, mariaIndex);
     }
 
     @Test
     void halveSize() {
+        var array = new DynamicArrayImpl<String>(8);
+        array.addElement("Anna");
+        array.addElement("Elena");
+        int mariaIndex = array.addElement("Maria");
+        assertEquals(8, array.getSize());
+        assertEquals(3, array.getNumberOfElements());
 
+        array.deleteByIndex(mariaIndex);
+        assertEquals(4, array.getSize());
+        assertEquals(2, array.getNumberOfElements());
     }
 
     @Test
