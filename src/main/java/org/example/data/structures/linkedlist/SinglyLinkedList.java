@@ -14,6 +14,10 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     public SinglyLinkedList() {
     }
 
+    public T getFirstElement() {
+        return head.data;
+    }
+
     public void insertToFront(T data) {
         var node = new Node<>(data);
         if (head != null) {
