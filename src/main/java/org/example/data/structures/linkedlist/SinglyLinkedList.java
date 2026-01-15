@@ -14,10 +14,12 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     public SinglyLinkedList() {
     }
 
+    @Override
     public T getFirstElement() {
         return head.data;
     }
 
+    @Override
     public void insertToFront(T data) {
         var node = new Node<>(data);
         if (head != null) {
@@ -27,6 +29,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         numberOfElements++;
     }
 
+    @Override
     public void insertToBack(T data) {
         var node = new Node<>(data);
         if (head == null) {
