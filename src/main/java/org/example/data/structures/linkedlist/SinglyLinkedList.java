@@ -5,9 +5,11 @@ import java.util.Objects;
 /**
  * Несортированный односвязный список
  */
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<T> implements LinkedList<T> {
 
     private Node<T> head = null;
+
+    private int numberOfElements = 0;
 
     public SinglyLinkedList() {
     }
@@ -18,6 +20,7 @@ public class SinglyLinkedList<T> {
             node.appendNode(head);
         }
         head = node;
+        numberOfElements++;
     }
 
     public void insertToBack(T data) {
@@ -31,6 +34,7 @@ public class SinglyLinkedList<T> {
             }
             currentNode.appendNode(node);
         }
+        numberOfElements++;
     }
 
     private Node<T> searchNode(T data) {
@@ -42,6 +46,11 @@ public class SinglyLinkedList<T> {
             currentNode = currentNode.getNextNode();
         }
         return null;
+    }
+
+    @Override
+    public int getNumberOfElements() {
+        return numberOfElements;
     }
 
     private static class Node<T> {
