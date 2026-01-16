@@ -15,12 +15,28 @@ public class SinglyLinkedListTests {
     @Test
     void insertToFront() {
         var list = new SinglyLinkedList<String>();
-        list.insertToFront("Anna");
+        var anna = "Anna";
+        var elena = "Elena";
+        list.insertToFront(anna);
         assertEquals(1, list.getNumberOfElements());
-        assertEquals("Anna", list.getFirstElement());
+        assertEquals(anna, list.getFirstElement());
 
-        list.insertToFront("Elena");
+        list.insertToFront(elena);
         assertEquals(2, list.getNumberOfElements());
-        assertEquals("Elena", list.getFirstElement());
+        assertEquals(elena, list.getFirstElement());
+    }
+
+    @Test
+    void insertToBack() {
+        var list = new SinglyLinkedList<String>();
+        var anna = "Anna";
+        var elena = "Elena";
+        list.insertToBack(anna);
+        assertEquals(1, list.getNumberOfElements());
+        assertEquals(anna, list.getFirstElement());
+
+        list.insertToBack(elena);
+        assertEquals(2, list.getNumberOfElements());
+        assertEquals(anna, list.getFirstElement());
     }
 }
