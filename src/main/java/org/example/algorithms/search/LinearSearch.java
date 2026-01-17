@@ -4,6 +4,14 @@ public class LinearSearch {
 
     private static final int NOT_FOUND = -1;
 
+    /**
+     * Бинарный поиск<br/>
+     * Время работы: O(n)
+     *
+     * @param array        массив
+     * @param pickedNumber элемент для поиска в массиве
+     * @return найденный элемент
+     */
     public static int linearSearch(int[] array, int pickedNumber) {
         if (isEmpty(array)) {
             return NOT_FOUND;

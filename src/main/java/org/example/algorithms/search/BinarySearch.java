@@ -1,16 +1,21 @@
 package org.example.algorithms.search;
 
-import java.util.Arrays;
-
 public class BinarySearch {
 
     private static final int NOT_FOUND = -1;
 
+    /**
+     * Бинарный поиск<br/>
+     * Время работы: O(log n)
+     *
+     * @param array        отсортированный массив
+     * @param pickedNumber элемент для поиска в массиве
+     * @return найденный элемент
+     */
     public static int binarySearch(int[] array, int pickedNumber) {
         if (isEmpty(array)) {
             return NOT_FOUND;
         }
-        Arrays.sort(array);
 
         int minIndex = 0;
         int maxIndex = array.length - 1;
