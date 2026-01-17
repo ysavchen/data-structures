@@ -12,23 +12,23 @@ public class LinearSearchTests {
     void searchElement() {
         Integer[] array = {9, 14, 2, 5};
         int targetElement = 9;
-        int searchResult = LinearSearch.linearSearch(array, targetElement);
-        assertEquals(0, searchResult);
+        int index = LinearSearch.linearSearch(array, targetElement);
+        assertEquals(0, index);
     }
 
     @Test
     void searchNonExistingElement() {
         Integer[] array = {9, 14, 2, 5};
-        int nonExistingElement = 22;
-        int searchResult = LinearSearch.linearSearch(array, nonExistingElement);
-        assertEquals(NOT_FOUND, searchResult);
+        int targetNumber = 22;
+        int index = LinearSearch.linearSearch(array, targetNumber);
+        assertEquals(NOT_FOUND, index);
     }
 
     @Test
     void searchEmptyList() {
         Integer[] list = {};
         int targetElement = 10;
-        int searchResult = LinearSearch.linearSearch(list, targetElement);
-        assertEquals(NOT_FOUND, searchResult);
+        int index = LinearSearch.linearSearch(list, targetElement);
+        assertEquals(NOT_FOUND, index);
     }
 }

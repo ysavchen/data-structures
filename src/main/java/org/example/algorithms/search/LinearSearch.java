@@ -10,7 +10,7 @@ public class LinearSearch {
      *
      * @param array         массив
      * @param targetElement элемент для поиска в массиве
-     * @return индекс элемента в массиве
+     * @return индекс найденного элемента
      */
     public static <T> int linearSearch(T[] array, T targetElement) {
         int index = 0;

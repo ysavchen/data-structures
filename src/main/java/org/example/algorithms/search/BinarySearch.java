@@ -8,44 +8,27 @@ public class BinarySearch {
      * Бинарный поиск<br/>
      * Время работы: O(log n)
      *
-     * @param array        отсортированный массив
-     * @param pickedNumber элемент для поиска в массиве
-     * @return найденный элемент
+     * @param array         отсортированный массив
+     * @param targetElement элемент для поиска в массиве
+     * @return индекс найденного элемента
      */
-    public static int binarySearch(int[] array, int pickedNumber) {
-        if (isEmpty(array)) {
-            return NOT_FOUND;
-        }
-
+    public static <T extends Comparable<T>> int binarySearch(T[] array, T targetElement) {
         int minIndex = 0;
         int maxIndex = array.length - 1;
 
         while (minIndex <= maxIndex) {
             int midIndex = (minIndex + maxIndex) / 2;
-            int midNumber = array[midIndex];
+            T midElement = array[midIndex];
 
-            if (midNumber < pickedNumber) {
+            if (midElement.compareTo(targetElement) < 0) {
                 minIndex = midIndex + 1;
-            } else if (midNumber > pickedNumber) {
+            } else if (midElement.compareTo(targetElement) > 0) {
                 maxIndex = midIndex - 1;
             } else {
-                return midNumber;
+                return midIndex;
             }
-            sleep();
         }
 
         return NOT_FOUND;
-    }
-
-    private static boolean isEmpty(int[] array) {
-        return array.length == 0;
-    }
-
-    private static void sleep() {
-        try {
-            Thread.sleep(1);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
     }
 }
