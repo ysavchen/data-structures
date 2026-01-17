@@ -8,34 +8,20 @@ public class LinearSearch {
      * Бинарный поиск<br/>
      * Время работы: O(n)
      *
-     * @param array        массив
-     * @param pickedNumber элемент для поиска в массиве
-     * @return найденный элемент
+     * @param array         массив
+     * @param targetElement элемент для поиска в массиве
+     * @return индекс элемента в массиве
      */
-    public static int linearSearch(int[] array, int pickedNumber) {
-        if (isEmpty(array)) {
-            return NOT_FOUND;
-        }
-
-        for (int number : array) {
-            if (number == pickedNumber) {
-                return number;
+    public static <T> int linearSearch(T[] array, T targetElement) {
+        int index = 0;
+        for (T element : array) {
+            if (element.equals(targetElement)) {
+                return index;
             }
-            sleep();
+            index++;
         }
 
         return NOT_FOUND;
     }
 
-    private static boolean isEmpty(int[] list) {
-        return list.length == 0;
-    }
-
-    private static void sleep() {
-        try {
-            Thread.sleep(1);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
-    }
 }
