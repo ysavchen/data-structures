@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ * Сортировка выбором<br/>
+ * Время работы: O(n²)
+ */
 public class SelectionSort {
 
     public static List<Integer> sort(List<Integer> list) {

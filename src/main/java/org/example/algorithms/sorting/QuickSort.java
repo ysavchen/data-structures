@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+/**
+ * Быстрая сортировка
+ */
 public class QuickSort {
 
     public static List<Integer> sort(List<Integer> list) {
@@ -17,18 +20,18 @@ public class QuickSort {
         Integer pivot = listCopy.get(pivotElementIndex);
         listCopy.remove(pivotElementIndex);
         List<Integer> less = sort(
-                listCopy.stream()
-                        .filter(element -> element <= pivot)
-                        .toList()
+            listCopy.stream()
+                .filter(element -> element <= pivot)
+                .toList()
         );
         List<Integer> more = sort(
-                listCopy.stream()
-                        .filter(element -> element > pivot)
-                        .toList()
+            listCopy.stream()
+                .filter(element -> element > pivot)
+                .toList()
         );
 
         return Stream.of(less.stream(), Stream.of(pivot), more.stream())
-                .flatMap(Function.identity())
-                .toList();
+            .flatMap(Function.identity())
+            .toList();
     }
 }
