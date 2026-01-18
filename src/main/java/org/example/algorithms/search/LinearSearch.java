@@ -5,7 +5,7 @@ public class LinearSearch {
     private static final int NOT_FOUND = -1;
 
     /**
-     * Бинарный поиск<br/>
+     * Линейный поиск<br/>
      * Время работы: O(n)
      *
      * @param array         массив
