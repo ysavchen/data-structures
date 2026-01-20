@@ -37,7 +37,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         } else {
             Node<T> currentNode = head;
             while (currentNode.hasNextNode()) {
-                currentNode = currentNode.nextNode();
+                currentNode = currentNode.nextNode;
             }
             currentNode.appendNode(node);
         }
@@ -47,10 +47,10 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     private Node<T> searchNode(T data) {
         var currentNode = head;
         while (currentNode.hasNextNode()) {
-            if (Objects.equals(currentNode.getData(), data)) {
+            if (Objects.equals(currentNode.data, data)) {
                 return currentNode;
             }
-            currentNode = currentNode.getNextNode();
+            currentNode = currentNode.nextNode;
         }
         return null;
     }
@@ -70,24 +70,12 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
             this.data = data;
         }
 
-        T getData() {
-            return data;
-        }
-
-        Node<T> getNextNode() {
-            return nextNode;
-        }
-
         boolean hasNextNode() {
             return nextNode != null;
         }
 
         void appendNode(Node<T> node) {
             nextNode = node;
-        }
-
-        public Node<T> nextNode() {
-            return nextNode;
         }
     }
 }
