@@ -8,6 +8,8 @@ public interface LinkedList<T> {
 
     void insertToBack(T data);
 
+    void delete(T data);
+
     int getNumberOfElements();
 
 }

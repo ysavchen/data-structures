@@ -44,6 +44,12 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         numberOfElements++;
     }
 
+    public void delete(T data) {
+        Node<T> currentNode = head;
+        Node<T> previousNode = null;
+
+    }
+
     private Node<T> searchNode(T data) {
         var currentNode = head;
         while (currentNode.hasNextNode()) {
