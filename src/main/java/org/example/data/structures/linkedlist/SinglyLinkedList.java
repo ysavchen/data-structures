@@ -73,12 +73,12 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
                 } else {
                     previous.appendNode(current.nextNode); // стандартный случай: узел в середине списка (или в хвосте)
                 }
+                numberOfElements--;
                 return;
             }
             previous = current;
             current = current.nextNode;
         }
-
     }
 
     private Node<T> searchNode(T data) {
