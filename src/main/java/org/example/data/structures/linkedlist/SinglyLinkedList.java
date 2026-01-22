@@ -35,28 +35,50 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         if (head == null) {
             head = node;
         } else {
-            Node<T> currentNode = head;
-            while (currentNode.hasNextNode()) {
-                currentNode = currentNode.nextNode;
+            Node<T> current = head;
+            while (current.hasNextNode()) {
+                current = current.nextNode;
             }
-            currentNode.appendNode(node);
+            current.appendNode(node);
         }
         numberOfElements++;
     }
 
+    /**
+     * Для удаления элемента нужно найти удаляемый узел, и обновить ссылку у предыдущего узла<br/>
+     * То есть previousNode ссылается на nextNode удаляемого узла.
+     * <p>
+     * Граничные случаи:<br/>
+     * 1. Если удаляется последний узел, то предыдущему узлу нужно присвоить null<br/>
+     * 2. Если удаляется первый узел (head), то необходимо обновить head списка
+     * <p>
+     * Время работы: O(n)
+     */
     public void delete(T data) {
-        Node<T> currentNode = head;
-        Node<T> previousNode = null;
+        Node<T> current = head;
+        Node<T> previous = null;
+        while (current != null) {
+            if (current.data.equals(data)) {
+                if (previous == null) {
+                    head = current.nextNode; // граничный случай: удаление головы списка
+                } else {
+                    previous.appendNode(current.nextNode); // стандартный случай: узел в середине списка (или в хвосте)
+                }
+                return;
+            }
+            previous = current;
+            current = current.nextNode;
+        }
 
     }
 
     private Node<T> searchNode(T data) {
-        var currentNode = head;
-        while (currentNode.hasNextNode()) {
-            if (Objects.equals(currentNode.data, data)) {
-                return currentNode;
+        var current = head;
+        while (current.hasNextNode()) {
+            if (Objects.equals(current.data, data)) {
+                return current;
             }
-            currentNode = currentNode.nextNode;
+            current = current.nextNode;
         }
         return null;
     }
