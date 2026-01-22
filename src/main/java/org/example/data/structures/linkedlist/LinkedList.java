@@ -4,6 +4,8 @@ public interface LinkedList<T> {
 
     T getFirstElement();
 
+    T getLastElement();
+
     void insertToFront(T data);
 
     void insertToBack(T data);

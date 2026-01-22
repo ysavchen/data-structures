@@ -33,10 +33,10 @@ public class SinglyLinkedListTests {
         var elena = "Elena";
         list.insertToBack(anna);
         assertEquals(1, list.getNumberOfElements());
-        assertEquals(anna, list.getFirstElement());
+        assertEquals(anna, list.getLastElement());
 
         list.insertToBack(elena);
         assertEquals(2, list.getNumberOfElements());
-        assertEquals(anna, list.getFirstElement());
+        assertEquals(elena, list.getLastElement());
     }
 }

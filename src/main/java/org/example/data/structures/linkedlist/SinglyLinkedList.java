@@ -20,6 +20,18 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
+    public T getLastElement() {
+        Node<T> current = head;
+        while (current != null) {
+            if (!current.hasNextNode()) {
+                return current.data;
+            }
+            current = current.nextNode;
+        }
+        return null;
+    }
+
+    @Override
     public void insertToFront(T data) {
         var node = new Node<>(data);
         if (head != null) {
