@@ -39,4 +39,46 @@ public class SinglyLinkedListTests {
         assertEquals(2, list.getNumberOfElements());
         assertEquals(elena, list.getLastElement());
     }
+
+    @Test
+    void deleteFirstElement() {
+        var list = new SinglyLinkedList<String>();
+        var anna = "Anna";
+        var elena = "Elena";
+        list.insertToBack(anna);
+        list.insertToBack(elena);
+
+        list.delete(anna);
+        assertEquals(1, list.getNumberOfElements());
+        assertEquals(elena, list.getFirstElement());
+    }
+
+    @Test
+    void deleteMiddleElement() {
+        var list = new SinglyLinkedList<String>();
+        var anna = "Anna";
+        var elena = "Elena";
+        var maria = "Maria";
+        list.insertToBack(anna);
+        list.insertToBack(elena);
+        list.insertToBack(maria);
+
+        list.delete(elena);
+        assertEquals(2, list.getNumberOfElements());
+        assertEquals(anna, list.getFirstElement());
+        assertEquals(maria, list.getLastElement());
+    }
+
+    @Test
+    void deleteLastElement() {
+        var list = new SinglyLinkedList<String>();
+        var anna = "Anna";
+        var elena = "Elena";
+        list.insertToBack(anna);
+        list.insertToBack(elena);
+
+        list.delete(elena);
+        assertEquals(1, list.getNumberOfElements());
+        assertEquals(anna, list.getLastElement());
+    }
 }
