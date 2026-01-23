@@ -11,19 +11,17 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
     public SortedSinglyLinkedList() {
     }
 
+    /**
+     * @return позиция вставки в список
+     */
     @Override
-    public void add(T element) {
-
-    }
-
-    @Override
-    public int getPosition(T element) {
+    public int add(T element) {
         return 0;
     }
 
     @Override
-    public void delete(T element) {
-
+    public boolean delete(T element) {
+        return false;
     }
 
     private static class Node<T> {
