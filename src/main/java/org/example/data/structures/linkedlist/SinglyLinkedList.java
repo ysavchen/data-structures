@@ -63,7 +63,8 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
      * <p>
      * Время работы: O(n)
      */
-    public void delete(T data) {
+    @Override
+    public boolean delete(T data) {
         Node<T> current = head;
         Node<T> previous = null;
         while (current != null) {
@@ -74,11 +75,12 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
                     previous.appendNode(current.nextNode); // стандартный случай: узел в середине списка (или в хвосте)
                 }
                 numberOfElements--;
-                return;
+                return true;
             }
             previous = current;
             current = current.nextNode;
         }
+        return false;
     }
 
     private Node<T> searchNode(T data) {
