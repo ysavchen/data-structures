@@ -31,10 +31,11 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     @Override
     public void insertToFront(T data) {
         var node = new Node<>(data);
-        if (head != null) {
-            node.appendNode(head);
+        if (head == null) {
+            head = node;
+        } else {
+            node.append(head);
         }
-        head = node;
         numberOfElements++;
     }
 
@@ -48,7 +49,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
             while (current.hasNextNode()) {
                 current = current.nextNode;
             }
-            current.appendNode(node);
+            current.append(node);
         }
         numberOfElements++;
     }
@@ -72,7 +73,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
                 if (previous == null) {
                     head = current.nextNode; // граничный случай: удаление головы списка
                 } else {
-                    previous.appendNode(current.nextNode); // стандартный случай: узел в середине списка (или в хвосте)
+                    previous.append(current.nextNode); // стандартный случай: узел в середине списка (или в хвосте)
                 }
                 numberOfElements--;
                 return true;
@@ -113,7 +114,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
             return nextNode != null;
         }
 
-        void appendNode(Node<T> node) {
+        void append(Node<T> node) {
             nextNode = node;
         }
     }
