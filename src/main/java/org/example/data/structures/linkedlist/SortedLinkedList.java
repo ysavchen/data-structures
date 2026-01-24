@@ -6,4 +6,6 @@ public interface SortedLinkedList<T> {
 
     boolean delete(T data);
 
+    int getNumberOfElements();
+
 }

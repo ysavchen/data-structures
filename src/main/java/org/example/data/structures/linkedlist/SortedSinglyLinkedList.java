@@ -8,6 +8,8 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
 
     private Node<T> head = null;
 
+    private int numberOfElements = 0;
+
     public SortedSinglyLinkedList() {
     }
 
@@ -21,7 +23,7 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
      */
     @Override
     public int add(T data) {
-        int position = 0;
+        int position = 1;  // позиции элементов начинаются с 1
 
         if (head == null) {
             head = new Node<>(data);
@@ -43,13 +45,18 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
             }
 
         }
-
+        numberOfElements++;
         return position;
     }
 
     @Override
     public boolean delete(T data) {
         return false;
+    }
+
+    @Override
+    public int getNumberOfElements() {
+        return numberOfElements;
     }
 
     private static class Node<T> {
