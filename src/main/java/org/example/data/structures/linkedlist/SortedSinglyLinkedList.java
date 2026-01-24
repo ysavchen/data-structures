@@ -12,15 +12,43 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
     }
 
     /**
+     * Вставка элемента в список<br/>
+     * Так как список отсортирован необходимо перебрать элементы, чтобы найти правильное место для вставки узла с новым значением.
+     * <p>
+     * Время работы: O(n)
+     *
      * @return позиция вставки в список
      */
     @Override
-    public int add(T element) {
-        return 0;
+    public int add(T data) {
+        int position = 0;
+
+        if (head == null) {
+            head = new Node<>(data);
+        } else {
+            Node<T> current = head;
+            Node<T> previous = null;
+            while (current != null) {
+                if (current.data.compareTo(data) >= 0) {
+                    var node = new Node<>(data);
+                    if (previous != null) {
+                        previous.append(node);
+                    }
+                    node.append(current);
+                } else {
+                    previous = current;
+                    current = current.nextNode;
+                    position++;
+                }
+            }
+
+        }
+
+        return position;
     }
 
     @Override
-    public boolean delete(T element) {
+    public boolean delete(T data) {
         return false;
     }
 
@@ -37,7 +65,7 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
             return nextNode != null;
         }
 
-        void appendNode(Node<T> node) {
+        void append(Node<T> node) {
             nextNode = node;
         }
     }
