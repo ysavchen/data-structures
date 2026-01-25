@@ -31,11 +31,10 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     @Override
     public void insertToFront(T data) {
         var node = new Node<>(data);
-        if (head == null) {
-            head = node;
-        } else {
+        if (head != null) {
             node.append(head);
         }
+        head = node;
         numberOfElements++;
     }
 
