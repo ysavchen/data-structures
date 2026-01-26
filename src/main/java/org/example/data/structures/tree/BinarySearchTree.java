@@ -46,13 +46,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
         while (currentNode != null || !stack.isEmpty()) {
             if (currentNode == null) {
                 currentNode = stack.pop();
-
+                //todo: implement
                 currentNode = currentNode.right;
             } else {
                 while (currentNode.left != null) {
                     stack.push(currentNode);
                     currentNode = currentNode.left;
-
+                    //todo: implement
                     currentNode = currentNode.right;
                 }
             }
