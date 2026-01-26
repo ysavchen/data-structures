@@ -19,4 +19,24 @@ public class SortedSinglyLinkedListTests {
         assertEquals(1, list.getNumberOfElements());
         assertEquals(1, position);
     }
+
+    @Test
+    void addTailElement() {
+        var list = new SortedSinglyLinkedList<String>();
+        int annaPosition = list.add("Anna");
+        int elenaPosition = list.add("Elena");
+        assertEquals(2, list.getNumberOfElements());
+        assertEquals(1, annaPosition);
+        assertEquals(2, elenaPosition);
+    }
+
+    @Test
+    void sortToMiddle() {
+        var list = new SortedSinglyLinkedList<String>();
+        list.add("Anna");
+        list.add("Maria");
+        int elenaPosition = list.add("Elena");
+        assertEquals(3, list.getNumberOfElements());
+        assertEquals(2, elenaPosition);
+    }
 }
