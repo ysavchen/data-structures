@@ -39,4 +39,13 @@ public class SortedSinglyLinkedListTests {
         assertEquals(3, list.getNumberOfElements());
         assertEquals(2, elenaPosition);
     }
+
+    @Test
+    void sortToHead() {
+        var list = new SortedSinglyLinkedList<String>();
+        list.add("Elena");
+        int annaPosition = list.add("Anna");
+        assertEquals(2, list.getNumberOfElements());
+        assertEquals(1, annaPosition);
+    }
 }

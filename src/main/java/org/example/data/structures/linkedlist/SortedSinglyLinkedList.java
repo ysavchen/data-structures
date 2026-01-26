@@ -35,8 +35,11 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
                     var node = new Node<>(data);
                     if (previous != null) {
                         previous.append(node);
+                    } else {
+                        head = node;
+                        node.append(current);
                     }
-                    node.append(current);
+                    break;
                 } else {
                     previous = current;
                     current = current.nextNode;
