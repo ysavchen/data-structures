@@ -50,11 +50,6 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
     }
 
     @Override
-    public boolean delete(T data) {
-        return false;
-    }
-
-    @Override
     public int getNumberOfElements() {
         return numberOfElements;
     }
