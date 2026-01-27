@@ -20,10 +20,12 @@ public class SinglyLinkedListTests {
         list.insertToFront(anna);
         assertEquals(1, list.getNumberOfElements());
         assertEquals(anna, list.getFirstElement());
+        assertEquals(anna, list.getLastElement());
 
         list.insertToFront(elena);
         assertEquals(2, list.getNumberOfElements());
         assertEquals(elena, list.getFirstElement());
+        assertEquals(anna, list.getLastElement());
     }
 
     @Test
@@ -33,10 +35,12 @@ public class SinglyLinkedListTests {
         var elena = "Elena";
         list.insertToBack(anna);
         assertEquals(1, list.getNumberOfElements());
+        assertEquals(anna, list.getFirstElement());
         assertEquals(anna, list.getLastElement());
 
         list.insertToBack(elena);
         assertEquals(2, list.getNumberOfElements());
+        assertEquals(anna, list.getFirstElement());
         assertEquals(elena, list.getLastElement());
     }
 
