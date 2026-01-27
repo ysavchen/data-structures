@@ -31,12 +31,25 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
             node.append(head);
         }
         head = node;
+
+        if (tail == null) {
+            tail = node;
+        }
         numberOfElements++;
     }
 
     @Override
     public void insertToBack(T data) {
+        var node = new Node<>(data);
+        if (tail != null) {
+            tail.append(node);
+        }
+        tail = node;
 
+        if (head == null) {
+            head = node;
+        }
+        numberOfElements++;
     }
 
     @Override
@@ -55,12 +68,10 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
         private Node<T> nextNode = null;
 
+        private Node<T> previousNode = null;
+
         Node(T data) {
             this.data = data;
-        }
-
-        boolean hasNextNode() {
-            return nextNode != null;
         }
 
         void append(Node<T> node) {
