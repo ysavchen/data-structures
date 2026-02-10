@@ -8,17 +8,17 @@ public class BinarySearch {
      * Бинарный поиск<br/>
      * Время работы: O(log n)
      *
-     * @param array         отсортированный массив
+     * @param sortedArray   отсортированный массив
      * @param targetElement элемент для поиска в массиве
      * @return индекс найденного элемента
      */
-    public static <T extends Comparable<T>> int binarySearch(T[] array, T targetElement) {
+    public static <T extends Comparable<T>> int binarySearch(T[] sortedArray, T targetElement) {
         int minIndex = 0;
-        int maxIndex = array.length - 1;
+        int maxIndex = sortedArray.length - 1;
 
         while (minIndex <= maxIndex) {
             int midIndex = (minIndex + maxIndex) / 2;
-            T midElement = array[midIndex];
+            T midElement = sortedArray[midIndex];
 
             if (midElement.compareTo(targetElement) < 0) {
                 minIndex = midIndex + 1;
