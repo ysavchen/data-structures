@@ -16,7 +16,7 @@ public class Countdown {
         System.out.println("print " + i);
 
         if (i <= 0) {
-            return; // базовый случай (базис)
+            return; // базовый случай
         } else {
             countdown(i - 1); // рекурсивый случай
         }
