@@ -4,6 +4,8 @@ public interface SortedLinkedList<T> {
 
     int add(T value);
 
+    int get(int index);
+
     int getNumberOfElements();
 
 }

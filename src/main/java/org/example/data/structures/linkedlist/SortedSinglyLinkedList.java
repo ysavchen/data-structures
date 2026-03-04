@@ -19,11 +19,11 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
      * <p>
      * Время работы: O(n)
      *
-     * @return позиция вставки в список
+     * @return index
      */
     @Override
     public int add(T value) {
-        int position = 1;  // позиции элементов начинаются с 1
+        int index = 0;
 
         if (head == null) {
             head = new Node<>(value);
@@ -43,13 +43,18 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
                 } else {
                     previous = current;
                     current = current.nextNode;
-                    position++;
+                    index++;
                 }
             }
 
         }
         numberOfElements++;
-        return position;
+        return index;
+    }
+
+    @Override
+    public int get(int index) {
+        return 0;
     }
 
     @Override
