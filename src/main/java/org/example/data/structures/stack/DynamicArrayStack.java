@@ -10,15 +10,13 @@ public class DynamicArrayStack<T> implements Stack<T> {
 
     private final DynamicArray<T> stack;
 
-    private int lastElementIndex;
-
     public DynamicArrayStack() {
         this.stack = new DynamicArrayImpl<>();
     }
 
     @Override
     public void push(T element) {
-        lastElementIndex = stack.addElement(element);
+        stack.addElement(element);
     }
 
     @Override
@@ -26,9 +24,9 @@ public class DynamicArrayStack<T> implements Stack<T> {
         if (stack.isEmpty()) {
             return null;
         }
+        int lastElementIndex = stack.getNumberOfElements() - 1;
         T element = stack.getElement(lastElementIndex);
         stack.deleteByIndex(lastElementIndex);
-        lastElementIndex--;
         return element;
     }
 
@@ -37,6 +35,7 @@ public class DynamicArrayStack<T> implements Stack<T> {
         if (stack.isEmpty()) {
             return null;
         }
+        int lastElementIndex = stack.getNumberOfElements() - 1;
         return stack.getElement(lastElementIndex);
     }
 
