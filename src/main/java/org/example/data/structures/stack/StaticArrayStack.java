@@ -17,7 +17,7 @@ public class StaticArrayStack<T> implements Stack<T> {
 
     @Override
     public void push(T item) {
-        if (stack.length == pushIndex) {
+        if (stack.length == numberOfElements) {
             throw new FullStackException();
         }
         stack[pushIndex] = item;
