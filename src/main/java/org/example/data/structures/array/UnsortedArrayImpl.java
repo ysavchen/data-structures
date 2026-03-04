@@ -99,6 +99,11 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
         }
     }
 
+    /**
+     * У нас есть два размера массива - количество доступных ячеек и количество элементов.<br/>
+     * Количество ячеек называют capacity (ёмкость), количество элементов - size.<br/>
+     * Здесь size - количество ячеек массива, numberOfElements - количество элементов.
+     */
     @Override
     public int getSize() {
         return elementData.length;
