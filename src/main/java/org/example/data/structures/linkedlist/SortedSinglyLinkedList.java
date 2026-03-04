@@ -22,17 +22,17 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
      * @return позиция вставки в список
      */
     @Override
-    public int add(T data) {
+    public int add(T value) {
         int position = 1;  // позиции элементов начинаются с 1
 
         if (head == null) {
-            head = new Node<>(data);
+            head = new Node<>(value);
         } else {
             Node<T> current = head;
             Node<T> previous = null;
             while (current != null) {
-                if (current.data.compareTo(data) >= 0) {
-                    var node = new Node<>(data);
+                if (current.value.compareTo(value) >= 0) {
+                    var node = new Node<>(value);
                     if (previous != null) {
                         previous.append(node);
                     } else {
@@ -59,11 +59,11 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
 
     private static class Node<T> {
 
-        private final T data;
+        private final T value;
         private Node<T> nextNode = null;
 
-        Node(T data) {
-            this.data = data;
+        Node(T value) {
+            this.value = value;
         }
 
         boolean hasNextNode() {

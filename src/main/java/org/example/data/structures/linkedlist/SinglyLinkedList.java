@@ -16,7 +16,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T getFirstElement() {
-        return head.data;
+        return head.value;
     }
 
     @Override
@@ -25,12 +25,12 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         while (current.hasNextNode()) {
             current = current.nextNode;
         }
-        return current.data;
+        return current.value;
     }
 
     @Override
-    public void insertToFront(T data) {
-        var node = new Node<>(data);
+    public void insertToFront(T value) {
+        var node = new Node<>(value);
         if (head != null) {
             node.append(head);
         }
@@ -39,8 +39,8 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
-    public void insertToBack(T data) {
-        var node = new Node<>(data);
+    public void insertToBack(T value) {
+        var node = new Node<>(value);
         if (head == null) {
             head = node;
         } else {
@@ -64,11 +64,11 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
      * Время работы: O(n)
      */
     @Override
-    public boolean delete(T data) {
+    public boolean delete(T value) {
         Node<T> current = head;
         Node<T> previous = null;
         while (current != null) {
-            if (current.data.equals(data)) {
+            if (current.value.equals(value)) {
                 if (previous == null) {
                     head = current.nextNode; // граничный случай: удаление головы списка
                 } else {
@@ -83,10 +83,10 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         return false;
     }
 
-    private Node<T> searchNode(T data) {
+    private Node<T> searchNode(T value) {
         var current = head;
         while (current.hasNextNode()) {
-            if (Objects.equals(current.data, data)) {
+            if (Objects.equals(current.value, value)) {
                 return current;
             }
             current = current.nextNode;
@@ -101,12 +101,12 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
 
     private static class Node<T> {
 
-        private final T data;
+        private final T value;
 
         private Node<T> nextNode = null;
 
-        Node(T data) {
-            this.data = data;
+        Node(T value) {
+            this.value = value;
         }
 
         boolean hasNextNode() {

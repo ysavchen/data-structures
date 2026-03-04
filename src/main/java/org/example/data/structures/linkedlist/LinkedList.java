@@ -6,11 +6,11 @@ public interface LinkedList<T> {
 
     T getLastElement();
 
-    void insertToFront(T data);
+    void insertToFront(T value);
 
-    void insertToBack(T data);
+    void insertToBack(T value);
 
-    boolean delete(T data);
+    boolean delete(T value);
 
     int getNumberOfElements();
 

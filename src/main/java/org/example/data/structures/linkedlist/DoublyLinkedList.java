@@ -16,17 +16,17 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T getFirstElement() {
-        return head.data;
+        return head.value;
     }
 
     @Override
     public T getLastElement() {
-        return tail.data;
+        return tail.value;
     }
 
     @Override
-    public void insertToFront(T data) {
-        var node = new Node<>(data);
+    public void insertToFront(T value) {
+        var node = new Node<>(value);
         if (head != null) {
             node.append(head);
         }
@@ -39,8 +39,8 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
-    public void insertToBack(T data) {
-        var node = new Node<>(data);
+    public void insertToBack(T value) {
+        var node = new Node<>(value);
         if (tail != null) {
             tail.append(node);
         }
@@ -53,7 +53,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
-    public boolean delete(T data) {
+    public boolean delete(T value) {
         return false;
     }
 
@@ -64,14 +64,14 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     private static class Node<T> {
 
-        private final T data;
+        private final T value;
 
         private Node<T> nextNode = null;
 
         private Node<T> previousNode = null;
 
-        Node(T data) {
-            this.data = data;
+        Node(T value) {
+            this.value = value;
         }
 
         void append(Node<T> node) {
