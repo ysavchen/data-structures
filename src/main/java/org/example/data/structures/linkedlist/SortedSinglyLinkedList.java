@@ -53,7 +53,7 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
     }
 
     @Override
-    public int get(int index) {
+    public int getByIndex(int index) {
         return 0;
     }
 
