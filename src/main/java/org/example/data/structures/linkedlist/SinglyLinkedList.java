@@ -103,10 +103,11 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
 
         private final T value;
 
-        private Node<T> nextNode = null;
+        private Node<T> nextNode;
 
         Node(T value) {
             this.value = value;
+            this.nextNode = null;
         }
 
         boolean hasNextNode() {
