@@ -1,5 +1,10 @@
 package org.example.algorithms.recursion;
 
+/**
+ * Факториал - это произведение всех натуральных чисел от {@code 1} до {@code n}.<br/>
+ * Факториал обозначается как {@code n!}.<br/>
+ * {@code n! = 1 * 2 * ... * (n - 1) * n}
+ */
 public class Factorial {
 
     /**
