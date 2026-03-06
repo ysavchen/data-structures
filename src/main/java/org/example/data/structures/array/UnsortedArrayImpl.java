@@ -20,11 +20,11 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
 
     private int size = 0;
 
-    public UnsortedArrayImpl(int size) {
-        if (size <= 0) {
-            throw new IllegalArgumentException("Size must be greater than 0");
+    public UnsortedArrayImpl(int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity must be greater than 0");
         }
-        this.elementData = (T[]) new Object[size];
+        this.elementData = (T[]) new Object[capacity];
     }
 
     @Override

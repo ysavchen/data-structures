@@ -10,8 +10,8 @@ public interface SortedArray<T extends Comparable<T>> {
 
     void deleteElement(T element);
 
-    int getSize();
+    int getCapacity();
 
-    int getNumberOfElements();
+    int getSize();
 
 }

@@ -17,13 +17,13 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
 
     private int emptyCellIndex = 0;
 
-    private int numberOfElements = 0;
+    private int size = 0;
 
-    public SortedArrayImpl(int size) {
-        if (size <= 0) {
-            throw new IllegalArgumentException("Size must be greater than 0");
+    public SortedArrayImpl(int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity must be greater than 0");
         }
-        this.elementData = (T[]) new Comparable[size];
+        this.elementData = (T[]) new Comparable[capacity];
     }
 
     @Override
@@ -67,7 +67,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
      */
     @Override
     public int addElement(T element) {
-        if (elementData.length == numberOfElements) {
+        if (elementData.length == size) {
             throw new FullArrayException();
         }
 
@@ -92,7 +92,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
         }
 
         emptyCellIndex++;
-        numberOfElements++;
+        size++;
         return elementIndex;
     }
 
@@ -102,7 +102,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
      */
     @Override
     public void deleteElement(T element) {
-        if (numberOfElements == 0) {
+        if (size == 0) {
             throw new EmptyArrayException();
         }
 
@@ -122,17 +122,17 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
         }
 
         emptyCellIndex--;
-        numberOfElements--;
+        size--;
     }
 
     @Override
-    public int getSize() {
+    public int getCapacity() {
         return elementData.length;
     }
 
     @Override
-    public int getNumberOfElements() {
-        return numberOfElements;
+    public int getSize() {
+        return size;
     }
 
     @Override

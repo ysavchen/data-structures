@@ -11,8 +11,8 @@ public class SortedArrayTests {
     @Test
     void createArray() {
         var array = new SortedArrayImpl<String>(1);
-        assertEquals(1, array.getSize());
-        assertEquals(0, array.getNumberOfElements());
+        assertEquals(1, array.getCapacity());
+        assertEquals(0, array.getSize());
     }
 
     @Test
@@ -78,8 +78,8 @@ public class SortedArrayTests {
         var array = new SortedArrayImpl<String>(1);
         int index = array.addElement("Anna");
         assertEquals(0, index);
+        assertEquals(1, array.getCapacity());
         assertEquals(1, array.getSize());
-        assertEquals(1, array.getNumberOfElements());
     }
 
     @Test
@@ -94,12 +94,12 @@ public class SortedArrayTests {
         var array = new SortedArrayImpl<String>(1);
         var element = "Anna";
         array.addElement(element);
+        assertEquals(1, array.getCapacity());
         assertEquals(1, array.getSize());
-        assertEquals(1, array.getNumberOfElements());
 
         array.deleteElement(element);
-        assertEquals(1, array.getSize());
-        assertEquals(0, array.getNumberOfElements());
+        assertEquals(1, array.getCapacity());
+        assertEquals(0, array.getSize());
     }
 
     @Test
