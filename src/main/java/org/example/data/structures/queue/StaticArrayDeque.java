@@ -1,8 +1,29 @@
 package org.example.data.structures.queue;
 
-/**
- * Deque - double ended queue (двусторонняя очередь)<br/>
- * Дек позволяет добавлять и извлекать элементы с обоих концов.
- */
-public class StaticArrayDeque<T> {
+public class StaticArrayDeque<T> implements Deque<T> {
+
+    @Override
+    public void pushBack(T element) {
+
+    }
+
+    @Override
+    public T popBack() {
+        return null;
+    }
+
+    @Override
+    public void pushFront(T element) {
+
+    }
+
+    @Override
+    public T popFront() {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
 }
