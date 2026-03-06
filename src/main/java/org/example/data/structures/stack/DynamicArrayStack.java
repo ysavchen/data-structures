@@ -21,7 +21,7 @@ public class DynamicArrayStack<T> implements Stack<T> {
 
     @Override
     public T pop() {
-        if (array.isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
         int lastElementIndex = array.getSize() - 1;
@@ -32,7 +32,7 @@ public class DynamicArrayStack<T> implements Stack<T> {
 
     @Override
     public T peek() {
-        if (array.isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
         int lastElementIndex = array.getSize() - 1;
