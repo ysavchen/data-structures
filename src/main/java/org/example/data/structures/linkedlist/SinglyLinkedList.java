@@ -9,7 +9,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
 
     private Node<T> head = null;
 
-    private int numberOfElements = 0;
+    private int size = 0;
 
     public SinglyLinkedList() {
     }
@@ -35,7 +35,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
             node.append(head);
         }
         head = node;
-        numberOfElements++;
+        size++;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
             }
             current.append(node);
         }
-        numberOfElements++;
+        size++;
     }
 
     /**
@@ -74,7 +74,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
                 } else {
                     previous.append(current.nextNode); // стандартный случай: узел в середине списка (или в хвосте)
                 }
-                numberOfElements--;
+                size--;
                 return true;
             }
             previous = current;
@@ -95,8 +95,8 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
-    public int getNumberOfElements() {
-        return numberOfElements;
+    public int getSize() {
+        return size;
     }
 
     private static class Node<T> {

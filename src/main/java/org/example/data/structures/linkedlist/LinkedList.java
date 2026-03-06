@@ -12,6 +12,6 @@ public interface LinkedList<T> {
 
     boolean delete(T value);
 
-    int getNumberOfElements();
+    int getSize();
 
 }

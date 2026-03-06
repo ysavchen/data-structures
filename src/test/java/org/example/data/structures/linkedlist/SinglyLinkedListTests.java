@@ -9,7 +9,7 @@ public class SinglyLinkedListTests {
     @Test
     void createLinkedList() {
         var list = new SinglyLinkedList<String>();
-        assertEquals(0, list.getNumberOfElements());
+        assertEquals(0, list.getSize());
     }
 
     @Test
@@ -18,12 +18,12 @@ public class SinglyLinkedListTests {
         var anna = "Anna";
         var elena = "Elena";
         list.insertToFront(anna);
-        assertEquals(1, list.getNumberOfElements());
+        assertEquals(1, list.getSize());
         assertEquals(anna, list.getFirstElement());
         assertEquals(anna, list.getLastElement());
 
         list.insertToFront(elena);
-        assertEquals(2, list.getNumberOfElements());
+        assertEquals(2, list.getSize());
         assertEquals(elena, list.getFirstElement());
         assertEquals(anna, list.getLastElement());
     }
@@ -34,12 +34,12 @@ public class SinglyLinkedListTests {
         var anna = "Anna";
         var elena = "Elena";
         list.insertToBack(anna);
-        assertEquals(1, list.getNumberOfElements());
+        assertEquals(1, list.getSize());
         assertEquals(anna, list.getFirstElement());
         assertEquals(anna, list.getLastElement());
 
         list.insertToBack(elena);
-        assertEquals(2, list.getNumberOfElements());
+        assertEquals(2, list.getSize());
         assertEquals(anna, list.getFirstElement());
         assertEquals(elena, list.getLastElement());
     }
@@ -54,7 +54,7 @@ public class SinglyLinkedListTests {
 
         var result = list.delete(anna);
         assertTrue(result);
-        assertEquals(1, list.getNumberOfElements());
+        assertEquals(1, list.getSize());
         assertEquals(elena, list.getFirstElement());
     }
 
@@ -70,7 +70,7 @@ public class SinglyLinkedListTests {
 
         var result = list.delete(elena);
         assertTrue(result);
-        assertEquals(2, list.getNumberOfElements());
+        assertEquals(2, list.getSize());
         assertEquals(anna, list.getFirstElement());
         assertEquals(maria, list.getLastElement());
     }
@@ -85,7 +85,7 @@ public class SinglyLinkedListTests {
 
         var result = list.delete(elena);
         assertTrue(result);
-        assertEquals(1, list.getNumberOfElements());
+        assertEquals(1, list.getSize());
         assertEquals(anna, list.getLastElement());
     }
 
@@ -97,6 +97,6 @@ public class SinglyLinkedListTests {
 
         var result = list.delete("Elena");
         assertFalse(result);
-        assertEquals(1, list.getNumberOfElements());
+        assertEquals(1, list.getSize());
     }
 }

@@ -8,7 +8,7 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
 
     private Node<T> head = null;
 
-    private int numberOfElements = 0;
+    private int size = 0;
 
     public SortedSinglyLinkedList() {
     }
@@ -48,7 +48,7 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
             }
 
         }
-        numberOfElements++;
+        size++;
         return index;
     }
 
@@ -58,8 +58,8 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
     }
 
     @Override
-    public int getNumberOfElements() {
-        return numberOfElements;
+    public int getSize() {
+        return size;
     }
 
     private static class Node<T> {

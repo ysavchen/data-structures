@@ -6,6 +6,6 @@ public interface SortedLinkedList<T> {
 
     int getByIndex(int index);
 
-    int getNumberOfElements();
+    int getSize();
 
 }

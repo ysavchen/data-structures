@@ -9,7 +9,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     private Node<T> tail = null;
 
-    private int numberOfElements = 0;
+    private int size = 0;
 
     public DoublyLinkedList() {
     }
@@ -35,7 +35,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         if (tail == null) {
             tail = node;
         }
-        numberOfElements++;
+        size++;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         if (head == null) {
             head = node;
         }
-        numberOfElements++;
+        size++;
     }
 
     @Override
@@ -58,8 +58,8 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
-    public int getNumberOfElements() {
-        return numberOfElements;
+    public int getSize() {
+        return size;
     }
 
     private static class Node<T> {
