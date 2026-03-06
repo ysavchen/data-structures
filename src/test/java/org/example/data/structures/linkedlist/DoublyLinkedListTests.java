@@ -9,7 +9,7 @@ public class DoublyLinkedListTests {
     @Test
     void createLinkedList() {
         var list = new DoublyLinkedList<String>();
-        assertEquals(0, list.getNumberOfElements());
+        assertEquals(0, list.getSize());
     }
 
     @Test
@@ -18,12 +18,12 @@ public class DoublyLinkedListTests {
         var anna = "Anna";
         var elena = "Elena";
         list.insertToFront(anna);
-        assertEquals(1, list.getNumberOfElements());
+        assertEquals(1, list.getSize());
         assertEquals(anna, list.getFirstElement());
         assertEquals(anna, list.getLastElement());
 
         list.insertToFront(elena);
-        assertEquals(2, list.getNumberOfElements());
+        assertEquals(2, list.getSize());
         assertEquals(elena, list.getFirstElement());
         assertEquals(anna, list.getLastElement());
     }
@@ -34,12 +34,12 @@ public class DoublyLinkedListTests {
         var anna = "Anna";
         var elena = "Elena";
         list.insertToBack(anna);
-        assertEquals(1, list.getNumberOfElements());
+        assertEquals(1, list.getSize());
         assertEquals(anna, list.getFirstElement());
         assertEquals(anna, list.getLastElement());
 
         list.insertToBack(elena);
-        assertEquals(2, list.getNumberOfElements());
+        assertEquals(2, list.getSize());
         assertEquals(anna, list.getFirstElement());
         assertEquals(elena, list.getLastElement());
     }
