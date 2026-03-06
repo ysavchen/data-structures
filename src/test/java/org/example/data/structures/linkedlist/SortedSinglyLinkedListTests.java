@@ -9,14 +9,14 @@ public class SortedSinglyLinkedListTests {
     @Test
     void createLinkedList() {
         var list = new SortedSinglyLinkedList<String>();
-        assertEquals(0, list.getNumberOfElements());
+        assertEquals(0, list.getSize());
     }
 
     @Test
     void addHeadElement() {
         var list = new SortedSinglyLinkedList<String>();
         int index = list.add("Anna");
-        assertEquals(1, list.getNumberOfElements());
+        assertEquals(1, list.getSize());
         assertEquals(0, index);
     }
 
@@ -25,7 +25,7 @@ public class SortedSinglyLinkedListTests {
         var list = new SortedSinglyLinkedList<String>();
         int annaIndex = list.add("Anna");
         int elenaIndex = list.add("Elena");
-        assertEquals(2, list.getNumberOfElements());
+        assertEquals(2, list.getSize());
         assertEquals(0, annaIndex);
         assertEquals(1, elenaIndex);
     }
@@ -36,7 +36,7 @@ public class SortedSinglyLinkedListTests {
         list.add("Anna");
         list.add("Maria");
         int elenaIndex = list.add("Elena");
-        assertEquals(3, list.getNumberOfElements());
+        assertEquals(3, list.getSize());
         assertEquals(1, elenaIndex);
     }
 
@@ -45,7 +45,7 @@ public class SortedSinglyLinkedListTests {
         var list = new SortedSinglyLinkedList<String>();
         list.add("Elena");
         int annaIndex = list.add("Anna");
-        assertEquals(2, list.getNumberOfElements());
+        assertEquals(2, list.getSize());
         assertEquals(0, annaIndex);
     }
 }
