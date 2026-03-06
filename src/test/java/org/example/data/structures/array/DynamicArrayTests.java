@@ -10,15 +10,15 @@ public class DynamicArrayTests {
     @Test
     void createArray() {
         var array = new DynamicArrayImpl<String>();
-        assertEquals(10, array.getSize());
-        assertEquals(0, array.getNumberOfElements());
+        assertEquals(10, array.getCapacity());
+        assertEquals(0, array.getSize());
     }
 
     @Test
     void createArrayWithInitialCapacity() {
         var array = new DynamicArrayImpl<String>(15);
-        assertEquals(15, array.getSize());
-        assertEquals(0, array.getNumberOfElements());
+        assertEquals(15, array.getCapacity());
+        assertEquals(0, array.getSize());
     }
 
     @Test
@@ -62,8 +62,8 @@ public class DynamicArrayTests {
         var array = new DynamicArrayImpl<String>(1);
         int index = array.addElement("Anna");
         assertEquals(0, index);
+        assertEquals(1, array.getCapacity());
         assertEquals(1, array.getSize());
-        assertEquals(1, array.getNumberOfElements());
     }
 
     @Test
@@ -71,25 +71,25 @@ public class DynamicArrayTests {
         var array = new DynamicArrayImpl<String>(2);
         array.addElement("Anna");
         array.addElement("Elena");
+        assertEquals(2, array.getCapacity());
         assertEquals(2, array.getSize());
-        assertEquals(2, array.getNumberOfElements());
 
         int index = array.addElement("Maria");
         assertEquals(2, index);
-        assertEquals(4, array.getSize());
-        assertEquals(3, array.getNumberOfElements());
+        assertEquals(4, array.getCapacity());
+        assertEquals(3, array.getSize());
     }
 
     @Test
     void deleteElementByIndex() {
         var array = new DynamicArrayImpl<String>(1);
         int index = array.addElement("Anna");
+        assertEquals(1, array.getCapacity());
         assertEquals(1, array.getSize());
-        assertEquals(1, array.getNumberOfElements());
 
         array.deleteByIndex(index);
+        assertEquals(0, array.getCapacity());
         assertEquals(0, array.getSize());
-        assertEquals(0, array.getNumberOfElements());
         assertTrue(array.isEmpty());
     }
 
@@ -118,12 +118,12 @@ public class DynamicArrayTests {
         array.addElement("Anna");
         array.addElement("Elena");
         int mariaIndex = array.addElement("Maria");
-        assertEquals(8, array.getSize());
-        assertEquals(3, array.getNumberOfElements());
+        assertEquals(8, array.getCapacity());
+        assertEquals(3, array.getSize());
 
         array.deleteByIndex(mariaIndex);
-        assertEquals(4, array.getSize());
-        assertEquals(2, array.getNumberOfElements());
+        assertEquals(4, array.getCapacity());
+        assertEquals(2, array.getSize());
     }
 
     @Test

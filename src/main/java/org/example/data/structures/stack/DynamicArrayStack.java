@@ -24,7 +24,7 @@ public class DynamicArrayStack<T> implements Stack<T> {
         if (stack.isEmpty()) {
             return null;
         }
-        int lastElementIndex = stack.getNumberOfElements() - 1;
+        int lastElementIndex = stack.getSize() - 1;
         T element = stack.getElement(lastElementIndex);
         stack.deleteByIndex(lastElementIndex);
         return element;
@@ -35,7 +35,7 @@ public class DynamicArrayStack<T> implements Stack<T> {
         if (stack.isEmpty()) {
             return null;
         }
-        int lastElementIndex = stack.getNumberOfElements() - 1;
+        int lastElementIndex = stack.getSize() - 1;
         return stack.getElement(lastElementIndex);
     }
 

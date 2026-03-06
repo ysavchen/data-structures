@@ -19,7 +19,7 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
     private int newElementIndex = 0;
 
-    private int numberOfElements = 0;
+    private int size = 0;
 
     public DynamicArrayImpl() {
         this.elementData = (T[]) new Comparable[INITIAL_CAPACITY];
@@ -53,12 +53,12 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
     @Override
     public int addElement(T element) {
-        if (numberOfElements >= elementData.length) {
+        if (size >= elementData.length) {
             doubleSize();
         }
         elementData[newElementIndex] = element;
         newElementIndex++;
-        numberOfElements++;
+        size++;
         return newElementIndex - 1;
     }
 
@@ -67,7 +67,7 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
      */
     @Override
     public void deleteByIndex(int index) {
-        if (numberOfElements == 0) {
+        if (size == 0) {
             throw new EmptyArrayException();
         } else if (index < 0 || index >= newElementIndex) {
             throw new IndexOutOfBoundsException();
@@ -81,10 +81,10 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
                 elementData[lastElementIndex] = null;
             }
             newElementIndex--;
-            numberOfElements--;
+            size--;
         }
         // Уменьшаем размер массива вдвое, если элементы занимают только четверть массива
-        if (numberOfElements <= elementData.length / 4) {
+        if (size <= elementData.length / 4) {
             halveSize();
         }
     }
@@ -113,17 +113,17 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
     @Override
     public boolean isEmpty() {
-        return numberOfElements == 0;
+        return size == 0;
     }
 
     @Override
-    public int getSize() {
+    public int getCapacity() {
         return elementData.length;
     }
 
     @Override
-    public int getNumberOfElements() {
-        return numberOfElements;
+    public int getSize() {
+        return size;
     }
 
     @Override

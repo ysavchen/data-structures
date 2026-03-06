@@ -12,8 +12,8 @@ public interface DynamicArray<T> {
 
     boolean isEmpty();
 
-    int getSize();
+    int getCapacity();
 
-    int getNumberOfElements();
+    int getSize();
 
 }
