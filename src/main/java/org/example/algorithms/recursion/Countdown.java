@@ -8,17 +8,17 @@ public class Countdown {
      * В рекурсивном случае функция вызывает сама себя.
      * В базовом случае функция себя не вызывает... чтобы предотвратить зацикливание.
      */
-    private static void countdown(int i) {
+    private static int countdown(int i) {
         System.out.println(i);
 
-        if (i <= 0) {
-            return; // базовый случай
-        } else {
+        if (i > 0) {
             countdown(i - 1); // рекурсивый случай
         }
+        return i; // базовый случай
     }
 
     public static void main(String[] args) {
-        countdown(10);
+        int i = countdown(10);
+        System.out.println(i);
     }
 }
