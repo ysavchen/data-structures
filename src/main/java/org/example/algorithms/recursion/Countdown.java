@@ -9,7 +9,7 @@ public class Countdown {
      * В базовом случае функция себя не вызывает... чтобы предотвратить зацикливание.
      */
     private static void countdown(int i) {
-        System.out.println("print " + i);
+        System.out.println("i = " + i);
 
         if (i <= 0) {
             return; // базовый случай
