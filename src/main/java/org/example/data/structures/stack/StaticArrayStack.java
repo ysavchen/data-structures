@@ -7,20 +7,20 @@ import org.example.data.structures.stack.exception.FullStackException;
  */
 public class StaticArrayStack<T> implements Stack<T> {
 
-    private final T[] stack;
+    private final T[] array;
     private int size = 0;
 
-    public StaticArrayStack(int size) {
-        this.stack = (T[]) new Object[size];
+    public StaticArrayStack(int capacity) {
+        this.array = (T[]) new Object[capacity];
     }
 
     @Override
     public void push(T item) {
-        if (stack.length == size) {
+        if (array.length == size) {
             throw new FullStackException();
         }
         int pushIndex = size == 0 ? 0 : size - 1;
-        stack[pushIndex] = item;
+        array[pushIndex] = item;
         size++;
     }
 
@@ -31,12 +31,12 @@ public class StaticArrayStack<T> implements Stack<T> {
      */
     @Override
     public T pop() {
-        if (size == 0) {
+        if (isEmpty()) {
             return null;
         }
         int lastElementIndex = size - 1;
-        T element = stack[lastElementIndex];
-        stack[lastElementIndex] = null;
+        T element = array[lastElementIndex];
+        array[lastElementIndex] = null;
         size--;
         return element;
     }
@@ -48,11 +48,11 @@ public class StaticArrayStack<T> implements Stack<T> {
      */
     @Override
     public T peek() {
-        if (size == 0) {
+        if (isEmpty()) {
             return null;
         }
         int lastElementIndex = size - 1;
-        return stack[lastElementIndex];
+        return array[lastElementIndex];
     }
 
     @Override
