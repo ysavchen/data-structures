@@ -11,8 +11,8 @@ public class UnsortedArrayTests {
     @Test
     void createArray() {
         var array = new UnsortedArrayImpl<String>(1);
-        assertEquals(1, array.getSize());
-        assertEquals(0, array.getNumberOfElements());
+        assertEquals(1, array.getCapacity());
+        assertEquals(0, array.getSize());
     }
 
     @Test
@@ -78,8 +78,8 @@ public class UnsortedArrayTests {
         var array = new UnsortedArrayImpl<String>(1);
         int index = array.addElement("Anna");
         assertEquals(0, index);
+        assertEquals(1, array.getCapacity());
         assertEquals(1, array.getSize());
-        assertEquals(1, array.getNumberOfElements());
     }
 
     @Test
@@ -93,12 +93,12 @@ public class UnsortedArrayTests {
     void deleteElementByIndex() {
         var array = new UnsortedArrayImpl<String>(1);
         int index = array.addElement("Anna");
+        assertEquals(1, array.getCapacity());
         assertEquals(1, array.getSize());
-        assertEquals(1, array.getNumberOfElements());
 
         array.deleteByIndex(index);
-        assertEquals(1, array.getSize());
-        assertEquals(0, array.getNumberOfElements());
+        assertEquals(1, array.getCapacity());
+        assertEquals(0, array.getSize());
     }
 
     @Test

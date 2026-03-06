@@ -18,7 +18,7 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
 
     private int newElementIndex = 0;
 
-    private int numberOfElements = 0;
+    private int size = 0;
 
     public UnsortedArrayImpl(int size) {
         if (size <= 0) {
@@ -64,13 +64,13 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
 
     @Override
     public int addElement(T element) {
-        if (elementData.length == numberOfElements) {
+        if (elementData.length == size) {
             throw new FullArrayException();
         }
         int elementIndex = newElementIndex;
         elementData[newElementIndex] = element;
         newElementIndex++;
-        numberOfElements++;
+        size++;
         return elementIndex;
     }
 
@@ -82,7 +82,7 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
      */
     @Override
     public void deleteByIndex(int index) {
-        if (numberOfElements == 0) {
+        if (size == 0) {
             throw new EmptyArrayException();
         } else if (index < 0 || index >= newElementIndex) {
             throw new IndexOutOfBoundsException();
@@ -95,23 +95,24 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
                 elementData[lastElementIndex] = null;
             }
             newElementIndex--;
-            numberOfElements--;
+            size--;
         }
     }
 
     /**
-     * У нас есть два размера массива - количество доступных ячеек и количество элементов.<br/>
-     * Количество ячеек называют capacity (ёмкость), количество элементов - size.<br/>
-     * Здесь size - количество ячеек массива, numberOfElements - количество элементов.
+     * Размер массива
      */
     @Override
-    public int getSize() {
+    public int getCapacity() {
         return elementData.length;
     }
 
+    /**
+     * Количество элементов в массиве
+     */
     @Override
-    public int getNumberOfElements() {
-        return numberOfElements;
+    public int getSize() {
+        return size;
     }
 
     @Override

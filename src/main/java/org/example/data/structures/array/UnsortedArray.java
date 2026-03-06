@@ -14,8 +14,8 @@ public interface UnsortedArray<T> {
 
     void deleteByIndex(int index);
 
-    int getSize();
+    int getCapacity();
 
-    int getNumberOfElements();
+    int getSize();
 
 }
