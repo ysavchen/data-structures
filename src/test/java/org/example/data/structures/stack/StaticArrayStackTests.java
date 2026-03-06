@@ -14,10 +14,12 @@ public class StaticArrayStackTests {
     }
 
     @Test
-    void pushElement() {
-        var stack = new StaticArrayStack<String>(1);
+    void pushElements() {
+        var stack = new StaticArrayStack<String>(2);
         stack.push("Anna");
         assertEquals(1, stack.getSize());
+        stack.push("Elena");
+        assertEquals(2, stack.getSize());
     }
 
     @Test
@@ -28,9 +30,14 @@ public class StaticArrayStackTests {
     }
 
     @Test
-    void popElementFromStack() {
-        var stack = new StaticArrayStack<String>(1);
+    void popElementsFromStack() {
+        var stack = new StaticArrayStack<String>(2);
         stack.push("Anna");
+        stack.push("Elena");
+        assertEquals(2, stack.getSize());
+
+        assertEquals("Elena", stack.pop());
+        assertEquals(1, stack.getSize());
         assertEquals("Anna", stack.pop());
         assertEquals(0, stack.getSize());
     }
