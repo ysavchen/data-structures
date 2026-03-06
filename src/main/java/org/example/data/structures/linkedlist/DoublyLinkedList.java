@@ -16,12 +16,12 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T getFirstElement() {
-        return head.value;
+        return isEmpty() ? null : head.value;
     }
 
     @Override
     public T getLastElement() {
-        return tail.value;
+        return isEmpty() ? null : tail.value;
     }
 
     @Override
