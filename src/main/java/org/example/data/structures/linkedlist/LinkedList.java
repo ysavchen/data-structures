@@ -12,6 +12,8 @@ public interface LinkedList<T> {
 
     boolean delete(T value);
 
+    boolean isEmpty();
+
     int getSize();
 
 }

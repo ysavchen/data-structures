@@ -58,6 +58,11 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
     public int getSize() {
         return size;
     }

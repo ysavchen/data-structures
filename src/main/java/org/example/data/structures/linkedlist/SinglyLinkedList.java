@@ -1,7 +1,5 @@
 package org.example.data.structures.linkedlist;
 
-import java.util.Objects;
-
 /**
  * Несортированный односвязный список
  */
@@ -16,7 +14,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T getFirstElement() {
-        return head.value;
+        return isEmpty() ? null : head.value;
     }
 
     @Override
@@ -83,15 +81,9 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         return false;
     }
 
-    private Node<T> searchNode(T value) {
-        var current = head;
-        while (current.hasNextNode()) {
-            if (Objects.equals(current.value, value)) {
-                return current;
-            }
-            current = current.nextNode;
-        }
-        return null;
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     @Override
