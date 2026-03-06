@@ -19,7 +19,7 @@ public class StaticArrayStack<T> implements Stack<T> {
         if (array.length == size) {
             throw new FullStackException();
         }
-        int pushIndex = size == 0 ? 0 : size - 1;
+        int pushIndex = isEmpty() ? 0 : size - 1;
         array[pushIndex] = item;
         size++;
     }
