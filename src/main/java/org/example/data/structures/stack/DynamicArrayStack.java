@@ -8,44 +8,44 @@ import org.example.data.structures.array.DynamicArrayImpl;
  */
 public class DynamicArrayStack<T> implements Stack<T> {
 
-    private final DynamicArray<T> stack;
+    private final DynamicArray<T> array;
 
     public DynamicArrayStack() {
-        this.stack = new DynamicArrayImpl<>();
+        this.array = new DynamicArrayImpl<>();
     }
 
     @Override
     public void push(T element) {
-        stack.addElement(element);
+        array.addElement(element);
     }
 
     @Override
     public T pop() {
-        if (stack.isEmpty()) {
+        if (array.isEmpty()) {
             return null;
         }
-        int lastElementIndex = stack.getSize() - 1;
-        T element = stack.getElement(lastElementIndex);
-        stack.deleteByIndex(lastElementIndex);
+        int lastElementIndex = array.getSize() - 1;
+        T element = array.getElement(lastElementIndex);
+        array.deleteByIndex(lastElementIndex);
         return element;
     }
 
     @Override
     public T peek() {
-        if (stack.isEmpty()) {
+        if (array.isEmpty()) {
             return null;
         }
-        int lastElementIndex = stack.getSize() - 1;
-        return stack.getElement(lastElementIndex);
+        int lastElementIndex = array.getSize() - 1;
+        return array.getElement(lastElementIndex);
     }
 
     @Override
     public boolean isEmpty() {
-        return stack.isEmpty();
+        return array.isEmpty();
     }
 
     @Override
     public int getSize() {
-        return stack.getSize();
+        return array.getSize();
     }
 }
