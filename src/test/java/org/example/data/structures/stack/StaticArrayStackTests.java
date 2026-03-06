@@ -10,8 +10,7 @@ public class StaticArrayStackTests {
     @Test
     void createStack() {
         var stack = new StaticArrayStack<String>(1);
-        assertEquals(1, stack.getSize());
-        assertEquals(0, stack.getNumberOfElements());
+        assertEquals(0, stack.getSize());
     }
 
     @Test
@@ -19,7 +18,6 @@ public class StaticArrayStackTests {
         var stack = new StaticArrayStack<String>(1);
         stack.push("Anna");
         assertEquals(1, stack.getSize());
-        assertEquals(1, stack.getNumberOfElements());
     }
 
     @Test
@@ -34,16 +32,14 @@ public class StaticArrayStackTests {
         var stack = new StaticArrayStack<String>(1);
         stack.push("Anna");
         assertEquals("Anna", stack.pop());
-        assertEquals(1, stack.getSize());
-        assertEquals(0, stack.getNumberOfElements());
+        assertEquals(0, stack.getSize());
     }
 
     @Test
     void popElementFromEmptyStack() {
         var stack = new StaticArrayStack<String>(1);
         assertNull(stack.pop());
-        assertEquals(1, stack.getSize());
-        assertEquals(0, stack.getNumberOfElements());
+        assertEquals(0, stack.getSize());
     }
 
     @Test
@@ -52,15 +48,13 @@ public class StaticArrayStackTests {
         stack.push("Anna");
         assertEquals("Anna", stack.peek());
         assertEquals(1, stack.getSize());
-        assertEquals(1, stack.getNumberOfElements());
     }
 
     @Test
     void peekElementFromEmptyStack() {
         var stack = new StaticArrayStack<String>(1);
         assertNull(stack.peek());
-        assertEquals(1, stack.getSize());
-        assertEquals(0, stack.getNumberOfElements());
+        assertEquals(0, stack.getSize());
     }
 
 }

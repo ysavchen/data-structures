@@ -9,7 +9,7 @@ public class StaticArrayStack<T> implements Stack<T> {
 
     private final T[] stack;
     private int pushIndex = 0;
-    private int numberOfElements = 0;
+    private int size = 0;
 
     public StaticArrayStack(int size) {
         this.stack = (T[]) new Object[size];
@@ -17,12 +17,12 @@ public class StaticArrayStack<T> implements Stack<T> {
 
     @Override
     public void push(T item) {
-        if (stack.length == numberOfElements) {
+        if (stack.length == size) {
             throw new FullStackException();
         }
         stack[pushIndex] = item;
         pushIndex++;
-        numberOfElements++;
+        size++;
     }
 
     /**
@@ -32,14 +32,14 @@ public class StaticArrayStack<T> implements Stack<T> {
      */
     @Override
     public T pop() {
-        if (numberOfElements == 0) {
+        if (size == 0) {
             return null;
         }
         int lastElementIndex = pushIndex - 1;
         T element = stack[lastElementIndex];
         stack[lastElementIndex] = null;
         pushIndex--;
-        numberOfElements--;
+        size--;
         return element;
     }
 
@@ -50,7 +50,7 @@ public class StaticArrayStack<T> implements Stack<T> {
      */
     @Override
     public T peek() {
-        if (numberOfElements == 0) {
+        if (size == 0) {
             return null;
         }
         int lastElementIndex = pushIndex - 1;
@@ -59,14 +59,10 @@ public class StaticArrayStack<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return stack.length == 0;
+        return size == 0;
     }
 
     public int getSize() {
-        return stack.length;
-    }
-
-    public int getNumberOfElements() {
-        return numberOfElements;
+        return size;
     }
 }

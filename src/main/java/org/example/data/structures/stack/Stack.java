@@ -10,4 +10,6 @@ public interface Stack<T> {
 
     boolean isEmpty();
 
+    int getSize();
+
 }

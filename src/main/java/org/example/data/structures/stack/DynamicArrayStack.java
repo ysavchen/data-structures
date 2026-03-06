@@ -43,4 +43,9 @@ public class DynamicArrayStack<T> implements Stack<T> {
     public boolean isEmpty() {
         return stack.isEmpty();
     }
+
+    @Override
+    public int getSize() {
+        return stack.getSize();
+    }
 }
