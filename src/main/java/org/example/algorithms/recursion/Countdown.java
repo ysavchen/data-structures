@@ -14,7 +14,7 @@ public class Countdown {
         if (i > 0) {
             countdown(i - 1); // рекурсивый случай
         }
-        return i; // базовый случай
+        return 0; // базовый случай (важно, что здесь 0, а не i)
     }
 
     public static void main(String[] args) {
