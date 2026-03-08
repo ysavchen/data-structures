@@ -3,6 +3,7 @@ package org.example.data.structures.linkedlist;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class SortedSinglyLinkedListTests {
 
@@ -47,5 +48,37 @@ public class SortedSinglyLinkedListTests {
         int annaIndex = list.add("Anna");
         assertEquals(2, list.getSize());
         assertEquals(0, annaIndex);
+    }
+
+    @Test
+    void getByIndex() {
+        var list = new SortedSinglyLinkedList<String>();
+        int annaIndex = list.add("Anna");
+        int elenaIndex = list.add("Elena");
+        assertEquals("Anna", list.getByIndex(annaIndex));
+        assertEquals("Elena", list.getByIndex(elenaIndex));
+    }
+
+    @Test
+    void getByIndexSorted() {
+        var list = new SortedSinglyLinkedList<String>();
+        list.add("Elena");
+        list.add("Anna");
+        assertEquals("Anna", list.getByIndex(0));
+        assertEquals("Elena", list.getByIndex(1));
+    }
+
+    @Test
+    void getByNegativeIndex() {
+        var list = new SortedSinglyLinkedList<String>();
+        list.add("Anna");
+        assertNull(list.getByIndex(-1));
+    }
+
+    @Test
+    void getByNonExistingIndex() {
+        var list = new SortedSinglyLinkedList<String>();
+        list.add("Anna");
+        assertNull(list.getByIndex(5));
     }
 }

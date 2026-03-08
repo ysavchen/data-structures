@@ -56,13 +56,13 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
 
     @Override
     public T getByIndex(int index) {
-        if (index >= size) {
+        if (index < 0 || index >= size) {
             return null;
         }
 
         var current = head;
-        while (current.hasNextNode()) {
-            if (Objects.equals(head.index, index)) {
+        while (current != null) {
+            if (current.index == index) {
                 return current.value;
             }
             current = current.nextNode;
