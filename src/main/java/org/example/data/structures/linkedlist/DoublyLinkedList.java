@@ -1,7 +1,5 @@
 package org.example.data.structures.linkedlist;
 
-import java.util.Objects;
-
 /**
  * Несортированный двусвязный список
  */
@@ -83,8 +81,8 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     private Node<T> searchNode(T value) {
         var current = head;
-        while (current.hasNextNode()) {
-            if (Objects.equals(current.value, value)) {
+        while (current != null) {
+            if (current.value.equals(value)) {
                 return current;
             }
             current = current.nextNode;
