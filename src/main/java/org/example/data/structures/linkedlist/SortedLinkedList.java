@@ -4,7 +4,7 @@ public interface SortedLinkedList<T> {
 
     int add(T value);
 
-    int getByIndex(int index);
+    T getByIndex(int index);
 
     int getSize();
 

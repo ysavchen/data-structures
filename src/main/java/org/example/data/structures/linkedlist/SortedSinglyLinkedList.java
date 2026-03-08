@@ -1,5 +1,7 @@
 package org.example.data.structures.linkedlist;
 
+import java.util.Objects;
+
 /**
  * Отсортированный односвязный список<br/>
  * Для операций со связными списками все равно нужно перебирать элементы, поэтому сортировка не приносит особой пользы.
@@ -53,8 +55,19 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
     }
 
     @Override
-    public int getByIndex(int index) {
-        return 0;
+    public T getByIndex(int index) {
+        if (index >= size) {
+            return null;
+        }
+
+        var current = head;
+        while (current.hasNextNode()) {
+            if (Objects.equals(head.index, index)) {
+                return current.value;
+            }
+            current = current.nextNode;
+        }
+        return null;
     }
 
     @Override
