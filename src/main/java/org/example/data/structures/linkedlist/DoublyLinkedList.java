@@ -112,10 +112,6 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
             this.value = value;
         }
 
-        boolean hasNextNode() {
-            return nextNode != null;
-        }
-
         void append(Node<T> node) {
             nextNode = node;
         }
