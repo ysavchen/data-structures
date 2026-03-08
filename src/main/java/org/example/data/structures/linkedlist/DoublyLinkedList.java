@@ -1,5 +1,7 @@
 package org.example.data.structures.linkedlist;
 
+import java.util.Objects;
+
 /**
  * Несортированный двусвязный список
  */
@@ -52,9 +54,42 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         size++;
     }
 
+    /**
+     * Время работы: O(n)
+     *
+     * @return true если узел успешно удален, false - если узел не найден
+     */
     @Override
     public boolean delete(T value) {
-        return false;
+        var node = searchNode(value);
+        if (node == null) {
+            return false;
+        }
+        if (node.previousNode == null) {    // удаление первого узла (head)
+            head = node.nextNode;
+            if (head == null) {
+                tail = null;
+            } else {
+                head.prepend(null);
+            }
+        } else if (node.nextNode == null) { // удаление последнего узла (tail)
+            tail = node.previousNode;
+            tail.append(null);
+        } else {                            // общий случай
+            node.previousNode.append(node.nextNode);
+        }
+        return true;
+    }
+
+    private Node<T> searchNode(T value) {
+        var current = head;
+        while (current.hasNextNode()) {
+            if (Objects.equals(current.value, value)) {
+                return current;
+            }
+            current = current.nextNode;
+        }
+        return null;
     }
 
     @Override
@@ -79,8 +114,16 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
             this.value = value;
         }
 
+        boolean hasNextNode() {
+            return nextNode != null;
+        }
+
         void append(Node<T> node) {
             nextNode = node;
+        }
+
+        void prepend(Node<T> node) {
+            previousNode = node;
         }
     }
 }
