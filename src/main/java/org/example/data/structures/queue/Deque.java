@@ -28,8 +28,13 @@ public interface Deque<T> {
     T popFront();
 
     /**
+     * Пустая очередь или нет
+     */
+    boolean isEmpty();
+
+    /**
      * Количество элементов в очереди
      */
-    int size();
+    int getSize();
 
 }
