@@ -1,7 +1,7 @@
 package org.example.data.structures.queue;
 
 /**
- * Очередь на основе статического массива
+ * Очередь на основе кольцевого буфера
  */
 public class StaticArrayQueue<T> {
 }
