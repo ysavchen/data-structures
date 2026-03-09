@@ -12,7 +12,7 @@ public class Countdown {
         System.out.println(i);
 
         if (i > 0) {
-            countdown(i - 1); // рекурсивый случай
+            countdown(i - 1); // рекурсивный случай
         }
         // здесь 0, а не i, так как i вернется из самого первого вызова, где i = 10
         return 0; // базовый случай
