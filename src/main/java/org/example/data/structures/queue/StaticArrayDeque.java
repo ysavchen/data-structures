@@ -3,6 +3,9 @@ package org.example.data.structures.queue;
 import org.example.data.structures.queue.exception.EmptyQueueException;
 import org.example.data.structures.queue.exception.FullQueueException;
 
+/**
+ * Дек на основе кольцевого буфера
+ */
 public class StaticArrayDeque<T> implements Deque<T> {
 
     private final T[] elements; // элементы очереди
