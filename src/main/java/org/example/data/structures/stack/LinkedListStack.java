@@ -30,7 +30,7 @@ public class LinkedListStack<T> implements Stack<T> {
 
     @Override
     public T peek() {
-        return isEmpty() ? null : list.getFirstElement();
+        return list.getFirstElement();
     }
 
     @Override
