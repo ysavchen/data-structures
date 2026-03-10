@@ -29,14 +29,15 @@ public class StaticArrayDeque<T> implements Deque<T> {
             throw new FullQueueException();
         }
 
-        // headIndex указывает за заполненную ячейку,
-        //       поэтому при записи в непустой список (pushFront), мы его сдвигаем влево в ячейку с null
+        // headIndex указывает за заполненную ячейку в типичном случае,
+        //       поэтому при записи в начало непустого списка, мы сдвигаем headIndex влево в ячейку с null
         if (elements[headIndex] != null) {
             headIndex = (headIndex - 1 + capacity) % capacity;
         }
         elements[headIndex] = value;
 
-        // tailIndex должен указывать на пустую ячейку, поэтому после заполнения ячейки, мы его сдвигаем вправо
+        // tailIndex должен указывать на пустую ячейку в типичном случае,
+        //               поэтому после заполнения ячейки, мы его сдвигаем вправо
         if (headIndex == tailIndex) {
             int newTailIndex = (tailIndex + 1) % capacity;
             if (elements[newTailIndex] == null) { // сдвигаем tailIndex только если в очереди еще есть пустые места
