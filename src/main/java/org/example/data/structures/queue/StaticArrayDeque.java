@@ -12,7 +12,7 @@ public class StaticArrayDeque<T> implements Deque<T> {
 
     private final int capacity; // размер очереди
 
-    private int headIndex = 0;  // индекс, по которому нужно извлекать элемент, если очередь, не пустая
+    private int headIndex = 0;  // индекс, по которому нужно извлекать элемент, если очередь непустая
 
     private int tailIndex = 0;  // индекс, по которому нужно добавлять элемент, если в очереди есть место
 
@@ -46,6 +46,16 @@ public class StaticArrayDeque<T> implements Deque<T> {
         size++;
     }
 
+    /**
+     * Для определения следующего значения индекса используется деление по модулю.
+     * {@code tailIndex = (tailIndex + 1) % capacity} можно переписать как:
+     * <pre>
+     *   tailIndex += 1;
+     *   if (tailIndex >= capacity) {
+     *       tailIndex = 0;
+     *   }
+     * </pre>
+     */
     @Override
     public void pushBack(T value) {
         if (size == capacity) {
