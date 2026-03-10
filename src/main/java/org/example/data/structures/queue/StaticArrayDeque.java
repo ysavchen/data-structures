@@ -49,12 +49,12 @@ public class StaticArrayDeque<T> implements Deque<T> {
     /**
      * Для определения следующего значения индекса используется деление по модулю.
      * {@code tailIndex = (tailIndex + 1) % capacity} можно переписать как:
-     * <pre>
+     * <pre>{@code
      *   tailIndex += 1;
      *   if (tailIndex >= capacity) {
      *       tailIndex = 0;
      *   }
-     * </pre>
+     * }</pre>
      */
     @Override
     public void pushBack(T value) {

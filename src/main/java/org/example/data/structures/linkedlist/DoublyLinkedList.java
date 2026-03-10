@@ -55,7 +55,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     /**
      * Время работы: O(n)
      *
-     * @return true если узел успешно удален, false - если узел не найден
+     * @return {@code true} если узел успешно удален, {@code false} если узел не найден
      */
     @Override
     public boolean delete(T value) {
