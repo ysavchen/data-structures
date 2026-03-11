@@ -1,7 +1,7 @@
 package org.example.data.structures.queue;
 
-import org.example.data.structures.queue.exception.EmptyQueueException;
-import org.example.data.structures.queue.exception.FullQueueException;
+import org.example.data.structures.queue.exception.EmptyDequeException;
+import org.example.data.structures.queue.exception.FullDequeException;
 
 /**
  * Дек на основе кольцевого буфера
@@ -26,7 +26,7 @@ public class StaticArrayDeque<T> implements Deque<T> {
     @Override
     public void pushFront(T value) {
         if (size == capacity) {
-            throw new FullQueueException();
+            throw new FullDequeException();
         }
 
         // headIndex указывает за заполненную ячейку в типичном случае,
@@ -60,7 +60,7 @@ public class StaticArrayDeque<T> implements Deque<T> {
     @Override
     public void pushBack(T value) {
         if (size == capacity) {
-            throw new FullQueueException();
+            throw new FullDequeException();
         }
 
         elements[tailIndex] = value;
@@ -71,7 +71,7 @@ public class StaticArrayDeque<T> implements Deque<T> {
     @Override
     public T popFront() {
         if (isEmpty()) {
-            throw new EmptyQueueException();
+            throw new EmptyDequeException();
         }
 
         T element = elements[headIndex];
@@ -84,7 +84,7 @@ public class StaticArrayDeque<T> implements Deque<T> {
     @Override
     public T popBack() {
         if (isEmpty()) {
-            throw new EmptyQueueException();
+            throw new EmptyDequeException();
         }
 
         tailIndex = (tailIndex - 1 + capacity) % capacity;
