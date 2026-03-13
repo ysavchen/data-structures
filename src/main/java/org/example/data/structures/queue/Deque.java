@@ -9,7 +9,7 @@ public interface Deque<T> {
     /**
      * Вставка нового элемента в конец
      */
-    void pushBack(T element);
+    boolean pushBack(T element);
 
     /**
      * Получение и удаление последнего элемента
@@ -19,7 +19,7 @@ public interface Deque<T> {
     /**
      * Вставка нового элемента в начало
      */
-    void pushFront(T element);
+    boolean pushFront(T element);
 
 
     /**

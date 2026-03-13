@@ -1,8 +1,5 @@
 package org.example.data.structures.queue;
 
-import org.example.data.structures.queue.exception.EmptyDequeException;
-import org.example.data.structures.queue.exception.FullDequeException;
-
 /**
  * Дек на основе кольцевого буфера
  */
@@ -12,39 +9,32 @@ public class StaticArrayDeque<T> implements Deque<T> {
 
     private final int capacity; // размер очереди
 
-    private int headIndex = 0;  // индекс, по которому нужно извлекать элемент, если очередь непустая
+    private int headIndex;  // индекс для записи/извлечения элемента в начало очереди (в типичном случае указывает за заполненную ячейку)
 
-    private int tailIndex = 0;  // индекс, по которому нужно добавлять элемент, если в очереди есть место
+    private int tailIndex;  // индекс для записи/извлечения элемента в конец очереди (в типичном случае указывает за заполненную ячейку)
 
-    private int size = 0;       // количество элементов в очереди
+    private int size;       // количество элементов в очереди
 
     public StaticArrayDeque(int capacity) {
         this.elements = (T[]) new Object[capacity];
         this.capacity = capacity;
+        this.headIndex = 0;
+        this.tailIndex = 0;
+        this.size = 0;
     }
 
     @Override
-    public void pushFront(T value) {
+    public boolean pushFront(T value) {
         if (size == capacity) {
-            throw new FullDequeException();
+            return false;
         }
 
-        // headIndex указывает за заполненную ячейку в типичном случае,
-        //       поэтому при записи в начало непустого списка, мы сдвигаем headIndex влево в ячейку с null
-        if (elements[headIndex] != null) {
+        if (!isEmpty()) {
             headIndex = (headIndex - 1 + capacity) % capacity;
         }
         elements[headIndex] = value;
-
-        // tailIndex должен указывать на пустую ячейку в типичном случае,
-        //               поэтому после заполнения ячейки, мы его сдвигаем вправо
-        if (headIndex == tailIndex) {
-            int newTailIndex = (tailIndex + 1) % capacity;
-            if (elements[newTailIndex] == null) { // сдвигаем tailIndex только если в очереди еще есть пустые места
-                tailIndex = newTailIndex;
-            }
-        }
         size++;
+        return true;
     }
 
     /**
@@ -58,39 +48,48 @@ public class StaticArrayDeque<T> implements Deque<T> {
      * }</pre>
      */
     @Override
-    public void pushBack(T value) {
+    public boolean pushBack(T value) {
         if (size == capacity) {
-            throw new FullDequeException();
+            return false;
         }
 
+        if (!isEmpty()) {
+            tailIndex = (tailIndex + 1) % capacity;
+        }
         elements[tailIndex] = value;
-        tailIndex = (tailIndex + 1) % capacity;
         size++;
+        return true;
     }
 
     @Override
     public T popFront() {
         if (isEmpty()) {
-            throw new EmptyDequeException();
+            return null;
         }
 
         T element = elements[headIndex];
         elements[headIndex] = null;
-        headIndex = (headIndex + 1) % capacity;
         size--;
+
+        if (!isEmpty()) {
+            headIndex = (headIndex + 1) % capacity;
+        }
         return element;
     }
 
     @Override
     public T popBack() {
         if (isEmpty()) {
-            throw new EmptyDequeException();
+            return null;
         }
 
-        tailIndex = (tailIndex - 1 + capacity) % capacity;
         T element = elements[tailIndex];
         elements[tailIndex] = null;
         size--;
+
+        if (!isEmpty()) {
+            tailIndex = (tailIndex - 1 + capacity) % capacity;
+        }
         return element;
     }
 
