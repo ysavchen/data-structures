@@ -9,18 +9,15 @@ public class StaticArrayDeque<T> implements Deque<T> {
 
     private final int capacity; // размер очереди
 
-    private int headIndex;  // индекс для записи/извлечения элемента в начало очереди (в типичном случае указывает за заполненную ячейку)
+    private int headIndex = 0;  // индекс для записи/извлечения элемента в начало очереди (в типичном случае указывает за заполненную ячейку)
 
-    private int tailIndex;  // индекс для записи/извлечения элемента в конец очереди (в типичном случае указывает за заполненную ячейку)
+    private int tailIndex = 0;  // индекс для записи/извлечения элемента в конец очереди (в типичном случае указывает за заполненную ячейку)
 
-    private int size;       // количество элементов в очереди
+    private int size = 0;       // количество элементов в очереди
 
     public StaticArrayDeque(int capacity) {
         this.elements = (T[]) new Object[capacity];
         this.capacity = capacity;
-        this.headIndex = 0;
-        this.tailIndex = 0;
-        this.size = 0;
     }
 
     @Override
