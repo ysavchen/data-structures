@@ -8,10 +8,11 @@ import org.example.data.structures.stack.exception.FullStackException;
 public class StaticArrayStack<T> implements Stack<T> {
 
     private final T[] array;
-    private int size = 0;
+    private int size;
 
     public StaticArrayStack(int capacity) {
         this.array = (T[]) new Object[capacity];
+        this.size = 0;
     }
 
     @Override
