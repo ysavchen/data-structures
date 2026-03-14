@@ -34,10 +34,10 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
                 if (current.value.compareTo(value) >= 0) {
                     var node = new Node<>(index, value);
                     if (previous != null) {
-                        previous.append(node);
+                        previous.nextNode = node;
                     } else {
                         head = node;
-                        node.append(current);
+                        node.nextNode = current;
                     }
                     break;
                 } else {
@@ -77,16 +77,11 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
 
         private int index;
         private final T value;
-        private Node<T> nextNode;
+        private Node<T> nextNode = null;
 
         Node(int index, T value) {
             this.index = index;
             this.value = value;
-            this.nextNode = null;
-        }
-
-        void append(Node<T> node) {
-            nextNode = node;
         }
     }
 }

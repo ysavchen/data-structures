@@ -28,7 +28,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     public void insertToFront(T value) {
         var node = new Node<>(value);
         if (head != null) {
-            node.append(head);
+            node.nextNode = head;
         }
         head = node;
 
@@ -42,7 +42,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     public void insertToBack(T value) {
         var node = new Node<>(value);
         if (tail != null) {
-            tail.append(node);
+            tail.nextNode = node;
         }
         tail = node;
 
@@ -68,13 +68,13 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
             if (head == null) {
                 tail = null;
             } else {
-                head.prepend(null);
+                head.previousNode = null;
             }
         } else if (node.nextNode == null) { // удаление последнего узла (tail)
             tail = node.previousNode;
-            tail.append(null);
+            tail.nextNode = null;
         } else {                            // типичный случай
-            node.previousNode.append(node.nextNode);
+            node.previousNode.nextNode = node.nextNode;
         }
         return true;
     }
@@ -103,21 +103,11 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     private static class Node<T> {
 
         private final T value;
-
         private Node<T> nextNode = null;
-
         private Node<T> previousNode = null;
 
         Node(T value) {
             this.value = value;
-        }
-
-        void append(Node<T> node) {
-            nextNode = node;
-        }
-
-        void prepend(Node<T> node) {
-            previousNode = node;
         }
     }
 }

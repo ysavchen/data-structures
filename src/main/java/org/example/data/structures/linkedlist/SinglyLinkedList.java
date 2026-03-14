@@ -20,7 +20,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     @Override
     public T getLastElement() {
         Node<T> current = head;
-        while (current.hasNextNode()) {
+        while (current.nextNode != null) {
             current = current.nextNode;
         }
         return current.value;
@@ -30,7 +30,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     public void insertToFront(T value) {
         var node = new Node<>(value);
         if (head != null) {
-            node.append(head);
+            node.nextNode = head;
         }
         head = node;
         size++;
@@ -43,10 +43,10 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
             head = node;
         } else {
             Node<T> current = head;
-            while (current.hasNextNode()) {
+            while (current.nextNode != null) {
                 current = current.nextNode;
             }
-            current.append(node);
+            current.nextNode = node;
         }
         size++;
     }
@@ -70,7 +70,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
                 if (previous == null) {
                     head = current.nextNode; // граничный случай: удаление головы списка
                 } else {
-                    previous.append(current.nextNode); // типичный случай: узел в середине списка (или в хвосте)
+                    previous.nextNode = current.nextNode; // типичный случай: узел в середине списка (или в хвосте)
                 }
                 size--;
                 return true;
@@ -94,20 +94,10 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     private static class Node<T> {
 
         private final T value;
-
-        private Node<T> nextNode;
+        private Node<T> nextNode = null;
 
         Node(T value) {
             this.value = value;
-            this.nextNode = null;
-        }
-
-        boolean hasNextNode() {
-            return nextNode != null;
-        }
-
-        void append(Node<T> node) {
-            nextNode = node;
         }
     }
 }
