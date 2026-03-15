@@ -44,22 +44,24 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
         } else {
             Node<T> current = head;
             Node<T> previous = null;
+            Node<T> newNode = new Node<>(value);
             while (current != null) {
-                if (current.value.compareTo(value) >= 0) {
-                    var node = new Node<>(value);
-                    if (previous != null) {
-                        previous.nextNode = node;
+                if (current.value.compareTo(value) >= 0) { // current.value >= value
+                    if (previous == null) { // граничный случай: добавляем элемент в начало списка
+                        head = newNode;
                     } else {
-                        head = node;
-                        node.nextNode = current;
+                        previous.nextNode = newNode; // основной случай
                     }
+                    newNode.nextNode = current;
                     break;
-                } else {
-                    previous = current;
-                    current = current.nextNode;
                 }
+                previous = current;
+                current = current.nextNode;
             }
 
+            if (current == null) { // граничный случай: добавляем элемент в конец списка
+                previous.nextNode = newNode;
+            }
         }
         size++;
     }
