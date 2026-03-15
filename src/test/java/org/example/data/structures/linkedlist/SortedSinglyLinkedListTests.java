@@ -3,7 +3,6 @@ package org.example.data.structures.linkedlist;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class SortedSinglyLinkedListTests {
 
@@ -16,19 +15,20 @@ public class SortedSinglyLinkedListTests {
     @Test
     void addHeadElement() {
         var list = new SortedSinglyLinkedList<String>();
-        int index = list.add("Anna");
+        var anna = "Anna";
+        list.add(anna);
         assertEquals(1, list.getSize());
-        assertEquals(0, index);
+        assertEquals(anna, list.getFirstElement());
     }
 
     @Test
     void addTailElement() {
         var list = new SortedSinglyLinkedList<String>();
-        int annaIndex = list.add("Anna");
-        int elenaIndex = list.add("Elena");
+        list.add("Anna");
+        list.add("Elena");
         assertEquals(2, list.getSize());
-        assertEquals(0, annaIndex);
-        assertEquals(1, elenaIndex);
+        assertEquals("Anna", list.getFirstElement());
+        assertEquals("Elena", list.getLastElement());
     }
 
     @Test
@@ -36,49 +36,18 @@ public class SortedSinglyLinkedListTests {
         var list = new SortedSinglyLinkedList<String>();
         list.add("Anna");
         list.add("Maria");
-        int elenaIndex = list.add("Elena");
+        list.add("Elena");
         assertEquals(3, list.getSize());
-        assertEquals(1, elenaIndex);
+        assertEquals("Anna", list.getFirstElement());
+        assertEquals("Maria", list.getLastElement());
     }
 
     @Test
     void sortToHead() {
         var list = new SortedSinglyLinkedList<String>();
         list.add("Elena");
-        int annaIndex = list.add("Anna");
+        list.add("Anna");
         assertEquals(2, list.getSize());
-        assertEquals(0, annaIndex);
-    }
-
-    @Test
-    void getByIndex() {
-        var list = new SortedSinglyLinkedList<String>();
-        int annaIndex = list.add("Anna");
-        int elenaIndex = list.add("Elena");
-        assertEquals("Anna", list.getByIndex(annaIndex));
-        assertEquals("Elena", list.getByIndex(elenaIndex));
-    }
-
-    @Test
-    void getByIndexSorted() {
-        var list = new SortedSinglyLinkedList<String>();
-        list.add("Elena");
-        list.add("Anna");
-        assertEquals("Anna", list.getByIndex(0));
-        assertEquals("Elena", list.getByIndex(1));
-    }
-
-    @Test
-    void getByNegativeIndex() {
-        var list = new SortedSinglyLinkedList<String>();
-        list.add("Anna");
-        assertNull(list.getByIndex(-1));
-    }
-
-    @Test
-    void getByNonExistingIndex() {
-        var list = new SortedSinglyLinkedList<String>();
-        list.add("Anna");
-        assertNull(list.getByIndex(5));
+        assertEquals("Anna", list.getFirstElement());
     }
 }
