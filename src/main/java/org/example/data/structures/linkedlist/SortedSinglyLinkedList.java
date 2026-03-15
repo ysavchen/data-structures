@@ -50,7 +50,7 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
                     if (previous == null) { // граничный случай: добавляем элемент в начало списка
                         head = newNode;
                     } else {
-                        previous.nextNode = newNode; // основной случай
+                        previous.nextNode = newNode; // основной случай: добавляем элемент в середину списка
                     }
                     newNode.nextNode = current;
                     break;
