@@ -13,6 +13,24 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
     public SortedSinglyLinkedList() {
     }
 
+    @Override
+    public T getFirstElement() {
+        return isEmpty() ? null : head.value;
+    }
+
+    @Override
+    public T getLastElement() {
+        if (head == null) {
+            return null;
+        }
+
+        Node<T> current = head;
+        while (current.nextNode != null) {
+            current = current.nextNode;
+        }
+        return current.value;
+    }
+
     /**
      * Вставка элемента в отсортированный список<br/>
      * Так как список отсортирован необходимо перебрать элементы, чтобы найти правильное место для вставки узла с новым значением.
@@ -56,6 +74,11 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
             current = current.nextNode;
         }
         return null;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     @Override
