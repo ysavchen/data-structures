@@ -70,7 +70,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
                 if (previous == null) {
                     head = current.nextNode; // граничный случай: удаление головы списка
                 } else {
-                    previous.nextNode = current.nextNode; // типичный случай: узел в середине списка (или в хвосте)
+                    previous.nextNode = current.nextNode; // основной случай: узел в середине списка (или в хвосте)
                 }
                 size--;
                 return true;
