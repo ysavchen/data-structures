@@ -18,21 +18,17 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
      * Так как список отсортирован необходимо перебрать элементы, чтобы найти правильное место для вставки узла с новым значением.
      * <p>
      * Время работы: O(n)
-     *
-     * @return index
      */
     @Override
-    public int add(T value) {
-        int index = 0;
-
+    public void add(T value) {
         if (head == null) {
-            head = new Node<>(index, value);
+            head = new Node<>(value);
         } else {
             Node<T> current = head;
             Node<T> previous = null;
             while (current != null) {
                 if (current.value.compareTo(value) >= 0) {
-                    var node = new Node<>(index, value);
+                    var node = new Node<>(value);
                     if (previous != null) {
                         previous.nextNode = node;
                     } else {
@@ -43,24 +39,18 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
                 } else {
                     previous = current;
                     current = current.nextNode;
-                    index++;
                 }
             }
 
         }
         size++;
-        return index;
     }
 
     @Override
-    public T getByIndex(int index) {
-        if (index < 0 || index >= size) {
-            return null;
-        }
-
-        var current = head;
+    public T findElement(T element) {
+        Node<T> current = head;
         while (current != null) {
-            if (current.index == index) {
+            if (current.value.equals(element)) {
                 return current.value;
             }
             current = current.nextNode;
@@ -75,12 +65,10 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
 
     private static class Node<T> {
 
-        private int index;
         private final T value;
         private Node<T> nextNode = null;
 
-        Node(int index, T value) {
-            this.index = index;
+        Node(T value) {
             this.value = value;
         }
     }

@@ -2,9 +2,9 @@ package org.example.data.structures.linkedlist;
 
 public interface SortedLinkedList<T> {
 
-    int add(T value);
+    void add(T value);
 
-    T getByIndex(int index);
+    T findElement(T element);
 
     int getSize();
 
