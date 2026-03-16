@@ -11,11 +11,11 @@ public class Countdown {
     private static int countdown(int i) {
         System.out.println(i);
 
-        if (i > 0) {
-            i = countdown(i - 1); // рекурсивный случай
+        if (i <= 0) {
+            return i; // базовый случай
         }
 
-        return i; // базовый случай
+        return countdown(i - 1); // рекурсивный случай
     }
 
     public static void main(String[] args) {
