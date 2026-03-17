@@ -13,14 +13,12 @@ public class LinearSearch {
      * @return индекс найденного элемента
      */
     public static <T> int linearSearch(T[] array, T targetElement) {
-        int index = 0;
-        for (T element : array) {
+        for (int i = 0; i < array.length; i++) {
+            T element = array[i];
             if (element.equals(targetElement)) {
-                return index;
+                return i;
             }
-            index++;
         }
-
         return NOT_FOUND;
     }
 
