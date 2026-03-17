@@ -16,8 +16,6 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
 
     private final T[] elementData;
 
-    private int newElementIndex = 0;
-
     private int size = 0;
 
     public UnsortedArrayImpl(int capacity) {
@@ -67,11 +65,10 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
         if (elementData.length == size) {
             throw new FullArrayException();
         }
-        int elementIndex = newElementIndex;
+        int newElementIndex = size;
         elementData[newElementIndex] = element;
-        newElementIndex++;
         size++;
-        return elementIndex;
+        return newElementIndex;
     }
 
     /**
@@ -82,19 +79,19 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
      */
     @Override
     public void deleteByIndex(int index) {
+        int lastElementIndex = size - 1;
+
         if (size == 0) {
             throw new EmptyArrayException();
-        } else if (index < 0 || index >= newElementIndex) {
+        } else if (index < 0 || index > lastElementIndex) {
             throw new IndexOutOfBoundsException();
         } else {
-            int lastElementIndex = newElementIndex - 1;
             if (index == lastElementIndex) {
                 elementData[index] = null;
             } else {
                 elementData[index] = elementData[lastElementIndex];
                 elementData[lastElementIndex] = null;
             }
-            newElementIndex--;
             size--;
         }
     }

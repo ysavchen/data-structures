@@ -17,8 +17,6 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
     private T[] elementData;
 
-    private int newElementIndex = 0;
-
     private int size = 0;
 
     public DynamicArrayImpl() {
@@ -56,10 +54,10 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
         if (size >= elementData.length) {
             doubleSize();
         }
+        int newElementIndex = size;
         elementData[newElementIndex] = element;
-        newElementIndex++;
         size++;
-        return newElementIndex - 1;
+        return newElementIndex;
     }
 
     /**
@@ -67,20 +65,20 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
      */
     @Override
     public void deleteByIndex(int index) {
+        int lastElementIndex = size - 1;
+
         if (size == 0) {
             throw new EmptyArrayException();
-        } else if (index < 0 || index >= newElementIndex) {
+        } else if (index < 0 || index > lastElementIndex) {
             throw new IndexOutOfBoundsException();
         } else {
             elementData[index] = null;
-            int lastElementIndex = newElementIndex - 1;
             if (index != lastElementIndex) {
                 for (int i = index; i < lastElementIndex; i++) {
                     elementData[i] = elementData[i + 1];
                 }
                 elementData[lastElementIndex] = null;
             }
-            newElementIndex--;
             size--;
         }
         // Уменьшаем размер массива вдвое, если элементы занимают только четверть массива
