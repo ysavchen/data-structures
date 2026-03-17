@@ -14,8 +14,9 @@ public class RecursiveBinarySearch {
      * @param rightIndex    индекс правой границы интервала (граница не включается в интервал) - [midIndex, rightIndex)
      * @return индекс найденного элемента
      */
-    public static <T extends Comparable<T>> int binarySearch(T[] sortedArray, T targetElement,
-                                                             int leftIndex, int rightIndex) {
+    public static <T extends Comparable<T>> int binarySearch(
+            T[] sortedArray, T targetElement, int leftIndex, int rightIndex
+    ) {
         // элемент не найден в интервале
         if (rightIndex <= leftIndex) {
             return NOT_FOUND;
