@@ -12,7 +12,7 @@ public class RecursiveBinarySearchTests {
     void searchExistingNumber() {
         Integer[] array = {2, 5, 9, 14};
         int targetNumber = 9;
-        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length - 1);
+        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length);
         assertEquals(2, index);
     }
 
@@ -20,7 +20,7 @@ public class RecursiveBinarySearchTests {
     void searchNonExistingNumber() {
         Integer[] array = {2, 5, 9, 14};
         int targetNumber = 22;
-        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length - 1);
+        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length);
         assertEquals(NOT_FOUND, index);
     }
 
@@ -28,7 +28,7 @@ public class RecursiveBinarySearchTests {
     void searchEmptyList() {
         Integer[] array = {};
         int targetNumber = 10;
-        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length - 1);
+        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length);
         assertEquals(NOT_FOUND, index);
     }
 }

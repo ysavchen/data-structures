@@ -10,19 +10,16 @@ public class RecursiveBinarySearch {
      *
      * @param sortedArray   отсортированный массив
      * @param targetElement элемент для поиска в массиве
-     * @param leftIndex     индекс левой границы интервала (граница включается в интервал) - [leftIndex, midIndex)
-     * @param rightIndex    индекс правой границы интервала (граница не включается в интервал) - [midIndex, rightIndex)
+     * @param leftIndex     индекс левой границы интервала (граница включается в интервал) - [leftIndex, rightIndex)
+     * @param rightIndex    индекс правой границы интервала (граница не включается в интервал)
      * @return индекс найденного элемента
      */
     public static <T extends Comparable<T>> int binarySearch(
             T[] sortedArray, T targetElement, int leftIndex, int rightIndex
     ) {
-        // остался один элемент в интервале
+        // rightIndex не включается в интервал,
+        //     поэтому если индексы равны, значит мы уже обошли весь массив
         if (rightIndex <= leftIndex) {
-            T midElement = sortedArray[leftIndex];
-            if (midElement.equals(targetElement)) {
-                return leftIndex;
-            }
             return NOT_FOUND;
         }
 
