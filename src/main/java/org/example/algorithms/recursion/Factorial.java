@@ -12,10 +12,9 @@ public class Factorial {
      */
     public static int loopFactorial(int x) {
         int accumulator = 1;
-        int i = x;
-        while (i > 1) {
-            accumulator *= i;
-            i -= 1;
+        while (x > 1) {
+            accumulator *= x;
+            x -= 1;
         }
         return accumulator;
     }
