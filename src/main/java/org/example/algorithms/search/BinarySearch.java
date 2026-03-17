@@ -13,19 +13,19 @@ public class BinarySearch {
      * @return индекс найденного элемента
      */
     public static <T extends Comparable<T>> int binarySearch(T[] sortedArray, T targetElement) {
-        int minIndex = 0;
-        int maxIndex = sortedArray.length - 1;
+        int leftIndex = 0;
+        int rightIndex = sortedArray.length - 1;
 
-        while (minIndex <= maxIndex) {
-            int midIndex = (minIndex + maxIndex) / 2;
+        while (leftIndex <= rightIndex) {
+            int midIndex = (leftIndex + rightIndex) / 2;
             T midElement = sortedArray[midIndex];
 
-            if (midElement.compareTo(targetElement) < 0) {
-                minIndex = midIndex + 1;
-            } else if (midElement.compareTo(targetElement) > 0) {
-                maxIndex = midIndex - 1;
-            } else {
+            if (midElement == targetElement) {
                 return midIndex;
+            } else if (midElement.compareTo(targetElement) < 0) {
+                leftIndex = midIndex + 1;
+            } else { // midElement.compareTo(targetElement) > 0
+                rightIndex = midIndex - 1;
             }
         }
 
