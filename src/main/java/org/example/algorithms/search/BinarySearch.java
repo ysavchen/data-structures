@@ -7,6 +7,13 @@ public class BinarySearch {
     /**
      * Бинарный поиск<br/>
      * Время работы: O(log n)
+     * <p>
+     * Принцип работы:<br/>
+     * Находим центральный элемент массива.<br/>
+     * 1. Если центральный элемент массива равен искомому, поиск окончен<br/>
+     * 2. Если центральный элемент больше искомого, выполняем те же действия для левой половины массива<br/>
+     * 3. Иначе - ищем в правой половине
+     * На каждой итерации цикла мы отбрасываем половину данных для поиска.
      *
      * @param sortedArray   отсортированный массив
      * @param targetElement элемент для поиска в массиве
@@ -20,12 +27,12 @@ public class BinarySearch {
             int midIndex = (leftIndex + rightIndex) / 2;
             T midElement = sortedArray[midIndex];
 
-            if (midElement == targetElement) {
+            if (midElement.equals(targetElement)) {
                 return midIndex;
-            } else if (midElement.compareTo(targetElement) < 0) {
-                leftIndex = midIndex + 1;
-            } else { // midElement.compareTo(targetElement) > 0
+            } else if (midElement.compareTo(targetElement) > 0) {
                 rightIndex = midIndex - 1;
+            } else { // midElement.compareTo(targetElement) < 0
+                leftIndex = midIndex + 1;
             }
         }
 
