@@ -15,8 +15,6 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
 
     private final T[] elementData;
 
-    private int emptyCellIndex = 0;
-
     private int size = 0;
 
     public SortedArrayImpl(int capacity) {
@@ -71,12 +69,12 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
             throw new FullArrayException();
         }
 
-        int elementIndex = emptyCellIndex;
-        if (emptyCellIndex == 0) { // array is empty
-            elementData[emptyCellIndex] = element;
+        int elementIndex = size;
+        if (size == 0) { // array is empty
+            elementData[elementIndex] = element;
         } else {
             // обходим элементы массива, начиная с последнего, и сравниваем вставляемый элемент с предыдущим (сортировка вставками)
-            for (int i = emptyCellIndex; i > 0; i--) {
+            for (int i = elementIndex; i > 0; i--) {
                 var prevElement = elementData[i - 1];
                 int result = element.compareTo(prevElement);
                 if (result < 0) {  // element is less than prevElement
@@ -91,7 +89,6 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
             }
         }
 
-        emptyCellIndex++;
         size++;
         return elementIndex;
     }
@@ -107,7 +104,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
         }
 
         int index = findElement(element);
-        int lastElementIndex = emptyCellIndex - 1;
+        int lastElementIndex = size - 1;
         if (index == -1) {
             // element not found
             return;
@@ -121,7 +118,6 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
             elementData[lastElementIndex] = null;
         }
 
-        emptyCellIndex--;
         size--;
     }
 
