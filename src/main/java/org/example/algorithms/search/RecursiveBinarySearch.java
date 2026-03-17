@@ -17,8 +17,12 @@ public class RecursiveBinarySearch {
     public static <T extends Comparable<T>> int binarySearch(
             T[] sortedArray, T targetElement, int leftIndex, int rightIndex
     ) {
-        // элемент не найден в интервале
+        // остался один элемент в интервале
         if (rightIndex <= leftIndex) {
+            T midElement = sortedArray[leftIndex];
+            if (midElement.equals(targetElement)) {
+                return leftIndex;
+            }
             return NOT_FOUND;
         }
 
