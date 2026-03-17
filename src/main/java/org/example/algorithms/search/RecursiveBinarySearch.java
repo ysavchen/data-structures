@@ -16,12 +16,12 @@ public class RecursiveBinarySearch {
      */
     public static <T extends Comparable<T>> int binarySearch(T[] sortedArray, T targetElement,
                                                              int leftIndex, int rightIndex) {
-        // элемент не найден в массиве
+        // элемент не найден в интервале
         if (rightIndex <= leftIndex) {
             return NOT_FOUND;
         }
 
-        // поиск элемента в массиве
+        // поиск элемента в интервале
         int midIndex = (leftIndex + rightIndex) / 2;
         T midElement = sortedArray[midIndex];
 
