@@ -49,10 +49,10 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
         while (leftIndex <= rightIndex) {
             int midIndex = (leftIndex + rightIndex) / 2;
             var midElement = elementData[midIndex];
-            int result = element.compareTo(midElement);
+            int result = midElement.compareTo(element);
             if (result == 0) {         // element equals midElement
                 return midIndex;
-            } else if (result < 0) {   // element is less than midElement
+            } else if (result > 0) {   // element is less than midElement
                 rightIndex = midIndex - 1;
             } else {                   // element is greater than midElement
                 leftIndex = midIndex + 1;
