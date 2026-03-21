@@ -36,9 +36,9 @@ public class StaticArrayDeque<T> implements Deque<T> {
 
     /**
      * Для определения следующего значения индекса используется деление по модулю.
-     * {@code tailIndex = (tailIndex + 1) % capacity} можно переписать как:
+     * {@code tailIndex = (tailIndex + shift) % capacity} можно переписать как:
      * <pre>{@code
-     *   tailIndex += 1;
+     *   tailIndex += shift;
      *   if (tailIndex >= capacity) {
      *       tailIndex = 0;
      *   }

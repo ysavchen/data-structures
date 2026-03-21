@@ -25,9 +25,7 @@ public class StaticArrayStack<T> implements Stack<T> {
     }
 
     /**
-     * Retrieves and removes an element from the stack
-     *
-     * @return element
+     * Получение элемента из стека (элемент удаляется)
      */
     @Override
     public T pop() {
@@ -42,9 +40,7 @@ public class StaticArrayStack<T> implements Stack<T> {
     }
 
     /**
-     * Retrieves, but does not remove, an element from the stack
-     *
-     * @return element
+     * Получение элемента из стека (элемент не удаляется)
      */
     @Override
     public T peek() {
