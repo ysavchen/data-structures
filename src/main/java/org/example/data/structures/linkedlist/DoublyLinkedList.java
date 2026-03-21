@@ -5,6 +5,16 @@ package org.example.data.structures.linkedlist;
  */
 public class DoublyLinkedList<T> implements LinkedList<T> {
 
+    private static class Node<T> {
+        private final T value;
+        private Node<T> nextNode = null;
+        private Node<T> previousNode = null;
+
+        Node(T value) {
+            this.value = value;
+        }
+    }
+
     private Node<T> head = null;
 
     private Node<T> tail = null;
@@ -53,6 +63,8 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     }
 
     /**
+     * Удаление элемента из списка
+     * <p>
      * Время работы: O(n)
      *
      * @return {@code true} если узел успешно удален, {@code false} если узел не найден
@@ -98,16 +110,5 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     @Override
     public int getSize() {
         return size;
-    }
-
-    private static class Node<T> {
-
-        private final T value;
-        private Node<T> nextNode = null;
-        private Node<T> previousNode = null;
-
-        Node(T value) {
-            this.value = value;
-        }
     }
 }
