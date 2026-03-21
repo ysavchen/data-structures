@@ -9,7 +9,11 @@ import java.util.ListIterator;
  * На практике не используется.
  * <p>
  * Время работы: O(n^2)<br/>
- * Затраты по памяти: O(1)
+ * Затраты по памяти: O(1)<br/>
+ * Устойчивая: нет
+ * <p>
+ * Принцип работы:
+ *
  * <p>
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */

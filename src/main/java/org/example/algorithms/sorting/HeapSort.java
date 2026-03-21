@@ -5,7 +5,8 @@ package org.example.algorithms.sorting;
  * Используется в реальных задачах.
  * <p>
  * Время работы: O(n log n)<br/>
- * Затраты по памяти: O(1)
+ * Затраты по памяти: O(1)<br/>
+ * Устойчивая: нет
  * <p>
  * <a href="https://www.cs.usfca.edu/~galles/visualization/HeapSort.html">Визуализация</a>
  */
