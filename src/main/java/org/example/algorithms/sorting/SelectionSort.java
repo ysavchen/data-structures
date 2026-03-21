@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Сортировка выбором<br/>
- * На практике не используется.
+ * Сортировка выбором
  * <p>
  * Время работы: O(n^2)<br/>
  * Затраты по памяти: O(1)<br/>
  * Устойчивая: нет
+ * <p>
+ * Использование:<br/>
+ * На практике не используется.
  * <p>
  * Принцип работы:
  *
@@ -45,5 +47,9 @@ public class SelectionSort {
         }
 
         return smallest;
+    }
+
+    public static <T extends Comparable<T>> void sort(T[] array) {
+
     }
 }
