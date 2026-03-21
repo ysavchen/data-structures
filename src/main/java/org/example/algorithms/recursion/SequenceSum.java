@@ -2,9 +2,12 @@ package org.example.algorithms.recursion;
 
 import java.util.Arrays;
 
-public class RecursiveSum {
+/**
+ * Вычисление суммы элементов последовательности
+ */
+public class SequenceSum {
 
-    public static int cyclicSum(int[] array) {
+    public static int loopSum(int[] array) {
         if (array.length == 0) {
             return 0;
         }
@@ -24,5 +27,10 @@ public class RecursiveSum {
         }
         int[] newArray = Arrays.copyOfRange(array, 1, array.length);
         return array[0] + recursiveSum(newArray);
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3};
+        System.out.println(recursiveSum(array));
     }
 }
