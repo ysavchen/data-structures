@@ -6,6 +6,15 @@ package org.example.data.structures.linkedlist;
  */
 public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLinkedList<T> {
 
+    private static class Node<T> {
+        private final T value;
+        private Node<T> nextNode = null;
+
+        Node(T value) {
+            this.value = value;
+        }
+    }
+
     private Node<T> head = null;
 
     private int size = 0;
@@ -86,15 +95,5 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
     @Override
     public int getSize() {
         return size;
-    }
-
-    private static class Node<T> {
-
-        private final T value;
-        private Node<T> nextNode = null;
-
-        Node(T value) {
-            this.value = value;
-        }
     }
 }

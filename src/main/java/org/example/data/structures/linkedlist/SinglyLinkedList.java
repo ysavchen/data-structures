@@ -5,6 +5,15 @@ package org.example.data.structures.linkedlist;
  */
 public class SinglyLinkedList<T> implements LinkedList<T> {
 
+    private static class Node<T> {
+        private final T value;
+        private Node<T> nextNode = null;
+
+        Node(T value) {
+            this.value = value;
+        }
+    }
+
     private Node<T> head = null;
 
     private int size = 0;
@@ -12,11 +21,21 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     public SinglyLinkedList() {
     }
 
+    /**
+     * Получение первого элемента списка
+     * <p>
+     * Время работы: O(1)
+     */
     @Override
     public T getFirstElement() {
         return isEmpty() ? null : head.value;
     }
 
+    /**
+     * Получение последнего элемента списка
+     * <p>
+     * Время работы: O(n)
+     */
     @Override
     public T getLastElement() {
         Node<T> current = head;
@@ -26,6 +45,11 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         return current.value;
     }
 
+    /**
+     * Вставка в начало списка
+     * <p>
+     * Время работы: O(1)
+     */
     @Override
     public void insertToFront(T value) {
         var node = new Node<>(value);
@@ -36,6 +60,11 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         size++;
     }
 
+    /**
+     * Вставка в конец списка
+     * <p>
+     * Время работы: O(n)
+     */
     @Override
     public void insertToBack(T value) {
         var node = new Node<>(value);
@@ -89,15 +118,5 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     @Override
     public int getSize() {
         return size;
-    }
-
-    private static class Node<T> {
-
-        private final T value;
-        private Node<T> nextNode = null;
-
-        Node(T value) {
-            this.value = value;
-        }
     }
 }
