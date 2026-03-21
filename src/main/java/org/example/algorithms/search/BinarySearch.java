@@ -23,16 +23,16 @@ public class BinarySearch {
      */
     public static <T extends Comparable<T>> int binarySearch(T[] sortedArray, T targetElement) {
         int leftIndex = 0;
-        int rightIndex = sortedArray.length; // [leftIndex, rightIndex)
+        int rightIndex = sortedArray.length - 1;
 
-        while (leftIndex < rightIndex) {
+        while (leftIndex <= rightIndex) {
             int midIndex = (leftIndex + rightIndex) / 2;
             T midElement = sortedArray[midIndex];
 
             if (midElement.equals(targetElement)) {
                 return midIndex;
             } else if (midElement.compareTo(targetElement) > 0) {
-                rightIndex = midIndex;
+                rightIndex = midIndex - 1;
             } else { // midElement.compareTo(targetElement) < 0
                 leftIndex = midIndex + 1;
             }
