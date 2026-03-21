@@ -9,26 +9,42 @@ public class RecursiveBinarySearchTests {
     private static final int NOT_FOUND = -1;
 
     @Test
-    void searchExistingNumber() {
+    void searchFirstElement() {
         Integer[] array = {2, 5, 9, 14};
-        int targetNumber = 9;
-        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length);
+        int targetElement = 2;
+        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
+        assertEquals(0, index);
+    }
+
+    @Test
+    void searchMiddleElement() {
+        Integer[] array = {2, 5, 9, 14};
+        int targetElement = 9;
+        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
         assertEquals(2, index);
     }
 
     @Test
-    void searchNonExistingNumber() {
+    void searchLastElement() {
         Integer[] array = {2, 5, 9, 14};
-        int targetNumber = 22;
-        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length);
+        int targetElement = 14;
+        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
+        assertEquals(3, index);
+    }
+
+    @Test
+    void searchNonExistingElement() {
+        Integer[] array = {2, 5, 9, 14};
+        int targetElement = 22;
+        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
         assertEquals(NOT_FOUND, index);
     }
 
     @Test
-    void searchEmptyList() {
+    void searchEmptyArray() {
         Integer[] array = {};
-        int targetNumber = 10;
-        int index = RecursiveBinarySearch.binarySearch(array, targetNumber, 0, array.length);
+        int targetElement = 10;
+        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
         assertEquals(NOT_FOUND, index);
     }
 }

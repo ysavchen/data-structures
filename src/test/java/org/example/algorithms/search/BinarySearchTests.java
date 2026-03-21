@@ -9,26 +9,42 @@ public class BinarySearchTests {
     private static final int NOT_FOUND = -1;
 
     @Test
-    void searchExistingNumber() {
+    void searchFirstElement() {
         Integer[] array = {2, 5, 9, 14};
-        int targetNumber = 9;
-        int index = BinarySearch.binarySearch(array, targetNumber);
+        int targetElement = 2;
+        int index = BinarySearch.binarySearch(array, targetElement);
+        assertEquals(0, index);
+    }
+
+    @Test
+    void searchMiddleElement() {
+        Integer[] array = {2, 5, 9, 14};
+        int targetElement = 9;
+        int index = BinarySearch.binarySearch(array, targetElement);
         assertEquals(2, index);
     }
 
     @Test
-    void searchNonExistingNumber() {
+    void searchLastElement() {
         Integer[] array = {2, 5, 9, 14};
-        int targetNumber = 22;
-        int index = BinarySearch.binarySearch(array, targetNumber);
+        int targetElement = 14;
+        int index = BinarySearch.binarySearch(array, targetElement);
+        assertEquals(3, index);
+    }
+
+    @Test
+    void searchNonExistingElement() {
+        Integer[] array = {2, 5, 9, 14};
+        int targetElement = 22;
+        int index = BinarySearch.binarySearch(array, targetElement);
         assertEquals(NOT_FOUND, index);
     }
 
     @Test
-    void searchEmptyList() {
+    void searchEmptyArray() {
         Integer[] array = {};
-        int targetNumber = 10;
-        int index = BinarySearch.binarySearch(array, targetNumber);
+        int targetElement = 10;
+        int index = BinarySearch.binarySearch(array, targetElement);
         assertEquals(NOT_FOUND, index);
     }
 }
