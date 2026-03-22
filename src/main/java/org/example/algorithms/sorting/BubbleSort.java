@@ -12,6 +12,9 @@ package org.example.algorithms.sorting;
  * Пошаговый процесс поможет новичкам понять саму концепцию сортировки и разобраться в работе этой группы алгоритмов.<br/>
  * На практике не используется.
  * <p>
+ * Принцип работы:
+ *
+ * <p>
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */
 public class BubbleSort {

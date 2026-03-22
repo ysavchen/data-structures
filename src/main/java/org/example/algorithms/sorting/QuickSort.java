@@ -6,7 +6,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
- * Быстрая сортировка<br/>
+ * Быстрая сортировка
  * <p>
  * Время работы: O(n log n) / O(n^2) (в среднем/худшем случае)<br/>
  * Затраты по памяти: O(log n) / O(n) (в среднем/худшем случае)<br/>

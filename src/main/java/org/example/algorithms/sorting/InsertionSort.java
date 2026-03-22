@@ -10,6 +10,9 @@ package org.example.algorithms.sorting;
  * Использование:<br/>
  * Используется в реальных задачах.
  * <p>
+ * Принцип работы:
+ *
+ * <p>
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */
 public class InsertionSort {

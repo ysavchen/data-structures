@@ -13,6 +13,9 @@ package org.example.algorithms.sorting;
  * Благодаря этому процесс сортировки можно распараллелить так, чтобы данные сортировались разными машинами в кластере.<br/>
  * Это позволяет быстро сортировать огромные объемы данных.
  * <p>
+ * Принцип работы:
+ *
+ * <p>
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */
 public class MergeSort {
