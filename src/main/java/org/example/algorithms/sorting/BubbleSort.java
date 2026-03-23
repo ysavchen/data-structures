@@ -1,5 +1,7 @@
 package org.example.algorithms.sorting;
 
+import java.util.Arrays;
+
 /**
  * Пузырьковая сортировка
  * <p>
@@ -12,10 +14,28 @@ package org.example.algorithms.sorting;
  * Пошаговый процесс поможет новичкам понять саму концепцию сортировки и разобраться в работе этой группы алгоритмов.<br/>
  * На практике не используется.
  * <p>
- * Принцип работы:
- *
+ * Принцип работы:<br/>
+ * Пузырьковая сортировка работает путем последовательного сравнения соседних элементов массива и их перестановки, если левый больше правого.<br/>
+ * За один проход самый большой элемент "всплывает" в конец, и процесс повторяется, пока массив не будет отсортирован.
  * <p>
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */
 public class BubbleSort {
+
+    public static <T extends Comparable<T>> void sort(T[] array) {
+        System.out.println("Initial array: " + Arrays.toString(array));
+        for (int i = 0; i < array.length; i++) {
+            // array.length - i -> не проверяем уже отсортированные элементы
+            // array.length - 1 -> чтобы не выйти за границы массива для rightElement
+            for (int j = 0; j < array.length - i - 1; j++) {
+                T leftElement = array[j];
+                T rightElement = array[j + 1];
+                if (leftElement.compareTo(rightElement) > 0) {
+                    array[j] = rightElement;
+                    array[j + 1] = leftElement;
+                }
+            }
+            System.out.println("Step " + i + ", array: " + Arrays.toString(array));
+        }
+    }
 }
