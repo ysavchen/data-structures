@@ -88,6 +88,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         } else {                            // типичный случай
             node.previousNode.nextNode = node.nextNode;
         }
+        size--;
         return true;
     }
 
