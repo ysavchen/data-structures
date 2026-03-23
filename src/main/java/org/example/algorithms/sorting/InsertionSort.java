@@ -19,4 +19,16 @@ package org.example.algorithms.sorting;
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */
 public class InsertionSort {
+
+    public static <T extends Comparable<T>> void sort(T[] array) {
+        for (int i = 1; i < array.length; i++) {
+            T itemToInsert = array[i];
+            int j = i;
+            while (j > 0 && itemToInsert.compareTo(array[j - 1]) < 0) {
+                array[j] = array[j - 1];
+                j--;
+            }
+            array[j] = itemToInsert;
+        }
+    }
 }
