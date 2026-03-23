@@ -2,39 +2,41 @@ package org.example.algorithms.sorting;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QuickSortTests {
 
     @Test
     void sort() {
-        Integer[] array = {9, 14, 2, 5};
-        Integer[] sortedArray = {2, 5, 9, 14};
-        SelectionSort.sort(array);
-        assertArrayEquals(sortedArray, array);
+        List<Integer> list = List.of(9, 14, 2, 5);
+        List<Integer> sortedList = List.of(2, 5, 9, 14);
+        QuickSort.sort(list);
+        assertEquals(sortedList, list);
     }
 
     @Test
     void sortWithSameElements() {
-        Integer[] array = {9, 14, 2, 2, 5};
-        Integer[] sortedArray = {2, 2, 5, 9, 14};
-        QuickSort.sort(array);
-        assertArrayEquals(sortedArray, array);
+        List<Integer> list = List.of(9, 14, 2, 2, 5);
+        List<Integer> sortedList = List.of(2, 2, 5, 9, 14);
+        QuickSort.sort(list);
+        assertEquals(sortedList, list);
     }
 
     @Test
-    void sortSortedArray() {
-        Integer[] array = {2, 5, 9, 14};
-        Integer[] sortedArray = {2, 5, 9, 14};
-        QuickSort.sort(array);
-        assertArrayEquals(sortedArray, array);
+    void sortSortedList() {
+        List<Integer> list = List.of(2, 5, 9, 14);
+        List<Integer> sortedList = List.of(2, 5, 9, 14);
+        QuickSort.sort(list);
+        assertEquals(sortedList, list);
     }
 
     @Test
-    void sortEmptyArray() {
-        Integer[] array = {};
-        Integer[] sortedArray = {};
-        QuickSort.sort(array);
-        assertArrayEquals(sortedArray, array);
+    void sortEmptyList() {
+        List<Integer> list = List.of();
+        List<Integer> sortedList = List.of();
+        QuickSort.sort(list);
+        assertEquals(sortedList, list);
     }
 }
