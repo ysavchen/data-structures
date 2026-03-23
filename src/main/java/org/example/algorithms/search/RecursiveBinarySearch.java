@@ -31,7 +31,7 @@ public class RecursiveBinarySearch {
             return midIndex;
         } else if (midElement.compareTo(targetElement) > 0) { // ищем в левой половине
             return binarySearch(sortedArray, targetElement, leftIndex, midIndex);
-        } else { // midElement.compareTo(targetElement) < 0 (ищем в правой половине)
+        } else { // midElement < targetElement (ищем в правой половине)
             return binarySearch(sortedArray, targetElement, midIndex + 1, rightIndex);
         }
     }
