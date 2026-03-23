@@ -1,9 +1,5 @@
 package org.example.algorithms.sorting;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-
 /**
  * Сортировка выбором
  * <p>
@@ -18,41 +14,21 @@ import java.util.ListIterator;
  * Принцип работы:<br/>
  * Алгоритм делит массив на две части: отсортированную и неотсортированную.<br/>
  * Изначально отсортированная часть пуста.<br/>
- * На каждом шаге выбирается минимальный элемент из неотсортированной части массива и перемещается в начало (отсортированная часть).
+ * На каждом шаге выбирается минимальный элемент из неотсортированной части и перемещается в начало массива.
  * <p>
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */
 public class SelectionSort {
 
-    public static List<Integer> sort(List<Integer> list) {
-        if (list.isEmpty()) {
-            return list;
-        }
-        List<Integer> original = new ArrayList<>(list);
-        List<Integer> sorted = new ArrayList<>(list.size());
-        while (!original.isEmpty()) {
-            Integer smallest = findSmallest(original);
-            sorted.add(smallest);
-            original.remove(smallest);
-        }
-        return sorted;
-    }
-
-    private static int findSmallest(List<Integer> list) {
-        ListIterator<Integer> iterator = list.listIterator();
-        int smallest = list.getFirst();
-
-        while (iterator.hasNext()) {
-            int next = iterator.next();
-            if (next < smallest) {
-                smallest = next;
-            }
-        }
-
-        return smallest;
-    }
-
     public static <T extends Comparable<T>> void sort(T[] array) {
-
+        for (int i = 0; i < array.length; i++) {
+            T minElement = array[i];
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j].compareTo(minElement) < 0) { // array[j] < minElement
+                    minElement = array[j];
+                }
+            }
+            array[i] = minElement;
+        }
     }
 }
