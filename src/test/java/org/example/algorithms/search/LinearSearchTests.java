@@ -12,7 +12,7 @@ public class LinearSearchTests {
     void searchElement() {
         Integer[] array = {9, 14, 2, 5};
         int targetElement = 9;
-        int index = LinearSearch.linearSearch(array, targetElement);
+        int index = LinearSearch.search(array, targetElement);
         assertEquals(0, index);
     }
 
@@ -20,7 +20,7 @@ public class LinearSearchTests {
     void searchNonExistingElement() {
         Integer[] array = {9, 14, 2, 5};
         int targetNumber = 22;
-        int index = LinearSearch.linearSearch(array, targetNumber);
+        int index = LinearSearch.search(array, targetNumber);
         assertEquals(NOT_FOUND, index);
     }
 
@@ -28,7 +28,7 @@ public class LinearSearchTests {
     void searchEmptyList() {
         Integer[] list = {};
         int targetElement = 10;
-        int index = LinearSearch.linearSearch(list, targetElement);
+        int index = LinearSearch.search(list, targetElement);
         assertEquals(NOT_FOUND, index);
     }
 }

@@ -21,7 +21,7 @@ public class BinarySearch {
      * @param targetElement элемент для поиска в массиве
      * @return индекс найденного элемента
      */
-    public static <T extends Comparable<T>> int binarySearch(T[] sortedArray, T targetElement) {
+    public static <T extends Comparable<T>> int search(T[] sortedArray, T targetElement) {
         int leftIndex = 0;
         int rightIndex = sortedArray.length - 1;
 

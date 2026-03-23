@@ -12,7 +12,7 @@ public class RecursiveBinarySearchTests {
     void searchFirstElement() {
         Integer[] array = {2, 5, 9, 14};
         int targetElement = 2;
-        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
+        int index = RecursiveBinarySearch.search(array, targetElement, 0, array.length);
         assertEquals(0, index);
     }
 
@@ -20,7 +20,7 @@ public class RecursiveBinarySearchTests {
     void searchMiddleElement() {
         Integer[] array = {2, 5, 9, 14};
         int targetElement = 9;
-        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
+        int index = RecursiveBinarySearch.search(array, targetElement, 0, array.length);
         assertEquals(2, index);
     }
 
@@ -28,7 +28,7 @@ public class RecursiveBinarySearchTests {
     void searchLastElement() {
         Integer[] array = {2, 5, 9, 14};
         int targetElement = 14;
-        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
+        int index = RecursiveBinarySearch.search(array, targetElement, 0, array.length);
         assertEquals(3, index);
     }
 
@@ -36,7 +36,7 @@ public class RecursiveBinarySearchTests {
     void searchNonExistingElement() {
         Integer[] array = {2, 5, 9, 14};
         int targetElement = 22;
-        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
+        int index = RecursiveBinarySearch.search(array, targetElement, 0, array.length);
         assertEquals(NOT_FOUND, index);
     }
 
@@ -44,7 +44,7 @@ public class RecursiveBinarySearchTests {
     void searchEmptyArray() {
         Integer[] array = {};
         int targetElement = 10;
-        int index = RecursiveBinarySearch.binarySearch(array, targetElement, 0, array.length);
+        int index = RecursiveBinarySearch.search(array, targetElement, 0, array.length);
         assertEquals(NOT_FOUND, index);
     }
 }

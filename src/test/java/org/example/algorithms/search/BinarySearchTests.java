@@ -12,7 +12,7 @@ public class BinarySearchTests {
     void searchFirstElement() {
         Integer[] array = {2, 5, 9, 14};
         int targetElement = 2;
-        int index = BinarySearch.binarySearch(array, targetElement);
+        int index = BinarySearch.search(array, targetElement);
         assertEquals(0, index);
     }
 
@@ -20,7 +20,7 @@ public class BinarySearchTests {
     void searchMiddleElement() {
         Integer[] array = {2, 5, 9, 14};
         int targetElement = 9;
-        int index = BinarySearch.binarySearch(array, targetElement);
+        int index = BinarySearch.search(array, targetElement);
         assertEquals(2, index);
     }
 
@@ -28,7 +28,7 @@ public class BinarySearchTests {
     void searchLastElement() {
         Integer[] array = {2, 5, 9, 14};
         int targetElement = 14;
-        int index = BinarySearch.binarySearch(array, targetElement);
+        int index = BinarySearch.search(array, targetElement);
         assertEquals(3, index);
     }
 
@@ -36,7 +36,7 @@ public class BinarySearchTests {
     void searchNonExistingElement() {
         Integer[] array = {2, 5, 9, 14};
         int targetElement = 22;
-        int index = BinarySearch.binarySearch(array, targetElement);
+        int index = BinarySearch.search(array, targetElement);
         assertEquals(NOT_FOUND, index);
     }
 
@@ -44,7 +44,7 @@ public class BinarySearchTests {
     void searchEmptyArray() {
         Integer[] array = {};
         int targetElement = 10;
-        int index = BinarySearch.binarySearch(array, targetElement);
+        int index = BinarySearch.search(array, targetElement);
         assertEquals(NOT_FOUND, index);
     }
 }
