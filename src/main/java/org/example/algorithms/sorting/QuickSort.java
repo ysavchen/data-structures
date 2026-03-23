@@ -82,6 +82,9 @@ public class QuickSort {
     }
 
     public static <T extends Comparable<T>> void sort(T[] array) {
+        if (array.length <= 1) return;
+
+        int pivotIndex = array.length / 2;
 
     }
 }
