@@ -65,4 +65,8 @@ public class QuickSort {
                 .flatMap(Function.identity())
                 .toList();
     }
+
+    public static <T extends Comparable<T>> void sort(T[] array) {
+
+    }
 }
