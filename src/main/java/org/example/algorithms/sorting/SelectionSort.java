@@ -26,6 +26,7 @@ public class SelectionSort {
 
     public static <T extends Comparable<T>> void sort(T[] array) {
         System.out.println("Initial array: " + Arrays.toString(array));
+
         for (int i = 0; i < array.length; i++) {
             int minElementIndex = i;
             for (int j = i + 1; j < array.length; j++) {

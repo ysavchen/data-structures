@@ -26,6 +26,7 @@ public class BubbleSort {
 
     public static <T extends Comparable<T>> void sort(T[] array) {
         System.out.println("Initial array: " + Arrays.toString(array));
+
         for (int i = 0; i < array.length; i++) {
             // array.length - i -> не проверяем уже отсортированные элементы
             // array.length - 1 -> чтобы не выйти за границы массива для rightElement

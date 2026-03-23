@@ -1,5 +1,7 @@
 package org.example.algorithms.sorting;
 
+import java.util.Arrays;
+
 /**
  * Сортировка вставками
  * <p>
@@ -13,22 +15,30 @@ package org.example.algorithms.sorting;
  * Фактически, элементы упорядочиваются по мере их поступления.
  * Благодаря этому сортировку вставками удобно использовать в случаях, когда элементы поступают в виде потока и их нужно сортировать в реальном времени.
  * <p>
- * Принцип работы:
- *
+ * Принцип работы:<br/>
+ * Алгоритм делит массив на две части: отсортированную и неотсортированную.<br/>
+ * Изначально отсортированная часть содержит первый элемент массива, а все остальные элементы считаются несортированными.<br/>
+ * На каждом шаге алгоритм:<br/>
+ * - берёт первый элемент из несортированной части<br/>
+ * - вставляет его в правильное место в отсортированной части<br/>
+ * - повторяет процесс, пока все элементы не будут отсортированы.
  * <p>
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */
 public class InsertionSort {
 
     public static <T extends Comparable<T>> void sort(T[] array) {
+        System.out.println("Initial array: " + Arrays.toString(array));
+
         for (int i = 1; i < array.length; i++) {
-            T itemToInsert = array[i];
-            int j = i;
-            while (j > 0 && itemToInsert.compareTo(array[j - 1]) < 0) {
-                array[j] = array[j - 1];
-                j--;
+            T element = array[i];
+            int j = i - 1; // previous element index
+            while (j >= 0 && element.compareTo(array[j]) < 0) {
+                array[j + 1] = array[j];
+                j -= 1;
             }
-            array[j] = itemToInsert;
+            array[j + 1] = element;
+            System.out.println("Step " + i + ", array: " + Arrays.toString(array));
         }
     }
 }
