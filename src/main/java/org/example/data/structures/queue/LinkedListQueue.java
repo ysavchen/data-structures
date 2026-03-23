@@ -21,7 +21,9 @@ public class LinkedListQueue<T> implements Queue<T> {
 
     @Override
     public T dequeue() {
-        return list.getFirstElement();
+        T element = list.getFirstElement();
+        list.delete(element);
+        return element;
     }
 
     @Override
