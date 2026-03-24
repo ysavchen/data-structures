@@ -2,8 +2,7 @@ package org.example.algorithms.sorting;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Random;
 
 /**
  * Быстрая сортировка
@@ -20,7 +19,7 @@ import java.util.stream.Stream;
  * <p>
  * Принцип работы:<br/>
  * Быстрая сортировка работает по принципу "разделяй и властвуй".<br/>
- * Алгоритм работает в 3 основных этапа:
+ * Алгоритм работает в 4 основных этапа:
  * <ol>
  * <li>
  * Выбор опорного элемента<br/>
@@ -33,13 +32,16 @@ import java.util.stream.Stream;
  * <li>
  * Рекурсивная сортировка<br/>
  * Алгоритм рекурсивно применяются к подмассивам слева и справа от опорного элемента.<br/>
- * Процесс продолжается, пока подмассивы не станут пустыми или состоящими из одного элемента.
- * После завершения всех рекурсивных вызовов весь массив оказывается отсортированным.
+ * Процесс продолжается, пока подмассивы не станут пустыми или состоящими из одного элемента (базовый случай).
+ * </li>
+ * <li>
+ * Объединение результатов<br/>
+ * После завершения всех рекурсивных вызовов объединяем результаты в общий отсортированный массив.
  * </li>
  * </ol>
  * <p>
  * Как выбрать опорный элемент?<br/>
- * В качестве опорного элемента выбирается произвольный элемент.<br/>
+ * В качестве опорного элемента выбирается произвольный элемент массива.<br/>
  * Не стоит каждый раз искать точки, которые разделяют данные оптимальным образом.<br/>
  * Это лишь усложняет весь процесс.
  * <p>
@@ -53,38 +55,39 @@ import java.util.stream.Stream;
  */
 public class QuickSort {
 
-    public static List<Integer> sort(List<Integer> list) {
-        List<Integer> listCopy = new ArrayList<>(list);
-        if (listCopy.size() < 2) {
-            return listCopy;
+    private static final Random random = new Random();
+
+    public static List<List<Integer>> partition(int pivot, List<Integer> list) {
+        List<Integer> left = new ArrayList<>();
+        List<Integer> center = new ArrayList<>();
+        List<Integer> right = new ArrayList<>();
+        for (Integer element : list) {
+            if (element < pivot) {
+                left.add(element);
+            } else if (element == pivot) {
+                center.add(element);
+            } else {
+                right.add(element);
+            }
         }
-
-        // Pivot - опорный элемент
-        // Pivot - элемент для разделения массива не 2 части: меньшую и большую половину.
-        // Итоговая сложность алгоритма зависит от выбора опорного элемента.
-        int pivotElementIndex = 1;
-        Integer pivot = listCopy.get(pivotElementIndex);
-        listCopy.remove(pivotElementIndex);
-        List<Integer> less = sort(
-                listCopy.stream()
-                        .filter(element -> element <= pivot)
-                        .toList()
-        );
-        List<Integer> more = sort(
-                listCopy.stream()
-                        .filter(element -> element > pivot)
-                        .toList()
-        );
-
-        return Stream.of(less.stream(), Stream.of(pivot), more.stream())
-                .flatMap(Function.identity())
-                .toList();
+        return List.of(left, center, right);
     }
 
-    public static <T extends Comparable<T>> void sort(T[] array) {
-        if (array.length <= 1) return;
+    public static List<Integer> concatenate(List<Integer> left, List<Integer> center, List<Integer> right) {
+        List<Integer> result = new ArrayList<>(left.size() + center.size() + right.size());
+        result.addAll(left);
+        result.addAll(center);
+        result.addAll(right);
+        return result;
+    }
 
-        int pivotIndex = array.length / 2;
-
+    public static List<Integer> sort(List<Integer> list) {
+        if (list.size() <= 1) { // базовый случай
+            return list;
+        } else {                // рекурсивный случай
+            int pivot = list.get(random.nextInt(list.size()));
+            List<List<Integer>> parts = partition(pivot, list);
+            return concatenate(sort(parts.get(0)), parts.get(1), sort(parts.get(2)));
+        }
     }
 }
