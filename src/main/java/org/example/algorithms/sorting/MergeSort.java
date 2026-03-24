@@ -35,8 +35,8 @@ import java.util.Arrays;
  */
 public class MergeSort {
 
-    private static int[] merge(int length, int[] left, int[] right) {
-        int[] result = new int[length];
+    private static int[] merge(int[] left, int[] right) {
+        int[] result = new int[left.length + right.length];
 
         // Объединяем левую и правую часть в результирующий массив, в котором элементы будут идти в правильном порядке.
         // На каждом шаге берём у каждого из двух массивов текущий первый элемент.
@@ -77,6 +77,6 @@ public class MergeSort {
         // Рекурсивно сортируем левую и правую половину массива
         int[] left = sort(Arrays.copyOfRange(array, 0, array.length / 2));
         int[] right = sort(Arrays.copyOfRange(array, array.length / 2, array.length));
-        return merge(array.length, left, right);
+        return merge(left, right);
     }
 }
