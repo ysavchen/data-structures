@@ -35,24 +35,14 @@ import java.util.Arrays;
  */
 public class MergeSort {
 
-    public static int[] sort(int[] array) {
-        if (array.length <= 1) {  // базовый случай
-            return array;
-        }
-
-        // Рекурсивно сортируем левую и правую половину массива
-        int[] left = sort(Arrays.copyOfRange(array, 0, array.length / 2));
-        int[] right = sort(Arrays.copyOfRange(array, array.length / 2, array.length));
-
-        // Массив для результата сортировки
-        int[] result = new int[array.length];
+    private static int[] merge(int length, int[] left, int[] right) {
+        int[] result = new int[length];
 
         // Объединяем левую и правую часть в результирующий массив, в котором элементы будут идти в правильном порядке.
         // На каждом шаге берём у каждого из двух массивов текущий первый элемент.
         // Сравниваем их между собой и наименьший из них добавляем в массив с результатом.
         int l = 0, r = 0, k = 0;
         while (l < left.length && r < right.length) {
-            // выбираем, из какого массива забрать минимальный элемент
             if (left[l] <= right[r]) {
                 result[k] = left[l];
                 l++;
@@ -77,5 +67,16 @@ public class MergeSort {
         }
 
         return result;
+    }
+
+    public static int[] sort(int[] array) {
+        if (array.length <= 1) {  // базовый случай
+            return array;
+        }
+
+        // Рекурсивно сортируем левую и правую половину массива
+        int[] left = sort(Arrays.copyOfRange(array, 0, array.length / 2));
+        int[] right = sort(Arrays.copyOfRange(array, array.length / 2, array.length));
+        return merge(array.length, left, right);
     }
 }
