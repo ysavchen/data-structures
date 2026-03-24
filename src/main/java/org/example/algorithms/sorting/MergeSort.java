@@ -1,5 +1,7 @@
 package org.example.algorithms.sorting;
 
+import java.util.Arrays;
+
 /**
  * Сортировка слиянием
  * <p>
@@ -32,4 +34,48 @@ package org.example.algorithms.sorting;
  * <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">Визуализация</a>
  */
 public class MergeSort {
+
+    public static int[] sort(int[] array) {
+        if (array.length <= 1) {  // базовый случай
+            return array;
+        }
+
+        // запускаем сортировку рекурсивно на левой половине
+        int[] left = sort(Arrays.copyOfRange(array, 0, array.length / 2));
+
+        // запускаем сортировку рекурсивно на правой половине
+        int[] right = sort(Arrays.copyOfRange(array, array.length / 2, array.length));
+
+        // заводим массив для результата сортировки
+        int[] result = new int[array.length];
+
+        // сливаем результаты
+        int l = 0, r = 0, k = 0;
+        while (l < left.length && r < right.length) {
+            // выбираем, из какого массива забрать минимальный элемент
+            if (left[l] <= right[r]) {
+                result[k] = left[l];
+                l++;
+            } else {
+                result[k] = right[r];
+                r++;
+            }
+            k++;
+        }
+
+        // Если один массив закончился раньше, чем второй, то
+        // переносим оставшиеся элементы второго массива в результирующий
+        while (l < left.length) {
+            result[k] = left[l];   // перенеси оставшиеся элементы left в result
+            l++;
+            k++;
+        }
+        while (r < right.length) {
+            result[k] = right[r];  // перенеси оставшиеся элементы right в result
+            r++;
+            k++;
+        }
+
+        return result;
+    }
 }
