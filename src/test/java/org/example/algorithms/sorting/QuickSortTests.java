@@ -12,31 +12,31 @@ public class QuickSortTests {
     void sort() {
         List<Integer> list = List.of(9, 14, 2, 5);
         List<Integer> sortedList = List.of(2, 5, 9, 14);
-        QuickSort.sort(list);
-        assertEquals(sortedList, list);
+        List<Integer> result = QuickSort.sort(list);
+        assertEquals(sortedList, result);
     }
 
     @Test
     void sortWithSameElements() {
         List<Integer> list = List.of(9, 14, 2, 2, 5);
         List<Integer> sortedList = List.of(2, 2, 5, 9, 14);
-        QuickSort.sort(list);
-        assertEquals(sortedList, list);
+        List<Integer> result = QuickSort.sort(list);
+        assertEquals(sortedList, result);
     }
 
     @Test
     void sortSortedList() {
         List<Integer> list = List.of(2, 5, 9, 14);
         List<Integer> sortedList = List.of(2, 5, 9, 14);
-        QuickSort.sort(list);
-        assertEquals(sortedList, list);
+        List<Integer> result = QuickSort.sort(list);
+        assertEquals(sortedList, result);
     }
 
     @Test
     void sortEmptyList() {
         List<Integer> list = List.of();
         List<Integer> sortedList = List.of();
-        QuickSort.sort(list);
-        assertEquals(sortedList, list);
+        List<Integer> result = QuickSort.sort(list);
+        assertEquals(sortedList, result);
     }
 }
