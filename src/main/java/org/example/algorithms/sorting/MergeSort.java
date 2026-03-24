@@ -66,12 +66,12 @@ public class MergeSort {
         // Если один массив закончился раньше, чем второй, то
         // переносим оставшиеся элементы второго массива в результирующий
         while (l < left.length) {
-            result[k] = left[l]; // перенеси оставшиеся элементы left в result
+            result[k] = left[l]; // переносим оставшиеся элементы left в result
             l++;
             k++;
         }
         while (r < right.length) {
-            result[k] = right[r]; // перенеси оставшиеся элементы right в result
+            result[k] = right[r]; // переносим оставшиеся элементы right в result
             r++;
             k++;
         }
