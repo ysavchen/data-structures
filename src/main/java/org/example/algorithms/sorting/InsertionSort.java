@@ -34,12 +34,12 @@ public class InsertionSort {
 
         for (int i = 1; i < array.length; i++) {
             T element = array[i];
-            int j = i - 1; // previous element index
-            while (j >= 0 && element.compareTo(array[j]) < 0) {
-                array[j + 1] = array[j];
-                j -= 1;
+            int j = i;
+            while (j >= 0 && element.compareTo(array[j - 1]) < 0) {
+                array[j] = array[j - 1];
+                j--;
             }
-            array[j + 1] = element;
+            array[j] = element;
             System.out.println("Step " + i + ", array: " + Arrays.toString(array));
         }
     }
