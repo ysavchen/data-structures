@@ -28,6 +28,7 @@ public class BubbleSort {
         System.out.println("Initial array: " + Arrays.toString(array));
 
         for (int i = 0; i < array.length; i++) {
+            boolean swapped = false;
             // array.length - i -> не проверяем уже отсортированные элементы
             // array.length - 1 -> чтобы не выйти за границы массива для rightElement
             for (int j = 0; j < array.length - i - 1; j++) {
@@ -36,8 +37,10 @@ public class BubbleSort {
                 if (leftElement.compareTo(rightElement) > 0) {
                     array[j] = rightElement;
                     array[j + 1] = leftElement;
+                    swapped = true;
                 }
             }
+            if (!swapped) break;
             System.out.println("Step " + i + ", array: " + Arrays.toString(array));
         }
     }
