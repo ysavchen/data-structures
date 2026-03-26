@@ -85,7 +85,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         } else if (node.nextNode == null) { // удаление последнего узла (tail)
             tail = node.previousNode;
             tail.nextNode = null;
-        } else {                            // типичный случай
+        } else {                            // общий случай
             node.previousNode.nextNode = node.nextNode;
         }
         size--;
