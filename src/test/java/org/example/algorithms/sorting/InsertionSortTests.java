@@ -23,6 +23,14 @@ public class InsertionSortTests {
     }
 
     @Test
+    void sortNegativeElements() {
+        Integer[] array = {-5, 4, 1, -3, 0};
+        Integer[] sortedArray = {-5, -3, 0, 1, 4};
+        InsertionSort.sort(array);
+        assertArrayEquals(sortedArray, array);
+    }
+
+    @Test
     void sortSortedArray() {
         Integer[] array = {2, 5, 9, 14};
         Integer[] sortedArray = {2, 5, 9, 14};
