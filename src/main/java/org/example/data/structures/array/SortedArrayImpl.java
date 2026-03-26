@@ -79,7 +79,8 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
         if (size == 0) { // array is empty
             elementData[elementIndex] = element;
         } else {
-            // обходим элементы массива, начиная с последнего, и сравниваем вставляемый элемент с предыдущим (сортировка вставками)
+            // обходим элементы массива, начиная с последнего,
+            //     и сравниваем вставляемый элемент с предыдущим (сортировка вставками)
             for (int i = elementIndex; i > 0; i--) {
                 var prevElement = elementData[i - 1];
                 int result = element.compareTo(prevElement);
@@ -111,8 +112,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
 
         int index = findElement(element);
         int lastElementIndex = size - 1;
-        if (index == -1) {
-            // element not found
+        if (index == ELEMENT_NOT_FOUND) {
             return;
         } else if (index == lastElementIndex) {
             elementData[index] = null;
