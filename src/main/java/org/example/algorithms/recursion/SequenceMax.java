@@ -28,7 +28,7 @@ public class SequenceMax {
             throw new IllegalArgumentException("Array is empty");
         }
         if (array.length == 1) {
-            return array[0];
+            return array[0];  // базовый случай
         }
         int[] newArray = Arrays.copyOfRange(array, 1, array.length);
         return Math.max(array[0], recursiveMax(newArray));
