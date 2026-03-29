@@ -11,10 +11,6 @@ public class Factorial {
      * Вычисление факториала с помощью цикла
      */
     public static int loopFactorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("Факториал отрицательного числа не определён");
-        }
-
         int result = 1;
         for (int i = 1; i <= n; i++) {
             result = result * i;
@@ -28,10 +24,6 @@ public class Factorial {
      * Чтобы решить эту проблему можно заменить рекурсию на цикл.
      */
     private static int factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("Факториал отрицательного числа не определён");
-        }
-
         if (n <= 1) {
             return 1;
         }
