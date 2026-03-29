@@ -12,8 +12,8 @@ public class Factorial {
      */
     public static int loopFactorial(int n) {
         int result = 1;
-        for (int i = 1; i <= n; i++) {
-            result = result * i;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
         }
         return result;
     }
@@ -31,7 +31,7 @@ public class Factorial {
     }
 
     public static void main(String[] args) {
-        int result = factorial(3);
+        int result = loopFactorial(3);
         System.out.println("Result: " + result);
     }
 }
