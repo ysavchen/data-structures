@@ -2,15 +2,29 @@ package org.example.algorithms.recursion;
 
 public class Fibonacci {
 
-    private static int fibonacci(int x) {
-        if (x == 1 || x == 0) {
+    private static int loopFibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+
+        int prev = 0, curr = 1;
+        for (int i = 2; i <= n; i++) {
+            int next = prev + curr;
+            prev = curr;
+            curr = next;
+        }
+        return curr;
+    }
+
+    private static int fibonacci(int n) {
+        if (n <= 1) {
             return 1;
         }
-        return fibonacci(x - 1) + fibonacci(x - 2);
+        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     public static void main(String[] args) {
-        int result = fibonacci(3);
+        int result = fibonacci(10);
         System.out.println("Result: " + result);
     }
 }
