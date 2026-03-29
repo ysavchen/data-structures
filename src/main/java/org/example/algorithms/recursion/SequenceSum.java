@@ -18,12 +18,16 @@ public class SequenceSum {
         return total;
     }
 
+    /**
+     * Сумма элементов рекурсивно вычисляется как:<br/>
+     * {@code сумма текущего элемента + сумма всех последующих элементов}
+     */
     public static int recursiveSum(int[] array) {
         if (array.length == 0) {
-            return 0;
+            return 0;        // обработка, если входящий массив пустой
         }
         if (array.length == 1) {
-            return array[0];
+            return array[0]; // базовый случай
         }
         int[] newArray = Arrays.copyOfRange(array, 1, array.length);
         return array[0] + recursiveSum(newArray);
