@@ -1,7 +1,7 @@
 package org.example.data.structures.associative.array;
 
-import org.example.data.structures.array.DynamicArray;
-import org.example.data.structures.array.DynamicArrayImpl;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Ассоциативный массив со сложностью операций O(n)
@@ -18,16 +18,15 @@ public class AssociativeArray<K, V> implements Map<K, V> {
         }
     }
 
-    private final DynamicArray<Pair<K, V>> pairs;
+    private final List<Pair<K, V>> pairs;
 
     public AssociativeArray() {
-        this.pairs = new DynamicArrayImpl<>();
+        this.pairs = new ArrayList<>();
     }
 
     @Override
     public V get(K key) {
-        for (int i = 0; i < pairs.getSize(); i++) {
-            Pair<K, V> entry = pairs.getElement(i);
+        for (Pair<K, V> entry : pairs) {
             if (entry.key.equals(key)) {
                 return entry.value;
             }
@@ -37,8 +36,7 @@ public class AssociativeArray<K, V> implements Map<K, V> {
 
     @Override
     public void set(K key, V value) {
-        for (int i = 0; i < pairs.getSize(); i++) {
-            Pair<K, V> entry = pairs.getElement(i);
+        for (Pair<K, V> entry : pairs) {
             if (entry.key.equals(key)) {
                 entry.value = value;
                 return;
@@ -46,13 +44,12 @@ public class AssociativeArray<K, V> implements Map<K, V> {
         }
 
         Pair<K, V> entry = new Pair<>(key, value);
-        pairs.addElement(entry);
+        pairs.add(entry);
     }
 
     @Override
     public boolean contains(V value) {
-        for (int i = 0; i < pairs.getSize(); i++) {
-            Pair<K, V> entry = pairs.getElement(i);
+        for (Pair<K, V> entry : pairs) {
             if (entry.value.equals(value)) {
                 return true;
             }
@@ -63,5 +60,10 @@ public class AssociativeArray<K, V> implements Map<K, V> {
     @Override
     public boolean isEmpty() {
         return pairs.isEmpty();
+    }
+
+    @Override
+    public int getSize() {
+        return pairs.size();
     }
 }

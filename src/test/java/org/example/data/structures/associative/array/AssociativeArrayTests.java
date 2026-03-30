@@ -1,0 +1,51 @@
+package org.example.data.structures.associative.array;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AssociativeArrayTests {
+
+    @Test
+    void createAssociativeArray() {
+        var array = new AssociativeArray<String, String>();
+        assertTrue(array.isEmpty());
+    }
+
+    @Test
+    void setValue() {
+        var array = new AssociativeArray<String, String>();
+        array.set("first", "Anna");
+        assertEquals(1, array.getSize());
+
+        array.set("second", "Maria");
+        assertEquals(2, array.getSize());
+    }
+
+    @Test
+    void replaceValue() {
+        var array = new AssociativeArray<String, String>();
+        array.set("first", "Anna");
+        assertEquals(1, array.getSize());
+
+        array.set("first", "Maria");
+        assertEquals("Maria", array.get("first"));
+        assertEquals(1, array.getSize());
+    }
+
+    @Test
+    void getValue() {
+        var array = new AssociativeArray<String, String>();
+        array.set("first", "Anna");
+        assertEquals("Anna", array.get("first"));
+        assertEquals(1, array.getSize());
+    }
+
+    @Test
+    void containsValue() {
+        var array = new AssociativeArray<String, String>();
+        array.set("first", "Anna");
+        assertTrue(array.contains("Anna"));
+        assertFalse(array.contains("Maria"));
+    }
+}

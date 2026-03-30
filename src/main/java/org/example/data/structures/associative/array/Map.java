@@ -10,4 +10,6 @@ public interface Map<K, V> {
 
     boolean isEmpty();
 
+    int getSize();
+
 }
