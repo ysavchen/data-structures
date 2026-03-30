@@ -35,7 +35,7 @@ public class InsertionSort {
         for (int i = 1; i < array.length; i++) {
             T element = array[i];
             int j = i;
-            while (j >= 0 && element.compareTo(array[j - 1]) < 0) {
+            while (j > 0 && element.compareTo(array[j - 1]) < 0) {
                 array[j] = array[j - 1];
                 j--;
             }
