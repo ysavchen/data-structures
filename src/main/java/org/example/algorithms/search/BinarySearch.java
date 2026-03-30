@@ -18,7 +18,7 @@ public class BinarySearch {
      * Концептуально удобно сначала проверять актуальность поиска в левой половине, потом в правой.
      * <p>
      * Защититься от переполнения при нахождении {@code midIndex} можно так:<br/>
-     * {@code leftIndex + (leftIndex - rightIndex) / 2}
+     * {@code leftIndex + (rightIndex - leftIndex) / 2}
      *
      * @param sortedArray   отсортированный массив
      * @param targetElement элемент для поиска в массиве
