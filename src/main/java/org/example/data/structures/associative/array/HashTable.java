@@ -1,7 +1,7 @@
 package org.example.data.structures.associative.array;
 
-import org.example.data.structures.array.DynamicArray;
-import org.example.data.structures.array.DynamicArrayImpl;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Хеш-таблица на основе массива с разрешением конфликтов методом цепочек
@@ -18,10 +18,10 @@ public class HashTable<K, V> implements Map<K, V> {
         }
     }
 
-    private final DynamicArray<Pair<K, V>> pairs;
+    private final List<Pair<K, V>> pairs;
 
     public HashTable() {
-        this.pairs = new DynamicArrayImpl<>();
+        this.pairs = new ArrayList<>();
     }
 
     @Override
@@ -46,6 +46,6 @@ public class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public int getSize() {
-        return pairs.getSize();
+        return pairs.size();
     }
 }
