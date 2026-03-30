@@ -53,6 +53,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         var node = new Node<>(value);
         if (tail != null) {
             tail.nextNode = node;
+            node.previousNode = tail;
         }
         tail = node;
 
