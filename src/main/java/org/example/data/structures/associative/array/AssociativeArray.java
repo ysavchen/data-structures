@@ -8,26 +8,26 @@ import org.example.data.structures.array.DynamicArrayImpl;
  */
 public class AssociativeArray<K, V> implements Map<K, V> {
 
-    private static class Entry<K, V> {
+    private static class Pair<K, V> {
         private final K key;
         private V value;
 
-        Entry(K key, V value) {
+        Pair(K key, V value) {
             this.key = key;
             this.value = value;
         }
     }
 
-    private final DynamicArray<Entry<K, V>> entries;
+    private final DynamicArray<Pair<K, V>> pairs;
 
     public AssociativeArray() {
-        this.entries = new DynamicArrayImpl<>();
+        this.pairs = new DynamicArrayImpl<>();
     }
 
     @Override
     public V get(K key) {
-        for (int i = 0; i < entries.getSize(); i++) {
-            Entry<K, V> entry = entries.getElement(i);
+        for (int i = 0; i < pairs.getSize(); i++) {
+            Pair<K, V> entry = pairs.getElement(i);
             if (entry.key.equals(key)) {
                 return entry.value;
             }
@@ -37,22 +37,22 @@ public class AssociativeArray<K, V> implements Map<K, V> {
 
     @Override
     public void set(K key, V value) {
-        for (int i = 0; i < entries.getSize(); i++) {
-            Entry<K, V> entry = entries.getElement(i);
+        for (int i = 0; i < pairs.getSize(); i++) {
+            Pair<K, V> entry = pairs.getElement(i);
             if (entry.key.equals(key)) {
                 entry.value = value;
                 return;
             }
         }
 
-        Entry<K, V> entry = new Entry<>(key, value);
-        entries.addElement(entry);
+        Pair<K, V> entry = new Pair<>(key, value);
+        pairs.addElement(entry);
     }
 
     @Override
     public boolean contains(V value) {
-        for (int i = 0; i < entries.getSize(); i++) {
-            Entry<K, V> entry = entries.getElement(i);
+        for (int i = 0; i < pairs.getSize(); i++) {
+            Pair<K, V> entry = pairs.getElement(i);
             if (entry.value.equals(value)) {
                 return true;
             }
@@ -62,6 +62,6 @@ public class AssociativeArray<K, V> implements Map<K, V> {
 
     @Override
     public boolean isEmpty() {
-        return entries.isEmpty();
+        return pairs.isEmpty();
     }
 }
