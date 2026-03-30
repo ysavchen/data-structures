@@ -26,8 +26,8 @@ public class MergeSortTests {
     void sortNegativeElements() {
         int[] array = {-5, 4, 1, -3, 0};
         int[] sortedArray = {-5, -3, 0, 1, 4};
-        MergeSort.sort(array);
-        assertArrayEquals(sortedArray, array);
+        int[] result = MergeSort.sort(array);
+        assertArrayEquals(sortedArray, result);
     }
 
     @Test
