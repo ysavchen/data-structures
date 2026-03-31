@@ -11,11 +11,11 @@ public class RotatedSortedArraySearch {
      * Бинарный поиск<br/>
      * Время работы: O(log n)
      *
-     * @param array         отсортированный массив со смещением
-     * @param targetElement элемент для поиска в массиве
+     * @param array  отсортированный массив со смещением
+     * @param target элемент для поиска в массиве
      * @return индекс найденного элемента
      */
-    public static int search(int[] array, int targetElement) {
+    public static int search(int[] array, int target) {
         int leftIndex = 0;
         int rightIndex = array.length - 1;
 
@@ -23,20 +23,20 @@ public class RotatedSortedArraySearch {
             int midIndex = (leftIndex + rightIndex) / 2;
             int midElement = array[midIndex];
 
-            if (midElement == targetElement) {
+            if (midElement == target) {
                 return midIndex;
             }
 
             // проверяем, отсортирована ли левая половина массива
             // если нет, то считаем, что отсортирована правая половина
             if (array[leftIndex] <= array[midIndex]) {
-                if (array[leftIndex] >= targetElement && array[midIndex] < targetElement) {
+                if (array[leftIndex] >= target && array[midIndex] < target) {
                     rightIndex = midIndex - 1;
                 } else {
                     leftIndex = midIndex + 1;
                 }
             } else {
-                if (array[midIndex] > targetElement && array[rightIndex] <= targetElement) {
+                if (array[midIndex] > target && array[rightIndex] <= target) {
                     leftIndex = midIndex + 1;
                 } else {
                     rightIndex = midIndex - 1;

@@ -20,11 +20,11 @@ public class BinarySearch {
      * Защититься от переполнения при нахождении {@code midIndex} можно так:<br/>
      * {@code leftIndex + (rightIndex - leftIndex) / 2}
      *
-     * @param sortedArray   отсортированный массив
-     * @param targetElement элемент для поиска в массиве
+     * @param sortedArray отсортированный массив
+     * @param target      элемент для поиска в массиве
      * @return индекс найденного элемента
      */
-    public static <T extends Comparable<T>> int search(T[] sortedArray, T targetElement) {
+    public static <T extends Comparable<T>> int search(T[] sortedArray, T target) {
         int leftIndex = 0;
         int rightIndex = sortedArray.length - 1;
 
@@ -32,9 +32,9 @@ public class BinarySearch {
             int midIndex = (leftIndex + rightIndex) / 2;
             T midElement = sortedArray[midIndex];
 
-            if (midElement.equals(targetElement)) {
+            if (midElement.equals(target)) {
                 return midIndex;
-            } else if (midElement.compareTo(targetElement) > 0) {
+            } else if (midElement.compareTo(target) > 0) {
                 rightIndex = midIndex - 1;
             } else { // midElement < targetElement
                 leftIndex = midIndex + 1;

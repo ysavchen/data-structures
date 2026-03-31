@@ -8,14 +8,14 @@ public class RecursiveBinarySearch {
      * Рекурсивный бинарный поиск<br/>
      * Время работы: O(log n)
      *
-     * @param sortedArray   отсортированный массив
-     * @param targetElement элемент для поиска в массиве
-     * @param leftIndex     индекс левой границы интервала (граница включается в интервал) - [leftIndex, rightIndex)
-     * @param rightIndex    индекс правой границы интервала (граница не включается в интервал)
+     * @param sortedArray отсортированный массив
+     * @param target      элемент для поиска в массиве
+     * @param leftIndex   индекс левой границы интервала (граница включается в интервал) - [leftIndex, rightIndex)
+     * @param rightIndex  индекс правой границы интервала (граница не включается в интервал)
      * @return индекс найденного элемента
      */
     public static <T extends Comparable<T>> int search(
-            T[] sortedArray, T targetElement, int leftIndex, int rightIndex
+            T[] sortedArray, T target, int leftIndex, int rightIndex
     ) {
         // rightIndex не включается в интервал,
         //     поэтому если индексы равны, значит мы уже обошли весь массив
@@ -27,12 +27,12 @@ public class RecursiveBinarySearch {
         int midIndex = (leftIndex + rightIndex) / 2;
         T midElement = sortedArray[midIndex];
 
-        if (midElement.equals(targetElement)) {
+        if (midElement.equals(target)) {
             return midIndex;
-        } else if (midElement.compareTo(targetElement) > 0) { // ищем в левой половине
-            return search(sortedArray, targetElement, leftIndex, midIndex);
-        } else { // midElement < targetElement (ищем в правой половине)
-            return search(sortedArray, targetElement, midIndex + 1, rightIndex);
+        } else if (midElement.compareTo(target) > 0) { // ищем в левой половине
+            return search(sortedArray, target, leftIndex, midIndex);
+        } else { // midElement < target (ищем в правой половине)
+            return search(sortedArray, target, midIndex + 1, rightIndex);
         }
     }
 }
