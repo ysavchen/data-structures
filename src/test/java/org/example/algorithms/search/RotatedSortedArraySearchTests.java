@@ -41,9 +41,9 @@ public class RotatedSortedArraySearchTests {
     @Test
     void searchSortedSecondPart() {
         int[] array = {5, 6, 7, 1, 2, 3, 4};
-        int target = 2;
+        int target = 3;
         int index = RotatedSortedArraySearch.search(array, target);
-        assertEquals(4, index);
+        assertEquals(5, index);
     }
 
     @Test
