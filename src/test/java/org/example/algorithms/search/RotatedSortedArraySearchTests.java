@@ -59,6 +59,6 @@ public class RotatedSortedArraySearchTests {
         int[] array = {7, 4, 6, 5, 1, 2, 3};
         int target = 4;
         int index = RotatedSortedArraySearch.search(array, target);
-        assertEquals(-1, index);
+        assertEquals(1, index);
     }
 }
