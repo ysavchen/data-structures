@@ -32,10 +32,13 @@ public class RotatedSortedArraySearch {
             // 2. Если левая половина отсортирована, но там элемент не найден,
             //    то ищем элемент в левой половине.
             if (array[leftIndex] <= array[midIndex]) {
+
+                // Проверяем, что элемент находится в диапазоне значений левой половины.
+                // Если нет - ищем элемент в правой половине.
                 if (array[leftIndex] >= target && array[midIndex] < target) {
                     rightIndex = midIndex - 1;
                 } else {
-                    leftIndex = midIndex + 1;
+                    leftIndex = midIndex + 1; // меняем leftIndex, чтобы переключиться на правую половину
                 }
             } else {
                 if (array[midIndex] > target && array[rightIndex] <= target) {
