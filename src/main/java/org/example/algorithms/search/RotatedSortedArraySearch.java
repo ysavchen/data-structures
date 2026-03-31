@@ -35,7 +35,8 @@ public class RotatedSortedArraySearch {
 
                 // Проверяем, что элемент находится в диапазоне значений левой половины интервала.
                 // Если нет - ищем элемент в правой половине.
-                if (array[leftIndex] >= target && array[midIndex] < target) {
+                // Note: значение по midIndex исключаем, т.к. уже проверили midElement == target
+                if (array[leftIndex] <= target && target < array[midIndex]) {
                     rightIndex = midIndex - 1;
                 } else {
                     leftIndex = midIndex + 1;
@@ -43,7 +44,8 @@ public class RotatedSortedArraySearch {
             } else {
                 // Проверяем, что элемент находится в диапазоне значений правой половины интервала.
                 // Если нет - ищем элемент в левой половине.
-                if (array[midIndex] > target && array[rightIndex] <= target) {
+                // Note: значение по midIndex исключаем, т.к. уже проверили midElement == target
+                if (array[midIndex] < target && target <= array[rightIndex]) {
                     leftIndex = midIndex + 1;
                 } else {
                     rightIndex = midIndex - 1;
