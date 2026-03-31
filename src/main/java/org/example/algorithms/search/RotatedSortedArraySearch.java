@@ -1,0 +1,49 @@
+package org.example.algorithms.search;
+
+/**
+ * Бинарный поиск в отсортированном массиве со смещением
+ */
+public class RotatedSortedArraySearch {
+
+    private static final int NOT_FOUND = -1;
+
+    /**
+     * Бинарный поиск<br/>
+     * Время работы: O(log n)
+     *
+     * @param array         отсортированный массив со смещением
+     * @param targetElement элемент для поиска в массиве
+     * @return индекс найденного элемента
+     */
+    public static int search(int[] array, int targetElement) {
+        int leftIndex = 0;
+        int rightIndex = array.length - 1;
+
+        while (leftIndex <= rightIndex) {
+            int midIndex = (leftIndex + rightIndex) / 2;
+            int midElement = array[midIndex];
+
+            if (midElement == targetElement) {
+                return midIndex;
+            }
+
+            // проверяем, отсортирована ли левая половина массива
+            // если нет, то считаем, что отсортирована правая половина
+            if (array[leftIndex] <= array[midIndex]) {
+                if (array[leftIndex] >= targetElement && array[midIndex] < targetElement) {
+                    rightIndex = midIndex - 1;
+                } else {
+                    leftIndex = midIndex + 1;
+                }
+            } else {
+                if (array[midIndex] > targetElement && array[rightIndex] <= targetElement) {
+                    leftIndex = midIndex + 1;
+                } else {
+                    rightIndex = midIndex - 1;
+                }
+            }
+        }
+
+        return NOT_FOUND;
+    }
+}
