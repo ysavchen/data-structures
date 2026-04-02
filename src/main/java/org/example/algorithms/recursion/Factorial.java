@@ -11,8 +11,8 @@ public class Factorial {
      * Вычисление факториала с помощью цикла
      */
     public static int loopFactorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("n cannot be negative");
+        if (n <= 1) {
+            return 1;
         }
 
         int result = 1;
@@ -28,11 +28,7 @@ public class Factorial {
      * Чтобы решить эту проблему можно заменить рекурсию на цикл.
      */
     private static int factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("n cannot be negative");
-        }
-
-        if (n == 0 || n == 1) {
+        if (n <= 1) {
             return 1;
         }
         return n * factorial(n - 1);
