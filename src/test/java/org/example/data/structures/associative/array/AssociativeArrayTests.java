@@ -13,7 +13,7 @@ public class AssociativeArrayTests {
     }
 
     @Test
-    void setValue() {
+    void putValue() {
         var array = new AssociativeArray<String, String>();
         array.put("first", "Anna");
         assertEquals(1, array.getSize());
