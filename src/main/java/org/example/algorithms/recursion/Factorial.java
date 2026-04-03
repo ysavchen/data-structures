@@ -35,7 +35,7 @@ public class Factorial {
     }
 
     public static void main(String[] args) {
-        int result = loopFactorial(3);
+        int result = factorial(3);
         System.out.println("Result: " + result);
     }
 }
