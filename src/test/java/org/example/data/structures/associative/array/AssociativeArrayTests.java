@@ -15,20 +15,20 @@ public class AssociativeArrayTests {
     @Test
     void setValue() {
         var array = new AssociativeArray<String, String>();
-        array.set("first", "Anna");
+        array.put("first", "Anna");
         assertEquals(1, array.getSize());
 
-        array.set("second", "Maria");
+        array.put("second", "Maria");
         assertEquals(2, array.getSize());
     }
 
     @Test
     void replaceValue() {
         var array = new AssociativeArray<String, String>();
-        array.set("first", "Anna");
+        array.put("first", "Anna");
         assertEquals(1, array.getSize());
 
-        array.set("first", "Maria");
+        array.put("first", "Maria");
         assertEquals("Maria", array.get("first"));
         assertEquals(1, array.getSize());
     }
@@ -36,7 +36,7 @@ public class AssociativeArrayTests {
     @Test
     void getValue() {
         var array = new AssociativeArray<String, String>();
-        array.set("first", "Anna");
+        array.put("first", "Anna");
         assertEquals("Anna", array.get("first"));
         assertEquals(1, array.getSize());
     }
@@ -44,7 +44,7 @@ public class AssociativeArrayTests {
     @Test
     void containsValue() {
         var array = new AssociativeArray<String, String>();
-        array.set("first", "Anna");
+        array.put("first", "Anna");
         assertTrue(array.contains("Anna"));
         assertFalse(array.contains("Maria"));
     }

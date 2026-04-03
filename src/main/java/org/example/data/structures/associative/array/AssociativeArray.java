@@ -35,7 +35,7 @@ public class AssociativeArray<K, V> implements Map<K, V> {
     }
 
     @Override
-    public void set(K key, V value) {
+    public void put(K key, V value) {
         for (Pair<K, V> entry : pairs) {
             if (entry.key.equals(key)) {
                 entry.value = value;
