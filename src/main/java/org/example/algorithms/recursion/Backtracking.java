@@ -5,14 +5,14 @@ package org.example.algorithms.recursion;
  */
 public class Backtracking {
 
-    private static void generate(String alphabet, String buffer) {
+    private static void generate1(String alphabet, String buffer) {
         if (buffer.length() == alphabet.length()) {
             System.out.println(buffer);
             return;
         }
 
         for (char ch : alphabet.toCharArray()) {
-            generate(alphabet, buffer + ch);
+            generate1(alphabet, buffer + ch);
         }
     }
 
@@ -27,7 +27,7 @@ public class Backtracking {
     }
 
     public static void main(String[] args) {
-        //generate("ab", "");
+        //generate1("ab", "");
         generate2("", 2);
     }
 }
