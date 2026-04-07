@@ -3,7 +3,7 @@ package org.example.algorithms.hashing;
 /**
  * Хэш-функция отображает элементы большого множества в элементы малого.
  */
-public class LashDigitHash {
+public class LastDigitHash {
 
     /**
      * Хэш-функция, которая вычисляет последнюю цифру от числа {@code x}<br/>
