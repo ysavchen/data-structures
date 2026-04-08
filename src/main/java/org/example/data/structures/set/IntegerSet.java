@@ -8,6 +8,11 @@ public class IntegerSet implements Set<Integer> {
     /**
      * Хеш-таблица с разрешением коллизий методом цепочек.<br/>
      * Первый массив содержит бакеты, каждый бакет содержит список элементов (в виде массива).
+     * <pre>{@code
+     * 0 -> int[]
+     * 1 -> int[]
+     * 2 -> int[]
+     * }</pre>
      */
     private final Integer[][] hashTable;
 

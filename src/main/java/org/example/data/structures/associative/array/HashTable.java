@@ -20,6 +20,14 @@ public class HashTable<K, V> implements Map<K, V> {
         }
     }
 
+    /**
+     * Массив содержит бакеты, каждый бакет содержит список элементов.
+     * <pre>{@code
+     * 0 -> LinkedList<Pair<K, V>>
+     * 1 -> LinkedList<Pair<K, V>>
+     * 2 -> LinkedList<Pair<K, V>>
+     * }</pre>
+     */
     private final List<Pair<K, V>> pairs;
 
     public HashTable() {

@@ -18,6 +18,15 @@ public class AssociativeArray<K, V> implements Map<K, V> {
         }
     }
 
+    /**
+     * Массив содержит бакеты, каждый бакет содержит элемент.<br/>
+     * В случае коллизии элемент затирается новой записью.
+     * <pre>{@code
+     * 0 -> Pair<K, V>
+     * 1 -> Pair<K, V>
+     * 2 -> Pair<K, V>
+     * }</pre>
+     */
     private final List<Pair<K, V>> pairs;
 
     public AssociativeArray() {
