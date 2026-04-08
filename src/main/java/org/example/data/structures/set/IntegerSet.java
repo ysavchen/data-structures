@@ -2,6 +2,10 @@ package org.example.data.structures.set;
 
 public class IntegerSet implements Set<Integer> {
 
+    /**
+     * Хэш-таблица с разрешением коллизий методом цепочек.<br/>
+     * Первый массив содержит бакеты, каждый бакет содержит список элементов (в виде массива).
+     */
     private final Integer[][] elementData;
 
     private final int capacity;
@@ -13,12 +17,6 @@ public class IntegerSet implements Set<Integer> {
         this.capacity = capacity;
     }
 
-    /**
-     * При добавлении элемента в корзину, используется итерация по элементам для поиска пустой ячейки,
-     * так как не известно, какая ячейка пустая, что создает время работы O(n), где n - количество ячеек в корзине.</br>
-     * Можно создать класс Bucket c переменной size, и сразу будет известно, какая ячейка пустая,
-     * но я решил сделать пример максимально простым.
-     */
     @Override
     public void add(Integer element) {
         Integer[] bucket = elementData[element % capacity];
