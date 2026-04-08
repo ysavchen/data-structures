@@ -10,6 +10,26 @@ import java.util.function.Consumer;
  */
 public class BinarySearchTree<T extends Comparable<T>> {
 
+    private static class Node<T> {
+        private final T data;
+        private Node<T> left = null;
+        private Node<T> right = null;
+
+        Node(T data) {
+            this.data = data;
+        }
+    }
+
+    private static class NodeSearchResult<T> {
+        private final Node<T> parentNode;
+        private final Node<T> node;
+
+        NodeSearchResult(Node<T> parentNode, Node<T> node) {
+            this.parentNode = parentNode;
+            this.node = node;
+        }
+    }
+
     private Node<T> root = null;
 
     public BinarySearchTree() {
@@ -78,26 +98,5 @@ public class BinarySearchTree<T extends Comparable<T>> {
             }
         }
         return null;
-    }
-
-    private static class Node<T> {
-
-        private final T data;
-        private Node<T> left = null;
-        private Node<T> right = null;
-
-        Node(T data) {
-            this.data = data;
-        }
-    }
-
-    private static class NodeSearchResult<T> {
-        private final Node<T> parentNode;
-        private final Node<T> node;
-
-        NodeSearchResult(Node<T> parentNode, Node<T> node) {
-            this.parentNode = parentNode;
-            this.node = node;
-        }
     }
 }
