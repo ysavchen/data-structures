@@ -18,17 +18,18 @@ public class IntegerSet implements Set<Integer> {
     }
 
     @Override
-    public void add(Integer element) {
+    public boolean add(Integer element) {
         Integer[] bucket = elementData[element % capacity];
         for (Integer cell : bucket) {
             if (cell != null && cell.equals(element)) {
-                return; // не добавляем дубликат во множество
+                return false; // не добавляем дубликат во множество
             } else if (cell == null) {
                 cell = element;
                 size++;
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     @Override
@@ -45,12 +46,12 @@ public class IntegerSet implements Set<Integer> {
     }
 
     @Override
-    public void delete(Integer element) {
+    public boolean delete(Integer element) {
         Integer[] bucket = elementData[element % capacity];
         int index = 0;
         for (Integer cell : bucket) {
             if (cell == null) {
-                return;
+                return false;
             } else if (cell.equals(element)) {
                 int lastElementIndex = bucket.length - 1;
                 if (index == lastElementIndex) {
@@ -60,10 +61,11 @@ public class IntegerSet implements Set<Integer> {
                     bucket[lastElementIndex] = null;
                 }
                 size--;
-                return;
+                return true;
             }
             index++;
         }
+        return false;
     }
 
     @Override
