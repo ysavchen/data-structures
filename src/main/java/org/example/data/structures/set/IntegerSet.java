@@ -1,25 +1,31 @@
 package org.example.data.structures.set;
 
+/**
+ * Множество целых чисел
+ */
 public class IntegerSet implements Set<Integer> {
 
     /**
-     * Хэш-таблица с разрешением коллизий методом цепочек.<br/>
+     * Хеш-таблица с разрешением коллизий методом цепочек.<br/>
      * Первый массив содержит бакеты, каждый бакет содержит список элементов (в виде массива).
      */
-    private final Integer[][] elementData;
+    private final Integer[][] hashTable;
 
     private final int capacity;
 
     private int size;
 
     public IntegerSet(int capacity) {
-        this.elementData = new Integer[capacity][capacity];
+        this.hashTable = new Integer[capacity][capacity];
         this.capacity = capacity;
     }
 
+    /**
+     * Для Integer hashCode == value
+     */
     @Override
     public boolean add(Integer element) {
-        Integer[] bucket = elementData[element % capacity];
+        Integer[] bucket = hashTable[element % capacity];
         for (Integer cell : bucket) {
             if (cell != null && cell.equals(element)) {
                 return false; // не добавляем дубликат во множество
@@ -34,7 +40,7 @@ public class IntegerSet implements Set<Integer> {
 
     @Override
     public boolean contains(Integer element) {
-        Integer[] bucket = elementData[element % capacity];
+        Integer[] bucket = hashTable[element % capacity];
         for (Integer cell : bucket) {
             if (cell == null) {
                 return false;
@@ -47,7 +53,7 @@ public class IntegerSet implements Set<Integer> {
 
     @Override
     public boolean delete(Integer element) {
-        Integer[] bucket = elementData[element % capacity];
+        Integer[] bucket = hashTable[element % capacity];
         int index = 0;
         for (Integer cell : bucket) {
             if (cell == null) {
@@ -76,7 +82,7 @@ public class IntegerSet implements Set<Integer> {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for (Integer[] bucket : elementData) {
+        for (Integer[] bucket : hashTable) {
             int index = 0;
             for (Integer integer : bucket) {
                 builder.append(integer);
