@@ -26,7 +26,7 @@ public class IntegerSet implements Set<Integer> {
     }
 
     /**
-     * Для Integer hashCode == value
+     * Для {@link Integer} {@code hashCode == value}
      */
     @Override
     public boolean add(Integer element) {
