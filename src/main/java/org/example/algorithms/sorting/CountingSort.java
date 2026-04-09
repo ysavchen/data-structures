@@ -1,5 +1,7 @@
 package org.example.algorithms.sorting;
 
+import java.util.Arrays;
+
 /**
  * Сортировка подсчетом
  * <p>
@@ -14,22 +16,24 @@ public class CountingSort {
      * Сортирует целые числа от 0 до array.length
      */
     public static void sort(int[] array) {
+        if (array.length == 0) {
+            return;
+        }
 
         // 1. Считаем количество вхождений каждого числа
-        // Если нужно отсортировать числа от 1 до 10,
-        // то для удобства подсчета стоит выделить массив размером array.length + 1
-        // Индекс 0 использоваться не будет.
-        int[] counting = new int[array.length];
+        int max = Arrays.stream(array).max().getAsInt();
+        int[] counting = new int[max + 1];
         for (int element : array) {
             counting[element] += 1;
         }
 
         // 2. Перезаписываем исходный массив
         int index = 0;
-        for (int numOfElements : counting) {
-            for (int j = 0; j < numOfElements; j++) {
-                array[index] = j;
+        for (int i = 0; i < counting.length; i++) {
+            while (counting[i] > 0) {
+                array[index] = i;
                 index++;
+                counting[i]--;
             }
         }
     }
