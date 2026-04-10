@@ -3,7 +3,7 @@ package org.example.algorithms.sorting;
 import java.util.Random;
 
 /**
- * Быстрая сортировка Хоара
+ * Быстрая сортировка с разбиением Хоара
  */
 public class HoareQuickSort {
 
@@ -15,6 +15,13 @@ public class HoareQuickSort {
         array[rightIndex] = temp;
     }
 
+    /**
+     * Схема разбиения Хоара<br/>
+     * Два указателя (слева и справа), swap "неправильных элементов", пока указатели не сошлись.
+     * <p>
+     * После разбиения элементы {@code < pivot} находятся в левой части массива,<br/>
+     * а элементы {@code >= pivot} - в правой.
+     */
     private static <T extends Comparable<T>> int partition(T[] array, int leftIndex, int rightIndex) {
         var pivot = array[leftIndex + random.nextInt(rightIndex - leftIndex + 1)];
 
