@@ -1,8 +1,5 @@
 package org.example.data.structures.associative.array;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Хеш-таблица на основе массива с разрешением конфликтов методом цепочек
  * <p>
@@ -14,6 +11,8 @@ public class HashTable<K, V> implements Map<K, V> {
         private final K key;
         private V value;
 
+        private Pair<K, V> next = null;
+
         Pair(K key, V value) {
             this.key = key;
             this.value = value;
@@ -23,15 +22,17 @@ public class HashTable<K, V> implements Map<K, V> {
     /**
      * Массив содержит бакеты, каждый бакет содержит список элементов.
      * <pre>{@code
-     * 0 -> LinkedList<Pair<K, V>>
-     * 1 -> LinkedList<Pair<K, V>>
-     * 2 -> LinkedList<Pair<K, V>>
+     * 0 -> Pair<K, V>
+     * 1 -> Pair<K, V>
+     * 2 -> Pair<K, V> -> Pair<K, V>
      * }</pre>
      */
-    private final List<Pair<K, V>> pairs;
+    private final Pair<K, V>[] pairs;
+
+    private int size;
 
     public HashTable() {
-        this.pairs = new ArrayList<>();
+        this.pairs = new Pair[10];
     }
 
     @Override
@@ -51,11 +52,11 @@ public class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public boolean isEmpty() {
-        return pairs.isEmpty();
+        return size == 0;
     }
 
     @Override
     public int getSize() {
-        return pairs.size();
+        return size;
     }
 }
