@@ -36,9 +36,13 @@ public class AssociativeArray<K, V> implements Map<K, V> {
 
     @Override
     public V get(K key) {
-        for (Pair<K, V> entry : pairs) {
-            if (entry.key.equals(key)) {
-                return entry.value;
+        for (Pair<K, V> pair : pairs) {
+            if (pair == null) {
+                break;
+            }
+
+            if (Objects.equals(pair.key, key)) {
+                return pair.value;
             }
         }
         return null;
@@ -46,30 +50,30 @@ public class AssociativeArray<K, V> implements Map<K, V> {
 
     @Override
     public void put(K key, V value) {
-        for (Pair<K, V> entry : pairs) {
-            if (entry == null) {
+        for (Pair<K, V> pair : pairs) {
+            if (pair == null) {
                 break;
             }
 
-            if (Objects.equals(entry.key, key)) {
-                entry.value = value;
+            if (Objects.equals(pair.key, key)) {
+                pair.value = value;
                 return;
             }
         }
 
-        Pair<K, V> entry = new Pair<>(key, value);
-        pairs[size] = entry;
+        Pair<K, V> pair = new Pair<>(key, value);
+        pairs[size] = pair;
         size++;
     }
 
     @Override
     public boolean contains(V value) {
-        for (Pair<K, V> entry : pairs) {
-            if (entry == null) {
-                return false;
+        for (Pair<K, V> pair : pairs) {
+            if (pair == null) {
+                break;
             }
 
-            if (Objects.equals(entry.value, value)) {
+            if (Objects.equals(pair.value, value)) {
                 return true;
             }
         }

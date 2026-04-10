@@ -42,7 +42,19 @@ public class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public void put(K key, V value) {
+        int bucketIndex = key.hashCode() % pairs.length;
+        Pair<K, V> newPair = new Pair<>(key, value);
 
+        var pair = pairs[bucketIndex];
+        if (pair == null) {
+            pairs[bucketIndex] = newPair;
+        } else {
+            while (pair.next != null) {
+                pair = pair.next;
+            }
+            pair.next = newPair;
+        }
+        size++;
     }
 
     @Override

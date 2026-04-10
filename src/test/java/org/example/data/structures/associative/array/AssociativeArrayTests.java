@@ -42,6 +42,12 @@ public class AssociativeArrayTests {
     }
 
     @Test
+    void getValueByNonExistingKey() {
+        var array = new AssociativeArray<String, String>();
+        assertNull(array.get("first"));
+    }
+
+    @Test
     void containsValue() {
         var array = new AssociativeArray<String, String>();
         array.put("first", "Anna");
