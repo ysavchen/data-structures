@@ -29,10 +29,12 @@ public class HashTable<K, V> implements Map<K, V> {
      */
     private final Pair<K, V>[] pairs;
 
+    private static final int INITIAL_CAPACITY = 10;
+
     private int size;
 
     public HashTable() {
-        this.pairs = new Pair[10];
+        this.pairs = new Pair[INITIAL_CAPACITY];
     }
 
     @Override
@@ -45,14 +47,14 @@ public class HashTable<K, V> implements Map<K, V> {
         int bucketIndex = key.hashCode() % pairs.length;
         Pair<K, V> newPair = new Pair<>(key, value);
 
-        var pair = pairs[bucketIndex];
-        if (pair == null) {
+        var current = pairs[bucketIndex];
+        if (current == null) {
             pairs[bucketIndex] = newPair;
         } else {
-            while (pair.next != null) {
-                pair = pair.next;
+            while (current.next != null) {
+                current = current.next;
             }
-            pair.next = newPair;
+            current.next = newPair;
         }
         size++;
     }
