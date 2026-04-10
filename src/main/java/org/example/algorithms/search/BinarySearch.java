@@ -36,7 +36,7 @@ public class BinarySearch {
                 return midIndex;
             } else if (midElement.compareTo(target) > 0) {
                 rightIndex = midIndex - 1;
-            } else { // midElement < targetElement
+            } else if (midElement.compareTo(target) < 0) {
                 leftIndex = midIndex + 1;
             }
         }
