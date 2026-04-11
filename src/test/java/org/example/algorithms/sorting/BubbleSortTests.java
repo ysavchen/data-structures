@@ -23,6 +23,14 @@ public class BubbleSortTests {
     }
 
     @Test
+    void sortWithAllSameElements() {
+        Integer[] array = {2, 2, 2, 2, 2};
+        Integer[] sortedArray = {2, 2, 2, 2, 2};
+        BubbleSort.sort(array);
+        assertArrayEquals(sortedArray, array);
+    }
+
+    @Test
     void sortNegativeElements() {
         Integer[] array = {-5, 4, 1, -3, 0};
         Integer[] sortedArray = {-5, -3, 0, 1, 4};

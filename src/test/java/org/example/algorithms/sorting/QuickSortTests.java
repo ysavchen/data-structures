@@ -25,6 +25,14 @@ public class QuickSortTests {
     }
 
     @Test
+    void sortWithAllSameElements() {
+        List<Integer> list = List.of(2, 2, 2, 2, 2);
+        List<Integer> sortedList = List.of(2, 2, 2, 2, 2);
+        List<Integer> result = QuickSort.sort(list);
+        assertEquals(sortedList, result);
+    }
+
+    @Test
     void sortNegativeElements() {
         List<Integer> list = List.of(-5, 4, 1, -3, 0);
         List<Integer> sortedList = List.of(-5, -3, 0, 1, 4);

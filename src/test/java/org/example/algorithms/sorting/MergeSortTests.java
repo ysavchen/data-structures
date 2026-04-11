@@ -23,6 +23,14 @@ public class MergeSortTests {
     }
 
     @Test
+    void sortWithAllSameElements() {
+        int[] array = {2, 2, 2, 2, 2};
+        int[] sortedArray = {2, 2, 2, 2, 2};
+        int[] result = MergeSort.sort(array);
+        assertArrayEquals(sortedArray, result);
+    }
+
+    @Test
     void sortNegativeElements() {
         int[] array = {-5, 4, 1, -3, 0};
         int[] sortedArray = {-5, -3, 0, 1, 4};

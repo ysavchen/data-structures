@@ -23,6 +23,14 @@ public class CountingSortTests {
     }
 
     @Test
+    void sortWithAllSameElements() {
+        int[] array = {2, 2, 2, 2, 2};
+        int[] sortedArray = {2, 2, 2, 2, 2};
+        CountingSort.sort(array);
+        assertArrayEquals(sortedArray, array);
+    }
+
+    @Test
     void sortSortedArray() {
         int[] array = {2, 5, 9, 14};
         int[] sortedArray = {2, 5, 9, 14};
