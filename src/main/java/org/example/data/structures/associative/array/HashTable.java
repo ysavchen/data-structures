@@ -39,17 +39,23 @@ public class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public V get(K key) {
+        int bucketIndex = key.hashCode() % nodes.length;
+        var current = nodes[bucketIndex];
         return null;
     }
 
     @Override
-    public void put(K key, V value) {
-        int bucketIndex = key.hashCode() % nodes.length;
+    public boolean put(K key, V value) {
+        if (key == null) {
+            return false;
+        }
+
+        int index = key.hashCode() % nodes.length;
         Node<K, V> newNode = new Node<>(key, value);
 
-        var current = nodes[bucketIndex];
+        var current = nodes[index];
         if (current == null) {
-            nodes[bucketIndex] = newNode;
+            nodes[index] = newNode;
         } else {
             while (current.next != null) {
                 current = current.next;
@@ -57,6 +63,7 @@ public class HashTable<K, V> implements Map<K, V> {
             current.next = newNode;
         }
         size++;
+        return true;
     }
 
     @Override

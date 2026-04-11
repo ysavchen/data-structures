@@ -51,7 +51,7 @@ public class AssociativeArray<K, V> implements Map<K, V> {
     }
 
     @Override
-    public void put(K key, V value) {
+    public boolean put(K key, V value) {
         for (Pair<K, V> pair : pairs) {
             if (pair == null) {
                 break;
@@ -59,13 +59,14 @@ public class AssociativeArray<K, V> implements Map<K, V> {
 
             if (Objects.equals(pair.key, key)) {
                 pair.value = value;
-                return;
+                return true;
             }
         }
 
         Pair<K, V> pair = new Pair<>(key, value);
         pairs[size] = pair;
         size++;
+        return true;
     }
 
     @Override

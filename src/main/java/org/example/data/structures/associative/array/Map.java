@@ -4,7 +4,7 @@ public interface Map<K, V> {
 
     V get(K key);
 
-    void put(K key, V value);
+    boolean put(K key, V value);
 
     boolean contains(V value);
 
