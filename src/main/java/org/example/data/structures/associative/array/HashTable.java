@@ -7,13 +7,13 @@ package org.example.data.structures.associative.array;
  */
 public class HashTable<K, V> implements Map<K, V> {
 
-    private static class Pair<K, V> {
+    private static class Node<K, V> {
         private final K key;
         private V value;
 
-        private Pair<K, V> next = null;
+        private Node<K, V> next = null;
 
-        Pair(K key, V value) {
+        Node(K key, V value) {
             this.key = key;
             this.value = value;
         }
@@ -22,19 +22,19 @@ public class HashTable<K, V> implements Map<K, V> {
     /**
      * Массив содержит бакеты, каждый бакет содержит список элементов.
      * <pre>{@code
-     * 0 -> Pair<K, V>
-     * 1 -> Pair<K, V>
-     * 2 -> Pair<K, V> -> Pair<K, V>
+     * 0 -> Node<K, V>
+     * 1 -> Node<K, V>
+     * 2 -> Node<K, V> -> Node<K, V>
      * }</pre>
      */
-    private final Pair<K, V>[] pairs;
+    private final Node<K, V>[] nodes;
 
     private static final int INITIAL_CAPACITY = 10;
 
     private int size;
 
     public HashTable() {
-        this.pairs = new Pair[INITIAL_CAPACITY];
+        this.nodes = new Node[INITIAL_CAPACITY];
     }
 
     @Override
@@ -44,17 +44,17 @@ public class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public void put(K key, V value) {
-        int bucketIndex = key.hashCode() % pairs.length;
-        Pair<K, V> newPair = new Pair<>(key, value);
+        int bucketIndex = key.hashCode() % nodes.length;
+        Node<K, V> newNode = new Node<>(key, value);
 
-        var current = pairs[bucketIndex];
+        var current = nodes[bucketIndex];
         if (current == null) {
-            pairs[bucketIndex] = newPair;
+            nodes[bucketIndex] = newNode;
         } else {
             while (current.next != null) {
                 current = current.next;
             }
-            current.next = newPair;
+            current.next = newNode;
         }
         size++;
     }
