@@ -50,8 +50,6 @@ public class HashTable<K, V> implements Map<K, V> {
         if (key == null) {
             return false;
         }
-        int index = key.hashCode() % nodes.length;
-        Node<K, V> newNode = new Node<>(key, value);
 
         // если существует узел с таким ключом, то заменяем value
         var node = search(key);
@@ -61,7 +59,9 @@ public class HashTable<K, V> implements Map<K, V> {
         }
 
         // добавляем новый узел в начало списка
-        var current = nodes[index];
+        Node<K, V> newNode = new Node<>(key, value);
+        int index = key.hashCode() % nodes.length;
+        var current = nodes[key.hashCode() % nodes.length];
         if (current != null) {
             newNode.next = current;
         }
