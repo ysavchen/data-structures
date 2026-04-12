@@ -39,8 +39,9 @@ public class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public V get(K key) {
-        int bucketIndex = key.hashCode() % nodes.length;
-        var current = nodes[bucketIndex];
+        int index = key.hashCode() % nodes.length;
+        var current = nodes[index];
+
         return null;
     }
 
@@ -49,21 +50,38 @@ public class HashTable<K, V> implements Map<K, V> {
         if (key == null) {
             return false;
         }
-
         int index = key.hashCode() % nodes.length;
         Node<K, V> newNode = new Node<>(key, value);
 
-        var current = nodes[index];
-        if (current == null) {
-            nodes[index] = newNode;
-        } else {
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+        // если существует узел с таким ключом, то заменяем value
+        var node = search(key);
+        if (node != null) {
+            node.value = value;
+            return true;
         }
+
+        // добавляем новый узел в начало списка
+        var current = nodes[index];
+        if (current != null) {
+            newNode.next = current;
+        }
+        nodes[index] = newNode;
+
         size++;
         return true;
+    }
+
+    private Node<K, V> search(K key) {
+        int index = key.hashCode() % nodes.length;
+        var current = nodes[index];
+
+        while (current != null) {
+            if (current.key.equals(key)) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
     }
 
     @Override
