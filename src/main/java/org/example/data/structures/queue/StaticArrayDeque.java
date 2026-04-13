@@ -1,5 +1,7 @@
 package org.example.data.structures.queue;
 
+import java.util.Arrays;
+
 /**
  * Дек на основе кольцевого буфера
  */
@@ -98,5 +100,13 @@ public class StaticArrayDeque<T> implements Deque<T> {
     @Override
     public int getSize() {
         return size;
+    }
+
+    @Override
+    public String toString() {
+        return "headIndex: " + headIndex + ", " +
+                "tailIndex: " + tailIndex + ", " +
+                "size: " + size + ", " +
+                "elements: " + Arrays.toString(elements);
     }
 }
