@@ -105,12 +105,13 @@ public class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public boolean contains(V value) {
-        var current = nodes[0];
-        while (current != null) {
-            if (Objects.equals(current.value, value)) {
-                return true;
+        for (var current : nodes) {
+            while (current != null) {
+                if (Objects.equals(current.value, value)) {
+                    return true;
+                }
+                current = current.next;
             }
-            current = current.next;
         }
         return false;
     }
