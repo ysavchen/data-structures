@@ -6,7 +6,7 @@ import org.example.data.structures.stack.Stack;
 import java.util.function.Consumer;
 
 /**
- * Двоичное дерево поиска
+ * Двоичное дерево поиска (BST)
  */
 public class BinarySearchTree<T extends Comparable<T>> {
 
