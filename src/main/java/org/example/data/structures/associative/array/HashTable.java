@@ -1,5 +1,7 @@
 package org.example.data.structures.associative.array;
 
+import java.util.Objects;
+
 /**
  * Хеш-таблица на основе массива с разрешением конфликтов методом цепочек
  * <p>
@@ -40,7 +42,22 @@ public class HashTable<K, V> implements Map<K, V> {
     @Override
     public V get(K key) {
         int index = key.hashCode() % nodes.length;
-        var current = nodes[index];
+        Node<K, V> current = nodes[index];
+        Node<K, V> previous = null;
+
+        while (current != null) {
+            if (current.key.equals(key)) {
+                if (previous != null) {
+                    // используем move-to-front (MTF)
+                    previous.next = current.next;
+                    current.next = nodes[index];
+                    nodes[index] = current;
+                }
+                return current.value;
+            }
+            previous = current;
+            current = current.next;
+        }
 
         return null;
     }
@@ -59,9 +76,9 @@ public class HashTable<K, V> implements Map<K, V> {
         }
 
         // добавляем новый узел в начало списка
-        Node<K, V> newNode = new Node<>(key, value);
+        var newNode = new Node<>(key, value);
         int index = key.hashCode() % nodes.length;
-        var current = nodes[key.hashCode() % nodes.length];
+        var current = nodes[index];
         if (current != null) {
             newNode.next = current;
         }
@@ -86,6 +103,13 @@ public class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public boolean contains(V value) {
+        var current = nodes[0];
+        while (current != null) {
+            if (Objects.equals(current.value, value)) {
+                return true;
+            }
+            current = current.next;
+        }
         return false;
     }
 
