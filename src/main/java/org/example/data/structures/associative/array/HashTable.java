@@ -39,6 +39,9 @@ public class HashTable<K, V> implements Map<K, V> {
         this.nodes = new Node[INITIAL_CAPACITY];
     }
 
+    /**
+     * Найденный элемент перемещается в начало цепочки (MTF)
+     */
     @Override
     public V get(K key) {
         int index = key.hashCode() % nodes.length;
@@ -48,7 +51,6 @@ public class HashTable<K, V> implements Map<K, V> {
         while (current != null) {
             if (current.key.equals(key)) {
                 if (previous != null) {
-                    // используем move-to-front (MTF)
                     previous.next = current.next;
                     current.next = nodes[index];
                     nodes[index] = current;
