@@ -7,8 +7,8 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
 
     private static class Node<T> {
         private final T value;
-        private Node<T> nextNode = null;
-        private Node<T> previousNode = null;
+        private Node<T> next = null;
+        private Node<T> previous = null;
 
         Node(T value) {
             this.value = value;
@@ -38,7 +38,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     public void insertToFront(T value) {
         var node = new Node<>(value);
         if (head != null) {
-            node.nextNode = head;
+            node.next = head;
         }
         head = node;
 
@@ -52,8 +52,8 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     public void insertToBack(T value) {
         var node = new Node<>(value);
         if (tail != null) {
-            tail.nextNode = node;
-            node.previousNode = tail;
+            tail.next = node;
+            node.previous = tail;
         }
         tail = node;
 
@@ -76,18 +76,18 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         if (node == null) {
             return false;
         }
-        if (node.previousNode == null) {    // удаление первого узла (head)
-            head = node.nextNode;
+        if (node.previous == null) {    // удаление первого узла (head)
+            head = node.next;
             if (head == null) {
                 tail = null;
             } else {
-                head.previousNode = null;
+                head.previous = null;
             }
-        } else if (node.nextNode == null) { // удаление последнего узла (tail)
-            tail = node.previousNode;
-            tail.nextNode = null;
-        } else {                            // общий случай
-            node.previousNode.nextNode = node.nextNode;
+        } else if (node.next == null) { // удаление последнего узла (tail)
+            tail = node.previous;
+            tail.next = null;
+        } else {                        // общий случай
+            node.previous.next = node.next;
         }
         size--;
         return true;
@@ -99,7 +99,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
             if (current.value.equals(value)) {
                 return current;
             }
-            current = current.nextNode;
+            current = current.next;
         }
         return null;
     }

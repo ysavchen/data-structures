@@ -8,7 +8,7 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
 
     private static class Node<T> {
         private final T value;
-        private Node<T> nextNode = null;
+        private Node<T> next = null;
 
         Node(T value) {
             this.value = value;
@@ -34,8 +34,8 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
         }
 
         Node<T> current = head;
-        while (current.nextNode != null) {
-            current = current.nextNode;
+        while (current.next != null) {
+            current = current.next;
         }
         return current.value;
     }
@@ -57,20 +57,20 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
             Node<T> newNode = new Node<>(value);
             while (current != null) {
                 if (current.value.compareTo(value) >= 0) { // current.value >= value
-                    if (previous == null) { // граничный случай: добавляем элемент в начало списка
+                    if (previous == null) {      // граничный случай: добавляем элемент в начало списка
                         head = newNode;
                     } else {
-                        previous.nextNode = newNode; // основной случай: добавляем элемент в середину списка
+                        previous.next = newNode; // основной случай: добавляем элемент в середину списка
                     }
-                    newNode.nextNode = current;
+                    newNode.next = current;
                     break;
                 }
                 previous = current;
-                current = current.nextNode;
+                current = current.next;
             }
 
             if (current == null) { // граничный случай: добавляем элемент в конец списка
-                previous.nextNode = newNode;
+                previous.next = newNode;
             }
         }
         size++;
@@ -83,7 +83,7 @@ public class SortedSinglyLinkedList<T extends Comparable<T>> implements SortedLi
             if (current.value.equals(element)) {
                 return current.value;
             }
-            current = current.nextNode;
+            current = current.next;
         }
         return null;
     }

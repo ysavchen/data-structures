@@ -7,7 +7,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
 
     private static class Node<T> {
         private final T value;
-        private Node<T> nextNode = null;
+        private Node<T> next = null;
 
         Node(T value) {
             this.value = value;
@@ -39,8 +39,8 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     @Override
     public T getLastElement() {
         Node<T> current = head;
-        while (current.nextNode != null) {
-            current = current.nextNode;
+        while (current.next != null) {
+            current = current.next;
         }
         return current.value;
     }
@@ -54,7 +54,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     public void insertToFront(T value) {
         var node = new Node<>(value);
         if (head != null) {
-            node.nextNode = head;
+            node.next = head;
         }
         head = node;
         size++;
@@ -72,10 +72,10 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
             head = node;
         } else {
             Node<T> current = head;
-            while (current.nextNode != null) {
-                current = current.nextNode;
+            while (current.next != null) {
+                current = current.next;
             }
-            current.nextNode = node;
+            current.next = node;
         }
         size++;
     }
@@ -97,15 +97,15 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         while (current != null) {
             if (current.value.equals(value)) {
                 if (previous == null) {
-                    head = current.nextNode; // граничный случай: удаление головы списка
+                    head = current.next;          // граничный случай: удаление головы списка
                 } else {
-                    previous.nextNode = current.nextNode; // основной случай: узел в середине списка (или в хвосте)
+                    previous.next = current.next; // основной случай: узел в середине списка (или в хвосте)
                 }
                 size--;
                 return true;
             }
             previous = current;
-            current = current.nextNode;
+            current = current.next;
         }
         return false;
     }
