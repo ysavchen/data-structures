@@ -40,11 +40,20 @@ public class HashTable<K, V> implements Map<K, V> {
     }
 
     /**
+     * Хеш-функция отображает множество значений {@code key} на множество бакетов хеш-таблицы
+     *
+     * @return int индекс бакета хеш-таблицы
+     */
+    private int hash(K key) {
+        return key.hashCode() % nodes.length;
+    }
+
+    /**
      * Найденный элемент перемещается в начало цепочки (MTF)
      */
     @Override
     public V get(K key) {
-        int index = key.hashCode() % nodes.length;
+        int index = hash(key);
         Node<K, V> current = nodes[index];
         Node<K, V> previous = null;
 
@@ -79,7 +88,7 @@ public class HashTable<K, V> implements Map<K, V> {
 
         // добавляем новый узел в начало списка
         var newNode = new Node<>(key, value);
-        int index = key.hashCode() % nodes.length;
+        int index = hash(key);
         var current = nodes[index];
         if (current != null) {
             newNode.next = current;
@@ -91,7 +100,7 @@ public class HashTable<K, V> implements Map<K, V> {
     }
 
     private Node<K, V> search(K key) {
-        int index = key.hashCode() % nodes.length;
+        int index = hash(key);
         var current = nodes[index];
 
         while (current != null) {
