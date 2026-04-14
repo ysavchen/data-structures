@@ -39,6 +39,14 @@ public class CountingSortTests {
     }
 
     @Test
+    void sortReverseOrderArray() {
+        int[] array = {14, 9, 5, 2};
+        int[] sortedArray = {2, 5, 9, 14};
+        CountingSort.sort(array);
+        assertArrayEquals(sortedArray, array);
+    }
+
+    @Test
     void sortEmptyArray() {
         int[] array = {};
         int[] sortedArray = {};

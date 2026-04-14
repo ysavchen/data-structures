@@ -49,6 +49,14 @@ public class QuickSortTests {
     }
 
     @Test
+    void sortReverseOrderArray() {
+        List<Integer> list = List.of(14, 9, 5, 2);
+        List<Integer> sortedList = List.of(2, 5, 9, 14);
+        List<Integer> result = QuickSort.sort(list);
+        assertEquals(sortedList, result);
+    }
+
+    @Test
     void sortEmptyList() {
         List<Integer> list = List.of();
         List<Integer> sortedList = List.of();

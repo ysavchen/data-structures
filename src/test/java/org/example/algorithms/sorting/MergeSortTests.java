@@ -47,6 +47,14 @@ public class MergeSortTests {
     }
 
     @Test
+    void sortReverseOrderArray() {
+        int[] array = {14, 9, 5, 2};
+        int[] sortedArray = {2, 5, 9, 14};
+        int[] result = MergeSort.sort(array);
+        assertArrayEquals(sortedArray, result);
+    }
+
+    @Test
     void sortEmptyArray() {
         int[] array = {};
         int[] sortedArray = {};

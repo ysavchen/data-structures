@@ -47,6 +47,14 @@ public class HoareQuickSortTests {
     }
 
     @Test
+    void sortReverseOrderArray() {
+        Integer[] array = {14, 9, 5, 2};
+        Integer[] sortedArray = {2, 5, 9, 14};
+        HoareQuickSort.sort(array, 0, array.length - 1);
+        assertArrayEquals(sortedArray, array);
+    }
+
+    @Test
     void sortEmptyArray() {
         Integer[] array = {};
         Integer[] sortedArray = {};
