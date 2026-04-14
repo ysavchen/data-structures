@@ -63,4 +63,12 @@ public class QuickSortTests {
         List<Integer> result = QuickSort.sort(list);
         assertEquals(sortedList, result);
     }
+
+    @Test
+    void sortSingleElementArray() {
+        List<Integer> list = List.of(2);
+        List<Integer> sortedList = List.of(2);
+        List<Integer> result = QuickSort.sort(list);
+        assertEquals(sortedList, result);
+    }
 }

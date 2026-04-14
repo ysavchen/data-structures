@@ -61,4 +61,12 @@ public class MergeSortTests {
         int[] result = MergeSort.sort(array);
         assertArrayEquals(sortedArray, result);
     }
+
+    @Test
+    void sortSingleElementArray() {
+        int[] array = {2};
+        int[] sortedArray = {2};
+        int[] result = MergeSort.sort(array);
+        assertArrayEquals(sortedArray, result);
+    }
 }

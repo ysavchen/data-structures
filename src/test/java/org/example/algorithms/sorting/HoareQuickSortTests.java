@@ -61,4 +61,12 @@ public class HoareQuickSortTests {
         HoareQuickSort.sort(array, 0, array.length - 1);
         assertArrayEquals(sortedArray, array);
     }
+
+    @Test
+    void sortSingleElementArray() {
+        Integer[] array = {2};
+        Integer[] sortedArray = {2};
+        HoareQuickSort.sort(array, 0, array.length - 1);
+        assertArrayEquals(sortedArray, array);
+    }
 }

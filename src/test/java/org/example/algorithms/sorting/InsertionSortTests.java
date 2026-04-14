@@ -61,4 +61,12 @@ public class InsertionSortTests {
         InsertionSort.sort(array);
         assertArrayEquals(sortedArray, array);
     }
+
+    @Test
+    void sortSingleElementArray() {
+        Integer[] array = {2};
+        Integer[] sortedArray = {2};
+        InsertionSort.sort(array);
+        assertArrayEquals(sortedArray, array);
+    }
 }

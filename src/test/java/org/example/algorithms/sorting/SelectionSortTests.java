@@ -61,4 +61,12 @@ public class SelectionSortTests {
         SelectionSort.sort(array);
         assertArrayEquals(sortedArray, array);
     }
+
+    @Test
+    void sortSingleElementArray() {
+        Integer[] array = {2};
+        Integer[] sortedArray = {2};
+        SelectionSort.sort(array);
+        assertArrayEquals(sortedArray, array);
+    }
 }

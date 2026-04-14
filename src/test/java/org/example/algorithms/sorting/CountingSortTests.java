@@ -53,4 +53,12 @@ public class CountingSortTests {
         CountingSort.sort(array);
         assertArrayEquals(sortedArray, array);
     }
+
+    @Test
+    void sortSingleElementArray() {
+        int[] array = {2};
+        int[] sortedArray = {2};
+        CountingSort.sort(array);
+        assertArrayEquals(sortedArray, array);
+    }
 }
