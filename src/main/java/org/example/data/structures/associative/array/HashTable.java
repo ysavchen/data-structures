@@ -53,7 +53,7 @@ public class HashTable<K, V> implements Map<K, V> {
      * @return int индекс бакета хеш-таблицы
      */
     private int hash(K key) {
-        return key.hashCode() % nodes.length;
+        return Math.abs(key.hashCode()) % nodes.length;
     }
 
     /**
