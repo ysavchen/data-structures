@@ -28,7 +28,7 @@ public class AssociativeArray<K, V> implements Map<K, V> {
      */
     private final Pair<K, V>[] pairs;
 
-    private static final int INITIAL_CAPACITY = 10;
+    private static final int INITIAL_CAPACITY = 17;
 
     private int size;
 

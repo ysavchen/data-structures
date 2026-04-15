@@ -31,7 +31,8 @@ public class HashTable<K, V> implements Map<K, V> {
      */
     private final Node<K, V>[] nodes;
 
-    private static final int INITIAL_CAPACITY = 10;
+    // todo: сделать увеличение размера хеш-таблицы
+    private static final int INITIAL_CAPACITY = 17;
 
     private int size;
 
@@ -89,9 +90,9 @@ public class HashTable<K, V> implements Map<K, V> {
         // добавляем новый узел в начало списка
         var newNode = new Node<>(key, value);
         int index = hash(key);
-        var current = nodes[index];
-        if (current != null) {
-            newNode.next = current;
+        var head = nodes[index];
+        if (head != null) {
+            newNode.next = head;
         }
         nodes[index] = newNode;
 
@@ -100,8 +101,7 @@ public class HashTable<K, V> implements Map<K, V> {
     }
 
     private Node<K, V> search(K key) {
-        int index = hash(key);
-        var current = nodes[index];
+        var current = nodes[hash(key)];
 
         while (current != null) {
             if (current.key.equals(key)) {
