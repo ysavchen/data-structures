@@ -40,6 +40,13 @@ public class HashTable<K, V> implements Map<K, V> {
         this.nodes = new Node[INITIAL_CAPACITY];
     }
 
+    public HashTable(int initialCapacity) {
+        if (initialCapacity <= 0) {
+            throw new IllegalArgumentException("Initial capacity must be greater than 0");
+        }
+        this.nodes = new Node[initialCapacity];
+    }
+
     /**
      * Хеш-функция отображает множество значений {@code key} на множество бакетов хеш-таблицы
      *
