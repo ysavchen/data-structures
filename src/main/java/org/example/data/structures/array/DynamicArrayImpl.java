@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DynamicArrayImpl<T> implements DynamicArray<T> {
 
-    private static final int ELEMENT_NOT_FOUND = -1;
+    private static final int NOT_FOUND = -1;
 
     private static final int INITIAL_CAPACITY = 10;
 
@@ -46,7 +46,7 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
                 return index;
             }
         }
-        return ELEMENT_NOT_FOUND;
+        return NOT_FOUND;
     }
 
     @Override

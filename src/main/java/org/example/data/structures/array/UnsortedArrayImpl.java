@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  */
 public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
 
-    private static final int ELEMENT_NOT_FOUND = -1;
+    private static final int NOT_FOUND = -1;
 
     private final T[] elementData;
 
@@ -47,7 +47,7 @@ public class UnsortedArrayImpl<T> implements UnsortedArray<T> {
                 return index;
             }
         }
-        return ELEMENT_NOT_FOUND;
+        return NOT_FOUND;
     }
 
     /**

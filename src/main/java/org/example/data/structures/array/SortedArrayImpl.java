@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> {
 
-    private static final int ELEMENT_NOT_FOUND = -1;
+    private static final int NOT_FOUND = -1;
 
     private final T[] elementData;
 
@@ -39,7 +39,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
     public int findElement(T element) {
         Objects.requireNonNull(element);
         if (elementData.length == 0) {
-            return ELEMENT_NOT_FOUND;
+            return NOT_FOUND;
         }
 
         int leftIndex = 0;
@@ -57,7 +57,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
             }
         }
 
-        return ELEMENT_NOT_FOUND;
+        return NOT_FOUND;
     }
 
     /**
@@ -112,7 +112,7 @@ public class SortedArrayImpl<T extends Comparable<T>> implements SortedArray<T> 
 
         int index = findElement(element);
         int lastElementIndex = size - 1;
-        if (index == ELEMENT_NOT_FOUND) {
+        if (index == NOT_FOUND) {
             return;
         } else if (index == lastElementIndex) {
             elementData[index] = null;
