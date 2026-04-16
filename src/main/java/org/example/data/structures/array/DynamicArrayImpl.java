@@ -20,7 +20,7 @@ public class DynamicArrayImpl<T> implements DynamicArray<T> {
     private int size = 0;
 
     public DynamicArrayImpl() {
-        this.elementData = (T[]) new Comparable[INITIAL_CAPACITY];
+        this(INITIAL_CAPACITY);
     }
 
     public DynamicArrayImpl(int initialCapacity) {

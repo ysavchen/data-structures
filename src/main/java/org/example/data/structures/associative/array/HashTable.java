@@ -37,7 +37,7 @@ public class HashTable<K, V> implements Map<K, V> {
     private int size;
 
     public HashTable() {
-        this.nodes = new Node[INITIAL_CAPACITY];
+        this(INITIAL_CAPACITY);
     }
 
     public HashTable(int initialCapacity) {
