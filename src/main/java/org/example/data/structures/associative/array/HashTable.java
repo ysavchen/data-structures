@@ -32,6 +32,9 @@ public class HashTable<K, V> implements Map<K, V> {
     private final Node<K, V>[] nodes;
 
     // todo: сделать увеличение размера хеш-таблицы
+    /**
+     * Простое число в качестве модуля дает равномерное распределение элементов по хеш-таблице
+     */
     private static final int INITIAL_CAPACITY = 17;
 
     private int size;
