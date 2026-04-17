@@ -7,7 +7,7 @@ public class StringHash {
 
     /**
      * Полиномиальный хеш считается по формуле:<br/>
-     * {@code h(str) = (S[0] * p^len-1 + S[1] * p^len-2 + S[2] * p^len-3 ... S[len-1] * p^0) mod M}
+     * {@code h(s) = (s[0] * p^len-1 + s[1] * p^len-2 + s[2] * p^len-3 ... s[len-1] * p^0) mod M}
      * {@code p} - большое простое число<br/>
      * {@code M} - модуль
      * <p>
