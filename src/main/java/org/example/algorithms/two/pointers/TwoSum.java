@@ -35,7 +35,7 @@ public class TwoSum {
                 return new int[]{first, second};
             } else if (sum < x) {
                 leftIndex += 1;
-            } else {
+            } else if (sum > x) {
                 rightIndex -= 1;
             }
         }
