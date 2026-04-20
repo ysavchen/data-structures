@@ -53,10 +53,10 @@ public class StringHash {
         int p = 1_000_000_007;     // 10^9 + 7
         int m = Integer.MAX_VALUE; // 2^31 - 1
 
-        int h = 0;
+        int h = 0; // в переменную h мы накапливаем полиномиальный хеш
         char[] chars = str.toCharArray();
         for (int i = 0; i < str.length(); i++) {
-            h = (h * p + chars[i]) % m;
+            h = (h * p + chars[i]) % m; // схема Горнера
         }
 
         return h;
