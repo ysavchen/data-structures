@@ -49,11 +49,11 @@ public class StringHash {
      * <p>
      * Время работы: O(n)
      */
-    public static int hash(String str) {
+    public static long hash(String str) {
         int p = 1_000_000_007;     // 10^9 + 7
         int m = Integer.MAX_VALUE; // 2^31 - 1
 
-        int h = 0; // в переменную h мы накапливаем полиномиальный хеш
+        long h = 0; // в переменную h мы накапливаем полиномиальный хеш
         char[] chars = str.toCharArray();
         for (int i = 0; i < str.length(); i++) {
             h = (h * p + chars[i]) % m; // схема Горнера
