@@ -12,7 +12,8 @@ public class TwoSum {
     /**
      * Наивный алгоритм
      * <p>
-     * Время работы: O(n^2 / 2)
+     * Время работы: O(n^2 / 2)<br/>
+     * Затраты по памяти: O(1)
      */
     private static int[] naiveTwoSum(int[] array, int x) {
         for (int i = 0; i < array.length; i++) {
@@ -42,7 +43,8 @@ public class TwoSum {
      * 3. Сумма элементов больше {@code x} - передвигаем {@code rightIndex}<br/>
      * Если в какой-то момент указатели встретятся - значит, искомая пара элементов в массиве отсутствует.
      * <p>
-     * Время работы: O(n)
+     * Время работы: O(n log n)<br/>
+     * Затраты по памяти: O(1)
      */
     private static int[] twoPointersTwoSum(int[] array, int x) {
         Arrays.sort(array);
@@ -66,6 +68,14 @@ public class TwoSum {
         return new int[]{};
     }
 
+    /**
+     * Решение с использованием {@code Set}.
+     * <p>
+     * Такое решение потребляет дополнительную память на хранение элементов в {@code Set}.
+     * <p>
+     * Время работы: O(n)<br/>
+     * Затраты по памяти: O(n)
+     */
     private static int[] twoSum(int[] array, int x) {
         var previous = new HashSet<Integer>();
         for (int i = 0; i < array.length; i++) {
