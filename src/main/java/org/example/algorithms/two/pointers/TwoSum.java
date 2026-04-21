@@ -3,12 +3,22 @@ package org.example.algorithms.two.pointers;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ * Дан массив целых чисел {@code array} и целое число {@code x}.<br/>
+ * Нужно найти в массиве два элемента, сумма которых равняется {@code x}.
+ */
 public class TwoSum {
 
+    /**
+     * Наивный алгоритм
+     * <p>
+     * Время работы: O(n^2 / 2)
+     */
     private static int[] naiveTwoSum(int[] array, int x) {
         for (int i = 0; i < array.length; i++) {
             int first = array[i];
             System.out.println("first: " + first);
+
             for (int j = i + 1; j < array.length; j++) {
                 int second = array[j];
                 System.out.println("second: " + second);
@@ -21,6 +31,19 @@ public class TwoSum {
         return new int[]{};
     }
 
+    /**
+     * Метод двух указателей
+     * <p>
+     * Сортируем массив.<br/>
+     * {@code leftIndex} указывает на первый элемент массива, {@code rightIndex} - на последний.<br/>
+     * На каждой итерации суммируем элементы левого и правого указателя.<br/>
+     * 1. Сумма элементов равна {@code x} - ответ найден<br/>
+     * 2. Сумма элементов меньше {@code x} - передвигаем {@code leftIndex}<br/>
+     * 3. Сумма элементов больше {@code x} - передвигаем {@code rightIndex}<br/>
+     * Если в какой-то момент указатели встретятся - значит, искомая пара элементов в массиве отсутствует.
+     * <p>
+     * Время работы: O(n)
+     */
     private static int[] twoPointersTwoSum(int[] array, int x) {
         Arrays.sort(array);
 
