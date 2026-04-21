@@ -1,4 +1,4 @@
-package org.example.algorithms.two.pointers;
+package org.example.data.structures.set;
 
 import java.util.Arrays;
 import java.util.HashSet;
