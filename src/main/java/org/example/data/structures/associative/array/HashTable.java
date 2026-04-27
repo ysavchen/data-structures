@@ -51,12 +51,12 @@ public class HashTable<K, V> implements Map<K, V> {
     }
 
     /**
-     * Хеш-функция отображает множество значений {@code key} на множество бакетов хеш-таблицы
+     * Функция вычисляет нужный бакет хеш-таблицы
      *
-     * @return int индекс бакета хеш-таблицы
+     * @return int индекс бакета
      */
-    private int hash(K key) {
-        return Math.abs(key.hashCode()) % nodes.length;
+    private int bucket(int hashCode) {
+        return Math.abs(hashCode) % nodes.length;
     }
 
     /**
@@ -64,7 +64,7 @@ public class HashTable<K, V> implements Map<K, V> {
      */
     @Override
     public V get(K key) {
-        int index = hash(key);
+        int index = bucket(key.hashCode());
         Node<K, V> current = nodes[index];
         Node<K, V> previous = null;
 
@@ -99,7 +99,7 @@ public class HashTable<K, V> implements Map<K, V> {
 
         // добавляем новый узел в начало списка
         var newNode = new Node<>(key, value);
-        int index = hash(key);
+        int index = bucket(key.hashCode());
         var head = nodes[index];
         if (head != null) {
             newNode.next = head;
@@ -111,7 +111,7 @@ public class HashTable<K, V> implements Map<K, V> {
     }
 
     private Node<K, V> search(K key) {
-        var current = nodes[hash(key)];
+        var current = nodes[bucket(key.hashCode())];
 
         while (current != null) {
             if (current.key.equals(key)) {
