@@ -51,7 +51,7 @@ public class AssociativeArray<K, V> implements Map<K, V> {
     }
 
     @Override
-    public boolean put(K key, V value) {
+    public boolean set(K key, V value) {
         for (Pair<K, V> pair : pairs) {
             if (pair == null) {
                 break;

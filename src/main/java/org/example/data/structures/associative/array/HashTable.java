@@ -85,7 +85,7 @@ public class HashTable<K, V> implements Map<K, V> {
     }
 
     @Override
-    public boolean put(K key, V value) {
+    public boolean set(K key, V value) {
         if (key == null) {
             return false;
         }

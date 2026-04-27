@@ -13,35 +13,35 @@ public class HashTableTests {
     }
 
     @Test
-    void putElement() {
+    void setElement() {
         var table = new HashTable<String, String>();
 
-        boolean annaResult = table.put("first", "Anna");
+        boolean annaResult = table.set("first", "Anna");
         assertEquals(1, table.getSize());
         assertTrue(annaResult);
 
-        boolean mariaResult = table.put("second", "Maria");
+        boolean mariaResult = table.set("second", "Maria");
         assertEquals(2, table.getSize());
         assertTrue(mariaResult);
     }
 
     @Test
-    void putNullElement() {
+    void setNullElement() {
         var table = new HashTable<String, String>();
 
-        boolean firstResult = table.put("first", null);
+        boolean firstResult = table.set("first", null);
         assertEquals(1, table.getSize());
         assertTrue(firstResult);
 
-        boolean secondResult = table.put("second", null);
+        boolean secondResult = table.set("second", null);
         assertEquals(2, table.getSize());
         assertTrue(secondResult);
     }
 
     @Test
-    void putByNullKey() {
+    void setByNullKey() {
         var table = new HashTable<String, String>();
-        boolean annaResult = table.put(null, "Anna");
+        boolean annaResult = table.set(null, "Anna");
         assertEquals(0, table.getSize());
         assertFalse(annaResult);
     }
